@@ -2,11 +2,11 @@
 import Head from 'next/head';
 import Script from 'next/script';
 import Layout from '@/components/layout/Layout';
-
+import type { AppProps } from 'next/app';
 import '@/styles/global.css';
 
-export default function MyApp({ Component, pageProps }) {
-  return (
+export default function MyApp({ Component, pageProps }: AppProps) {
+	return (
     <>
       <Head>
         <title>JustGo!</title>
