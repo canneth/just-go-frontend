@@ -8,13 +8,17 @@
   min-width: 100px;
   height: 40px;
   border-radius: 5px;
-  line-height: 0px;
-  font-size: var(--font-size-web-regular);
-  font-weight: bold;
-  color: var(--color-grey-white);
   background: var(--color-primary-base);
 }
-.noBackground {
-  color: var(--color-grey-black);
+.text {
+  font-size: var(--font-size-web-regular);
+  font-weight: bold;
+  line-height: 0px;
+  color: var(--color-grey-white);
+}
+.overallContainer.noBackground {
   background: none;
+}
+.overallContainer.noBackground > .text {
+  color: var(--color-grey-black);
 }

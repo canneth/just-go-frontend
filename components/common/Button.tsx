@@ -9,7 +9,7 @@ interface ButtonProps {
 export default function Button(props: ButtonProps) {
   return (
     <a className={`${styles.overallContainer} ${props.noBackground ? styles.noBackground : null}`}>
-      {props.text}
+      <p className={styles.text}>{props.text}</p>
     </a>
   );
 }
