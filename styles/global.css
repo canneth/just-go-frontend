@@ -15,4 +15,20 @@ body {
   margin-block-end: 0;
   margin-inline-start: 0;
   margin-inline-end: 0;
+
+  /* Font sizes */
+  --font-size-web-small: 12px;
+  --font-size-web-regular: 16px;
+  --font-size-web-large: 20px;
+  --font-size-mobile-small: 8px;
+  --font-size-mobile-regular: 9px;
+  --font-size-mobile-large: 12px;
+
+  /* Color palette */
+  --color-primary-base: #FF5656;
+  --color-grey-white: #FFFFFF;
+  --color-grey-offwhite: #F5F5F5;
+  --color-grey-light: #D3D3D3;
+  --color-grey-base: #757575;
+  --color-grey-black: #000000;
 }

@@ -9,7 +9,7 @@ interface LayoutProps {
 export default function Layout(props: LayoutProps) {
   return (
     <div className={styles.overallContainer}>
-      <NavBar />
+      <NavBar className={styles.navBar} />
       <main className={styles.mainColumn}>
         {props.children}
       </main>

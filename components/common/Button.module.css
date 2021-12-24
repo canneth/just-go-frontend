@@ -1,0 +1,20 @@
+
+.overallContainer {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  min-width: 100px;
+  height: 40px;
+  border-radius: 5px;
+  line-height: 0px;
+  font-size: var(--font-size-web-regular);
+  font-weight: bold;
+  color: var(--color-grey-white);
+  background: var(--color-primary-base);
+}
+.noBackground {
+  color: var(--color-grey-black);
+  background: none;
+}

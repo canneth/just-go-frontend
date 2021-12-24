@@ -1,3 +1,12 @@
+
 .overallContainer {
   position: relative;
+}
+
+.navBar {
+  z-index: 2;
+}
+.mainColumn {
+  position: relative;
+  z-index: 1;
 }
