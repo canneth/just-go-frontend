@@ -21,8 +21,8 @@ export default function Home() {
             <h1 className={styles.title}>JustGo!</h1>
           </div>
           <ol className={styles.buttonList}>
-            <li><Button text='JustGo!' pageRef={selfRef} destinationURL='/just-go' /></li>
-            <li><Button text={`About`} pageRef={selfRef} destinationURL='/about' noBackground /></li>
+            <li><Button text='JustGo!' pageEl={selfRef.current!} destinationURL='/select' /></li>
+            <li><Button text={`About`} pageEl={selfRef.current!} destinationURL='/about' noBackground /></li>
           </ol>
         </div>
         <Logo extClasses={styles.logoSvg} />

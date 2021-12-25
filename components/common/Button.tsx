@@ -6,7 +6,8 @@ import styles from './Button.module.css';
 interface ButtonProps {
   text: string;
   destinationURL: string;
-  pageRef: RefObject<HTMLDivElement>;
+  pageEl: HTMLDivElement;
+  extRoute?: boolean;
   noBackground?: true;
 }
 
@@ -18,11 +19,15 @@ export default function Button(props: ButtonProps) {
     router.prefetch(props.destinationURL)
   }, [router, props.destinationURL]);
 
-  function handleClick(e: MouseEvent) {
-    props.pageRef.current?.classList.add('pageFadeOut');
-    setTimeout(() => {
+  function handleClick(_: MouseEvent) {
+    if (!props.extRoute) {
+      props.pageEl.classList.add('pageFadeOut');
+      setTimeout(() => {
+        router.push(props.destinationURL);
+      }, 200);
+    } else {
       router.push(props.destinationURL);
-    }, 200);
+    }
   }
 
   return (
