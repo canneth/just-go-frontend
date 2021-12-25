@@ -24,11 +24,29 @@
   margin-top: 50px;
 }
 .pretitle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
   font-size: 42px;
   margin-bottom: -40px;
 }
 .textCarousel {
-
+  position: relative;
+  /* width: 160px; */
+  height: 56px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  overflow: hidden;
+}
+.textCarousel:after {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  background: var(--color-grey-white);
+  left: -100%;
 }
 .title {
   font-size: 150px;
@@ -43,4 +61,22 @@
 .logoSvg {
   width: clamp(100px,20vw,250px);
   height: auto;
+}
+
+/* Text carousel animation stuff */
+.closeCurtain:after {
+  animation: text-carousel-curtain-close 500ms ease-in both;
+}
+.openCurtain:after {
+  animation: text-carousel-curtain-open 500ms ease-out both;
+}
+
+/* Keyframes */
+@keyframes text-carousel-curtain-close {
+  0% { left: -100%; }
+  100% { left: 0%; }
+}
+@keyframes text-carousel-curtain-open {
+  0% { left: 0%; }
+  100% { left: 100%; }
 }

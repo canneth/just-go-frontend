@@ -1,4 +1,5 @@
 
+import { useEffect, useRef, RefObject } from 'react';
 import Logo from '@/components/svgs/Logo';
 import Button from '@/components/common/Button';
 import usePageFadeInOut from '@/hooks/usePageFadeInOut';
@@ -8,20 +9,44 @@ import styles from './index.module.css';
 export default function Home() {
 
   const selfRef = usePageFadeInOut();
-
+  const textCarouselRef = useRef<HTMLSpanElement>(null);
   const clickHandlerJustGo = usePageChangeClickHandler('/select');
   const clickHandlerAbout = usePageChangeClickHandler('/about');
+
+  useEffect(() => {
+    const textCarouselWords = [
+      'chill',
+      'jog',
+      'work',
+      'meet up',
+      'dine',
+      'snack',
+      'drink'
+    ];
+    let i = 0;
+    const textCarouselInterval = setInterval(() => {
+      if (i >= textCarouselWords.length) i = 0;
+      textCarouselRef.current!.classList.remove(styles.openCurtain)
+      textCarouselRef.current!.classList.add(styles.closeCurtain)
+      setTimeout(() => {
+        textCarouselRef.current!.classList.remove(styles.closeCurtain)
+        textCarouselRef.current!.innerHTML = textCarouselWords[i++];
+        textCarouselRef.current!.classList.add(styles.openCurtain);
+      }, 600);
+    }, 4000);
+    return () => clearInterval(textCarouselInterval);
+  }, []);
 
   return (
     <div ref={selfRef} className={`${styles.overallContainer}`}>
       <div className={styles.heroContainer}>
         <div className={styles.heroLeftBlock}>
           <div className={styles.heroTextBlock}>
-            <h2 className={styles.pretitle}>
-              Wanna&nbsp;
-              <span className={styles.textCarousel}>chill</span>
-              &nbsp;?
-            </h2>
+            <div className={styles.pretitle}>
+              <span>Wanna&nbsp;</span>
+              <span ref={textCarouselRef} className={styles.textCarousel}>chill</span>
+              <span>&nbsp;?</span>
+            </div>
             <h1 className={styles.title}>JustGo!</h1>
           </div>
           <ol className={styles.buttonList}>
