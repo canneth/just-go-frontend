@@ -43,6 +43,13 @@ ol, ul {
 }
 
 /* Page transition stuff */
-.pageExited {
+.pageFadeIn {
+  animation: pageFadeIn 250ms ease-out;
+}
+.pageFadeOut {
   opacity: 0 !important;
+}
+@keyframes pageFadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }

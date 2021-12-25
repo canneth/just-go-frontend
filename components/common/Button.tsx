@@ -19,7 +19,7 @@ export default function Button(props: ButtonProps) {
   }, [router, props.destinationURL]);
 
   function handleClick(e: MouseEvent) {
-    props.pageRef.current?.classList.add('pageExited');
+    props.pageRef.current?.classList.add('pageFadeOut');
     setTimeout(() => {
       router.push(props.destinationURL);
     }, 200);

@@ -1,15 +1,15 @@
 
-import { useRef } from 'react';
 import Logo from '@/components/svgs/Logo';
 import Button from '@/components/common/Button';
+import usePageFadeInOut from '@/hooks/usePageFadeInOut';
 import styles from './index.module.css';
 
 export default function Home() {
 
-  const selfRef = useRef<HTMLDivElement>(null);
+  const selfRef = usePageFadeInOut();
 
   return (
-    <div id='iAmOverallContainer' ref={selfRef} className={styles.overallContainer}>
+    <div ref={selfRef} className={`${styles.overallContainer}`}>
       <div className={styles.heroContainer}>
         <div className={styles.heroLeftBlock}>
           <div className={styles.heroTextBlock}>
