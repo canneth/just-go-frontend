@@ -8,4 +8,39 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transition: opacity 200ms ease-out;
+}
+.heroContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 50px;
+}
+.heroLeftBlock {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 50px;
+}
+.pretitle {
+  font-size: 42px;
+  margin-bottom: -40px;
+}
+.textCarousel {
+
+}
+.title {
+  font-size: 150px;
+}
+.buttonList {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+}
+.logoSvg {
+  width: clamp(100px,20vw,250px);
+  height: auto;
 }

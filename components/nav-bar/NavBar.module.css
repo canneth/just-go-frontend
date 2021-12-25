@@ -25,6 +25,22 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  list-style: none;
   gap: 20px;
+}
+.logoSvg {
+  width: auto;
+  height: 50px;
+  transform: scale(1);
+  transition: transform 100ms ease-out;
+}
+.logoSvg > :global#body {
+  fill-opacity: 0;
+  transition: fill-opacity 100ms ease-out;
+}
+.logoSvg:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+.logoSvg:hover > :global#body {
+  fill-opacity: 1;
 }

@@ -5,20 +5,45 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  min-width: 100px;
+  width: 100px;
   height: 40px;
-  border-radius: 5px;
-  background: var(--color-primary-base);
-}
-.text {
   font-size: var(--font-size-web-regular);
   font-weight: bold;
   line-height: 0px;
   color: var(--color-grey-white);
+  transition: color 100ms ease-out;
+}
+.overallContainer:before {
+  position: absolute;
+  z-index: -1;
+  content: '';
+  width: 100%;
+  height: 100%;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 5px;
+  border-color: rgba(0,0,0,0);
+  background: var(--color-primary-base);
+  opacity: 1;
+  transition:
+    opacity 100ms ease-out,
+    background-color 100ms ease-out,
+    border-color 100ms ease-out;
 }
 .overallContainer.noBackground {
-  background: none;
+  color: var(--color-grey-dark);
 }
-.overallContainer.noBackground > .text {
+.overallContainer.noBackground:before {
+  background: transparent;
+}
+.overallContainer:hover {
+  cursor: pointer;
   color: var(--color-grey-black);
 }
+.overallContainer:hover:before {
+  border-color: var(--color-grey-black);
+  background: var(--color-grey-white);
+  opacity: 1;
+}
+
+

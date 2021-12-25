@@ -4,17 +4,17 @@ import Button from '@/components/common/Button';
 import styles from './NavBar.module.css';
 
 interface NavBarProps {
-  className: string;
+  extClasses: string;
 }
 
 export default function NavBar(props: NavBarProps) {
   return (
-    <nav className={`${styles.overallContainer} ${props.className}`}>
+    <nav className={`${styles.overallContainer} ${props.extClasses}`}>
       <div className={styles.itemsContainer}>
-        <div className={styles.navItemContainer}><Logo /></div>
+        <Logo extClasses={styles.logoSvg} />
         <ol className={styles.buttonList}>
-          <li><div className={styles.navItemContainer}><Button text='Log in' noBackground /></div></li>
-          <li><div className={styles.navItemContainer}><Button text='Sign up' /></div></li>
+          <li><Button text='Log in' noBackground /></li>
+          <li><Button text='Sign up' /></li>
         </ol>
       </div>
     </nav>
