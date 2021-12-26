@@ -1,0 +1,56 @@
+
+.overallContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  transition: opacity 200ms ease-out;
+}
+.prompt {
+  position: relative;
+  font-weight: bold;
+  margin-bottom: 80px;
+}
+.optionsList {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.option {
+  position: relative;
+  font-size: var(--font-size-web-large);
+  color: var(--color-grey-black);
+  transition:
+    transform 100ms ease-out,
+    color 100ms ease-out;
+}
+.option:hover {
+  cursor: pointer;
+  color: var(--color-primary-base);
+  transform: scale(1.01);
+}
+.divider {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+.divider:before, .divider:after {
+  position: absolute;
+  content: '';
+  top: 55%;
+  height: 1px;
+  width: clamp(100px, 20vw, 200px);
+  background-color: var(--color-grey-light);
+}
+.divider:before {
+  right: 180%;
+}
+.divider:after {
+  left: 180%;
+}

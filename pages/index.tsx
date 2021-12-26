@@ -6,7 +6,7 @@ import usePageFadeInOut from '@/hooks/usePageFadeInOut';
 import usePageChangeClickHandler from '@/hooks/usePageChangeClickHandler';
 import styles from './index.module.css';
 
-export default function Home() {
+export default function HomePage() {
 
   const selfRef = usePageFadeInOut();
   const textCarouselRef = useRef<HTMLSpanElement>(null);

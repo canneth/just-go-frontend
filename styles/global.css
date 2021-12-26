@@ -1,13 +1,8 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
 
 * {
   box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 
   /* Resets */
   margin: 0;
@@ -20,9 +15,9 @@ body {
   font-weight: normal;
 
   /* Font sizes */
-  --font-size-web-small: 12px;
-  --font-size-web-regular: 16px;
-  --font-size-web-large: 20px;
+  --font-size-web-small: 14px;
+  --font-size-web-regular: 18px;
+  --font-size-web-large: 22px;
   --font-size-mobile-small: 8px;
   --font-size-mobile-regular: 9px;
   --font-size-mobile-large: 12px;
@@ -40,6 +35,11 @@ body {
 /* Resets */
 ol, ul {
   list-style: none;
+}
+
+/* Global styles */
+p {
+  font-size: var(--font-size-web-regular);
 }
 
 /* Page transition stuff */
