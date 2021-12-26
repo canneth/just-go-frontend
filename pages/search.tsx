@@ -13,7 +13,7 @@ export default function RevisitPage() {
       <header className={styles.header}>
         <a className={styles.returnText} onClick={clickHandlerBack}>I've changed my mind, take me back!</a>
         <div className={styles.choiceSentence}>
-          <p className={styles.prefix}>I want to revisit a favourite spot to</p>
+          <p className={styles.prefix}>I have a place in mind!</p>
           <select className={styles.selectBox}>
             {
               ACTIVITIES.map((x, i) => (<option key={i} value={x}>{x}</option>))
