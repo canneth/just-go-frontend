@@ -1,14 +1,16 @@
 
 import usePageFadeInOut from '@/hooks/usePageFadeInOut';
+import usePageChangeClickHandler from '@/hooks/usePageChangeClickHandler';
 import styles from './revisit.module.css';
 
 export default function RevisitPage() {
   const selfRef = usePageFadeInOut();
+  const clickHandlerBack = usePageChangeClickHandler('/select');
 
   return (
-    <div className={styles.overallContainer}>
+    <div ref={selfRef} className={styles.overallContainer}>
       <header className={styles.header}>
-        <a className={styles.returnText}>I've changed my mind, take me back!</a>
+        <a className={styles.returnText} onClick={clickHandlerBack}>I've changed my mind, take me back!</a>
         <div className={styles.choiceSentence}>
           <p className={styles.prefix}>I want to revisit a favourite spot to</p>
           <select className={styles.selectBox}>

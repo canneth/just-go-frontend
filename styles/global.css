@@ -15,7 +15,7 @@
   font-weight: normal;
 
   /* Font sizes */
-  --font-size-web-small: 14px;
+  --font-size-web-small: 16px;
   --font-size-web-regular: 18px;
   --font-size-web-large: 22px;
   --font-size-mobile-small: 8px;
@@ -44,12 +44,16 @@ p {
 
 /* Page transition stuff */
 .pageFadeIn {
-  animation: pageFadeIn 250ms ease-out;
+  animation: pageFadeIn 250ms ease-out both;
 }
 .pageFadeOut {
-  opacity: 0 !important;
+  animation: pageFadeOut 250ms ease-out both;
 }
 @keyframes pageFadeIn {
   0% { opacity: 0; }
   100% { opacity: 1; }
+}
+@keyframes pageFadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
 }

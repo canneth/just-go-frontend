@@ -16,7 +16,7 @@ export default function usePageChangeClickHandler(destinationURL: string): Mouse
     currPageEl?.classList.add('pageFadeOut');
     setTimeout(() => {
       router.push(destinationURL);
-    }, 200);
+    }, 250);
   }
 
   return handleClick;
