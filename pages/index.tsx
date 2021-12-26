@@ -14,14 +14,16 @@ export default function Home() {
   const clickHandlerAbout = usePageChangeClickHandler('/about');
 
   useEffect(() => {
+    textCarouselRef.current!.classList.remove(styles.closeCurtain)
+    textCarouselRef.current!.classList.add(styles.openCurtain);
     const textCarouselWords = [
-      'chill',
       'jog',
       'work',
       'meet up',
       'dine',
       'snack',
-      'drink'
+      'drink',
+      'chill'
     ];
     let i = 0;
     const textCarouselInterval = setInterval(() => {

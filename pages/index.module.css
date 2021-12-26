@@ -45,7 +45,7 @@
   width: 110%;
   height: 100%;
   background: var(--color-grey-white);
-  left: -120%;
+  left: -125%;
   border-left: 4px solid var(--color-primary-base);
   border-right: 4px solid #000000;
 }
@@ -62,6 +62,7 @@
 .logoSvg {
   width: clamp(100px,20vw,250px);
   height: auto;
+  animation: logo-enter 800ms ease-out both;
 }
 
 /* Text carousel animation stuff */
@@ -73,11 +74,20 @@
 }
 
 /* Keyframes */
+@keyframes logo-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(-150px);
+  }
+  100% {
+    opacity: 1;
+  }
+}
 @keyframes text-carousel-curtain-close {
-  0% { left: -120%; }
+  0% { left: -125%; }
   100% { left: -10%; }
 }
 @keyframes text-carousel-curtain-open {
   0% { left: 10%; }
-  100% { left: 120%; }
+  100% { left: 125%; }
 }
