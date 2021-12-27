@@ -7,12 +7,18 @@ import usePageChangeClickHandler from '@/hooks/usePageChangeClickHandler';
 import { ACTIVITIES } from '@/globals/constants';
 import styles from './index.module.css';
 
-export default function HomePage() {
+interface HomePageProps {
+  testVar: any;
+}
+
+export default function HomePage(props: HomePageProps) {
 
   const selfRef = usePageFadeInOut();
   const textCarouselRef = useRef<HTMLSpanElement>(null);
   const clickHandlerJustGo = usePageChangeClickHandler('/select');
   const clickHandlerAbout = usePageChangeClickHandler('/about');
+
+  console.log(props.testVar);
 
   useEffect(() => {
     textCarouselRef.current!.classList.remove(styles.closeCurtain)
@@ -52,4 +58,12 @@ export default function HomePage() {
       </div>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  return {
+    props: {
+      testVar: process.env.SOME_VAR
+    }
+  };
 }
