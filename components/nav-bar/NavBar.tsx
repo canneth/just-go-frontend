@@ -5,7 +5,7 @@ import usePageChangeClickHandler from '@/hooks/usePageChangeClickHandler';
 import styles from './NavBar.module.css';
 
 interface NavBarProps {
-  extClasses: string;
+  extClasses?: string;
 }
 
 export default function NavBar(props: NavBarProps) {

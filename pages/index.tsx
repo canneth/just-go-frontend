@@ -14,6 +14,7 @@ export default function HomePage() {
   const clickHandlerJustGo = usePageChangeClickHandler('/select');
   const clickHandlerAbout = usePageChangeClickHandler('/about');
 
+
   useEffect(() => {
     textCarouselRef.current!.classList.remove(styles.closeCurtain)
     textCarouselRef.current!.classList.add(styles.openCurtain);

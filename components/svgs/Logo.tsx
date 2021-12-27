@@ -1,6 +1,6 @@
 
 import { MouseEventHandler } from 'react';
-import styles from './Logo.module.css'; // TODO: This may not be necessary
+import styles from './Logo.module.css';
 
 interface LogoProps {
   clickHandler?: MouseEventHandler;
@@ -12,13 +12,12 @@ export default function Logo(props: LogoProps) {
     <div className={styles.overallContainer}>
       <svg
         onClick={props.clickHandler}
-        className={`${styles.svg} ${props.extClasses}`}
+        className={props.extClasses}
         viewBox='0 0 151 292'
         width={151}
         height={292}
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        {...props}
       >
         <path
           id='body'

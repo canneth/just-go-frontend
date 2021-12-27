@@ -20,7 +20,9 @@
 			"@/pages/*": ["pages/*"],
 			"@/styles/*": ["styles/*"],
       "@/hooks/*": ["hooks/*"],
-      "@/globals/*": ["globals/*"]
+      "@/globals/*": ["globals/*"],
+      "@/models/*": ["models/*"],
+      "@/mocks/*": ["mocks/*"]
 		}
 	},
 	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "types.d.ts"],
