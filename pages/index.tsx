@@ -18,8 +18,6 @@ export default function HomePage(props: HomePageProps) {
   const clickHandlerJustGo = usePageChangeClickHandler('/select');
   const clickHandlerAbout = usePageChangeClickHandler('/about');
 
-  console.log(props.testVar);
-
   useEffect(() => {
     textCarouselRef.current!.classList.remove(styles.closeCurtain)
     textCarouselRef.current!.classList.add(styles.openCurtain);
@@ -54,16 +52,8 @@ export default function HomePage(props: HomePageProps) {
             <li><Button text={`About`} clickHandler={clickHandlerAbout} noBackground /></li>
           </ol>
         </div>
-        <Logo extClasses={styles.logoSvg} />
+        <Logo className={styles.logoSvg} />
       </div>
     </div>
   );
-}
-
-export async function getStaticProps() {
-  return {
-    props: {
-      testVar: process.env.SOME_VAR
-    }
-  };
 }
