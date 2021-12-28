@@ -18,7 +18,7 @@ export default function Layout(props: LayoutProps) {
   return (
     <CurrPageContext.Provider value={[currPageEl, setCurrPageEl]}>
       <div className={styles.overallContainer}>
-        <NavBar extClasses={styles.navBar} />
+        <NavBar className={styles.navBar} />
         <main className={styles.mainColumn}>
           {props.children}
         </main>

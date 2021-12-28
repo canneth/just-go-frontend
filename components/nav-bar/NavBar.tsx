@@ -5,7 +5,7 @@ import usePageChangeClickHandler from '@/hooks/usePageChangeClickHandler';
 import styles from './NavBar.module.css';
 
 interface NavBarProps {
-  extClasses?: string;
+  className?: string;
 }
 
 export default function NavBar(props: NavBarProps) {
@@ -15,9 +15,9 @@ export default function NavBar(props: NavBarProps) {
   const clickHandlerHome = usePageChangeClickHandler('/');
 
   return (
-    <nav className={`${styles.overallContainer} ${props.extClasses}`}>
+    <nav className={`${styles.overallContainer} ${props.className}`}>
       <div className={styles.itemsContainer}>
-        <Logo extClasses={styles.logoSvg} clickHandler={clickHandlerHome} />
+        <Logo className={styles.logoSvg} clickHandler={clickHandlerHome} />
         <ol className={styles.buttonList}>
           <li><Button text='Log in' clickHandler={clickHandlerLogin} noBackground /></li>
           <li><Button text='Sign up' clickHandler={clickHandlerSignup} /></li>

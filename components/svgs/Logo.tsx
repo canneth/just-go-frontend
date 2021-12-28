@@ -4,7 +4,7 @@ import styles from './Logo.module.css';
 
 interface LogoProps {
   clickHandler?: MouseEventHandler;
-  extClasses?: string;
+  className?: string;
 }
 
 export default function Logo(props: LogoProps) {
@@ -12,7 +12,7 @@ export default function Logo(props: LogoProps) {
     <div className={styles.overallContainer}>
       <svg
         onClick={props.clickHandler}
-        className={props.extClasses}
+        className={props.className}
         viewBox='0 0 151 292'
         width={151}
         height={292}
