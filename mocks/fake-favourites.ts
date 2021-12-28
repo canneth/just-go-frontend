@@ -1,5 +1,5 @@
 
-import PlaceData from '@/models/place-data';
+import { PlaceData } from '@/models/place-data';
 
 const FAKE_FAVOURITES: PlaceData[] = [
   {

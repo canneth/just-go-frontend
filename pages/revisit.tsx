@@ -1,9 +1,10 @@
 
-import { useState, ChangeEvent } from 'react';
+import { useState, useEffect, ChangeEvent } from 'react';
+import PlaceListViewport from '@/components/place-card-scroll-viewport/PlaceListViewport';
 import usePageFadeInOut from '@/hooks/usePageFadeInOut';
 import usePageChangeClickHandler from '@/hooks/usePageChangeClickHandler';
 import { ACTIVITIES } from '@/globals/constants';
-import PlaceData from '@/models/place-data';
+import { PlaceData } from '@/models/place-data';
 import styles from './revisit.module.css';
 
 /* Dev-only imports */
@@ -19,8 +20,14 @@ export default function RevisitPage() {
     const tag = e.currentTarget.value;
     // TODO: Replace this with actual fetching of data from API.
     const fetchedFavouritePlaces = FAKE_FAVOURITES.slice(0, 8);
-    setFavouritesList(currList => [...currList, ...fetchedFavouritePlaces]); // TODO: May want to optimise this.
+    setFavouritesList(fetchedFavouritePlaces); // TODO: May want to optimise this.
   }
+
+  useEffect(() => {
+    // TODO: This is only for testing purposes! Remove after you're done!
+    const fetchedFavouritePlaces = FAKE_FAVOURITES.slice(0, 8);
+    setFavouritesList(fetchedFavouritePlaces); // TODO: May want to optimise this.
+  }, []);
 
   return (
     <div ref={selfRef} className={styles.overallContainer}>
@@ -37,9 +44,10 @@ export default function RevisitPage() {
           </select>
         </div>
       </header>
-      <div className={styles.cardScrollViewport}>
-        Hi I am a card scroll viewport
-      </div>
+      <PlaceListViewport
+        className={styles.cardScrollViewport}
+        placeList={favouritesList}
+      />
     </div>
   );
 }

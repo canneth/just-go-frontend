@@ -1,7 +1,9 @@
 
 // TODO: Adapt this to actual backend.
-interface PlaceData {
+// Check the docs: https://developers.google.com/maps/documentation/places/web-service/details
+export interface PlaceData {
   id: string;
+  // place_id: string;
   name: string;
   placeType: string;
   address: string;
@@ -12,4 +14,13 @@ interface PlaceData {
   tags: string[];
 };
 
-export default PlaceData;
+export interface FavouritePlaceCardData {
+  id: string;
+  placeId: string;
+  name: string;
+  placeType: string;
+  tags: string[];
+  photoReference: string;
+};
+
+
