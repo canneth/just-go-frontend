@@ -4,3 +4,10 @@
   border: 2px solid var(--color-grey-black);
   width: 100%;
 }
+.typeLine {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
