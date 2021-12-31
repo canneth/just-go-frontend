@@ -11,9 +11,9 @@ interface ScrollableListProps {
 export default function ScrollableList(props: ScrollableListProps) {
   return (
     <div className={`${styles.overallContainer} ${props.className}`}>
-      <ol>
+      <ol className={styles.list}>
         {
-          props.placeList.map((x, i) => <PlaceCard key={i} />)
+          props.placeList.map((x, i) => <PlaceCard key={i} placeData={x} />)
         }
       </ol>
     </div>
