@@ -36,6 +36,9 @@
 ol, ul {
   list-style: none;
 }
+button {
+  background: none;
+}
 
 /* Global styles */
 body {

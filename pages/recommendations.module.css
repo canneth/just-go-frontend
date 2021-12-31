@@ -46,7 +46,7 @@
 }
 .selectBox {
   position: relative;
-  border: 2px solid;
+  border: 2px solid var(--color-grey-black);
   border-radius: 6px;
   height: 35px;
   width: 120px;
@@ -65,5 +65,5 @@
   align-items: center;
   width: 80%;
   height: 100%;
-  border: 1px solid;
+  border: 1px solid var(--color-grey-black);
 }

@@ -33,9 +33,7 @@ export default function RevisitPage() {
           </select>
         </div>
       </header>
-      <ScrollableList
-        className={styles.cardScrollViewport}
-        placeList={favouritesList}
+      <ScrollableList placeList={favouritesList}
       />
     </div>
   );
