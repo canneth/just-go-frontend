@@ -38,6 +38,9 @@ ol, ul {
 }
 
 /* Global styles */
+body {
+  overflow-y: hidden;
+}
 p {
   font-size: var(--font-size-web-regular);
 }
