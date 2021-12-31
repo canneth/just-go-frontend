@@ -1,14 +1,14 @@
 
 import { PlaceData } from '@/models/place-data';
-import PlaceCard from '@/components/place-card-scroll-viewport/place-card/PlaceCard';
-import styles from './PlaceListViewport.module.css';
+import PlaceCard from '@/components/place-card/PlaceCard';
+import styles from './ScrollableList.module.css';
 
-interface PlaceListViewportProps {
+interface ScrollableListProps {
   placeList: PlaceData[];
   className?: string;
 }
 
-export default function PlaceListViewport(props: PlaceListViewportProps) {
+export default function ScrollableList(props: ScrollableListProps) {
   return (
     <div className={`${styles.overallContainer} ${props.className}`}>
       <ol>

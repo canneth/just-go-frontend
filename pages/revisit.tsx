@@ -1,6 +1,6 @@
 
 import { useState, useEffect, ChangeEvent } from 'react';
-import PlaceListViewport from '@/components/place-card-scroll-viewport/PlaceListViewport';
+import ScrollableList from '@/components/place-card/ScrollableList';
 import usePageFadeInOut from '@/hooks/usePageFadeInOut';
 import usePageChangeClickHandler from '@/hooks/usePageChangeClickHandler';
 import { ACTIVITIES } from '@/globals/constants';
@@ -33,7 +33,7 @@ export default function RevisitPage() {
           </select>
         </div>
       </header>
-      <PlaceListViewport
+      <ScrollableList
         className={styles.cardScrollViewport}
         placeList={favouritesList}
       />

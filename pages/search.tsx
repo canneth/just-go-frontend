@@ -1,7 +1,7 @@
 
+import ScrollableList from '@/components/place-card/ScrollableList';
 import usePageFadeInOut from '@/hooks/usePageFadeInOut';
 import usePageChangeClickHandler from '@/hooks/usePageChangeClickHandler';
-import { ACTIVITIES } from '@/globals/constants';
 import styles from './revisit.module.css';
 
 export default function RevisitPage() {
@@ -11,19 +11,11 @@ export default function RevisitPage() {
   return (
     <div ref={selfRef} className={styles.overallContainer}>
       <header className={styles.header}>
-        <a className={styles.returnText} onClick={clickHandlerBack}>I've changed my mind, take me back!</a>
-        <div className={styles.choiceSentence}>
-          <p className={styles.prefix}>I have a place in mind!</p>
-          <select className={styles.selectBox}>
-            {
-              ACTIVITIES.map((x, i) => (<option key={i} value={x}>{x}</option>))
-            }
-          </select>
-        </div>
+        <a className={styles.returnText} onClick={clickHandlerBack}>I&apos;ve changed my mind, take me back!</a>
+        <p className={styles.prefix}>I have a place in mind! I think it was...</p>
+        <input type='text' className={styles.searchBox} />
       </header>
-      <div className={styles.cardScrollViewport}>
-        Hi I am a card scroll viewport
-      </div>
+      <ScrollableList placeList={[]} />
     </div>
   );
 }
