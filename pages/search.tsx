@@ -1,6 +1,6 @@
 
 import axios from 'axios';
-import { useState, useEffect, useRef, MouseEvent } from 'react';
+import { useState, useEffect, useRef, MouseEvent, KeyboardEvent } from 'react';
 import ScrollableList, { ScrollableListImperativeRef } from '@/components/place-card/ScrollableList';
 import usePageFadeInOut from '@/hooks/usePageFadeInOut';
 import usePageChangeClickHandler from '@/hooks/usePageChangeClickHandler';
@@ -43,27 +43,28 @@ export default function RevisitPage() {
         }
       });
     }
+    // Register new intersection observer with the updated intersection handler.
     intersectionObserverRef.current = new IntersectionObserver(
       handleIntersection,
       { root: scrollableListRef.current!.viewportElement }
     );
-  }, [lastSearchInput, placeList]);
-
-  useEffect(() => {
+    // Set intersection observer to observe the new last element.
     const intersectionObserver = intersectionObserverRef.current!;
     const newListOfElements = scrollableListRef.current!.listElement.children;
     if (newListOfElements.length <= 0) return;
     const newLastElement = newListOfElements[newListOfElements.length - 1];
     intersectionObserver.observe(newLastElement);
-  }, [placeList]);
 
-  function clickHandlerSearch(_: MouseEvent) {
+    return () => intersectionObserverRef.current?.disconnect(); // Cleanup the old intersection observer.
+  }, [lastSearchInput, placeList]);
+
+  function formattedSearch(rawSearchString: string) {
+    if (rawSearchString === lastSearchInput) return; // Prevent repeated idempotent API calls.
+    if (!rawSearchString) setPlaceList([]); // Prevent pointless API calls.
+    setLastSearchInput(rawSearchString);
+    const formattedParamsString = encodeURIComponent(rawSearchString);
+    // Make the API call to fetch search results.
     // TODO: Implement a call to own backend to execute the actual API call.
-    const rawParamsString = searchInputRef.current!.value;
-    if (!rawParamsString) return;
-    // if (rawParamsString === lastSearchInput) return;
-    setLastSearchInput(rawParamsString);
-    const formattedParamsString = encodeURIComponent(rawParamsString);
     (async function () {
       const searchResults = (await axios.get<PlaceData[]>(
         `https://nominatim.openstreetmap.org/search?
@@ -75,9 +76,19 @@ export default function RevisitPage() {
           &q=${formattedParamsString}
         `.replaceAll(/\s/g, '')
       )).data;
-      if (searchResults.length <= 0) return;
+      // If there are no additional search results to display, no-op and return.
+      if (searchResults.length <= 0 && rawSearchString === lastSearchInput) return;
+      // Update search results to be displayed.
       setPlaceList(searchResults);
     })();
+  }
+
+  function clickHandlerSearchButton(_: MouseEvent) {
+    formattedSearch(searchInputRef.current!.value);
+  }
+
+  function keyDownHandlerSearchInput(event: KeyboardEvent) {
+    if (event.code === 'Enter') formattedSearch(searchInputRef.current!.value);
   }
 
   return (
@@ -94,8 +105,9 @@ export default function RevisitPage() {
             className={styles.searchBox}
             placeholder='...'
             aria-label="Search for a place"
+            onKeyDown={keyDownHandlerSearchInput}
           />
-          <button className={styles.searchButton} onClick={clickHandlerSearch}>
+          <button className={styles.searchButton} onClick={clickHandlerSearchButton}>
             <span
               className='iconify'
               data-icon='akar-icons:search'
