@@ -53,6 +53,7 @@ export default function PlaceCard(props: PlaceCardProps) {
         </ol>
         <p>Place Coords: {placeCoords[0]} | Lon: {placeCoords[1]}</p>
         <p>Station Coords: {nearestStationCoords[0]} | Lon: {nearestStationCoords[1]}</p>
+        <p>Station Name: {nearestWeatherStation?.name}</p>
         <p>Distance: {shortestDistance}</p>
       </div>
       <div className={styles.weatherColumn}>
