@@ -22,13 +22,23 @@ export default function PlaceCard(props: PlaceCardProps) {
 
   return (
     <div className={styles.overallContainer}>
-      <p>{props.placeData.osm_id}</p>
-      <p>{placeName}</p>
-      <div className={styles.typeLine}>
-        <p>{placeType}</p>
-        {placeIconSource ? <Image src={placeIconSource} alt='Place icon' height={20} width={20} /> : null}
+      <div className={styles.descriptionColumn}>
+        <p className={styles.placeName}>{placeName}</p>
+        <div className={styles.typeLine}>
+          {placeIconSource ? <Image src={placeIconSource} alt='Place icon' height={20} width={20} /> : null}
+          <p>{placeType}</p>
+        </div>
+        <p>{placeAddress}</p>
+        <ol className={styles.tagList}>
+          <li className={styles.tagItem}>Chill</li>
+          <li className={styles.tagItem}>Dine</li>
+          <li className={styles.tagItem}>Snack</li>
+          <li className={styles.tagItem}>Drink</li>
+        </ol>
       </div>
-      <p>{placeAddress}</p>
-    </div >
+      <div className={styles.weatherColumn}>
+        I am the weather section
+      </div>
+    </div>
   );
 }
