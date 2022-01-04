@@ -1,10 +1,12 @@
 
 export const ACTIVITIES = [
-  'jog',
+  'play',
   'work',
-  'meet up',
+  'meet',
+  'chill',
   'dine',
   'snack',
   'drink',
-  'chill'
+  'escape',
+  'relax'
 ];
