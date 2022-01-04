@@ -1,5 +1,5 @@
 
-import { useEffect, useRef, RefObject } from 'react';
+import { useEffect, useRef } from 'react';
 import Logo from '@/components/svgs/Logo';
 import Button from '@/components/common/Button';
 import usePageFadeInOut from '@/hooks/usePageFadeInOut';
@@ -7,11 +7,7 @@ import usePageChangeClickHandler from '@/hooks/usePageChangeClickHandler';
 import { ACTIVITIES } from '@/globals/constants';
 import styles from './index.module.css';
 
-interface HomePageProps {
-  testVar: any;
-}
-
-export default function HomePage(props: HomePageProps) {
+export default function HomePage() {
 
   const selfRef = usePageFadeInOut();
   const textCarouselRef = useRef<HTMLSpanElement>(null);
