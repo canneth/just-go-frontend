@@ -4,7 +4,7 @@ import ScrollableList from '@/components/place-card/ScrollableList';
 import usePageFadeInOut from '@/hooks/usePageFadeInOut';
 import usePageChangeClickHandler from '@/hooks/usePageChangeClickHandler';
 import { ACTIVITIES } from '@/globals/constants';
-import { PlaceData } from '@/models/place-data';
+import PlaceData from '@/models/place-data';
 import styles from './revisit.module.css';
 
 export default function RevisitPage() {
@@ -15,7 +15,6 @@ export default function RevisitPage() {
 
   function handleChange(e: ChangeEvent<HTMLSelectElement>) {
     const tag = e.currentTarget.value;
-    // TODO: Implement actual fetching of data from API.
   }
 
   return (

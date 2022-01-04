@@ -1,5 +1,10 @@
 
-export interface PlaceData {
+/*
+  Models the JSON returned from a call to the API:
+  https://nominatim.openstreetmap.org/search?q=<query-string><additional-options>
+*/
+
+export default interface PlaceData {
   place_id: number;
   licence: string;
   osm_type: string;
@@ -27,8 +32,8 @@ export interface PlaceData {
   extratags?: {}
 };
 
-/*
-For example:
+/* For example:
+
 {
   "place_id": 71344412,
   "licence": "Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright",
@@ -65,4 +70,5 @@ For example:
     "brand:wikipedia": "en:Starbucks"
   }
 }
+
 */

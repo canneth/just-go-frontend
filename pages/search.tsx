@@ -4,7 +4,8 @@ import { useState, useEffect, useRef, MouseEvent, KeyboardEvent } from 'react';
 import ScrollableList, { ScrollableListImperativeRef } from '@/components/place-card/ScrollableList';
 import usePageFadeInOut from '@/hooks/usePageFadeInOut';
 import usePageChangeClickHandler from '@/hooks/usePageChangeClickHandler';
-import { PlaceData } from '@/models/place-data';
+import PlaceData from '@/models/place-data';
+import WeatherForecast from '@/models/weather-forecast';
 import styles from './search.module.css';
 
 export default function RevisitPage() {
@@ -15,6 +16,7 @@ export default function RevisitPage() {
   const scrollableListRef = useRef<ScrollableListImperativeRef>(null);
   const [lastSearchInput, setLastSearchInput] = useState<string>('');
   const [placeList, setPlaceList] = useState<PlaceData[]>([]);
+  const [weatherForecast, setWeatherForecast] = useState<WeatherForecast>();
 
   const intersectionObserverRef = useRef<IntersectionObserver>();
 
@@ -63,9 +65,10 @@ export default function RevisitPage() {
     if (!rawSearchString) setPlaceList([]); // Prevent pointless API calls.
     setLastSearchInput(rawSearchString);
     const formattedParamsString = encodeURIComponent(rawSearchString);
-    // Make the API call to fetch search results.
-    // TODO: Implement a call to own backend to execute the actual API call.
+    console.log('Search!');
     (async function () {
+      console.log('Place API is called!');
+      // Make the API call to fetch search results.
       const searchResults = (await axios.get<PlaceData[]>(
         `https://nominatim.openstreetmap.org/search?
           format=json
@@ -76,10 +79,20 @@ export default function RevisitPage() {
           &q=${formattedParamsString}
         `.replaceAll(/\s/g, '')
       )).data;
+      console.log('Place API call has returned!');
       // If there are no additional search results to display, no-op and return.
       if (searchResults.length <= 0 && rawSearchString === lastSearchInput) return;
       // Update search results to be displayed.
       setPlaceList(searchResults);
+      // Make the API call to fetch weather forecast.
+      const forecastReturns = (await axios.get<WeatherForecast>(
+        `https://api.data.gov.sg/v1/environment/2-hour-weather-forecast?
+          date_time=2022-01-04T22%3A23%3A00
+        `.replaceAll(/\s/g, '')
+      )).data;
+      console.log('Weather API call has returned!');
+      // Update weather forecast.
+      setWeatherForecast(forecastReturns);
     })();
   }
 
@@ -117,7 +130,7 @@ export default function RevisitPage() {
           </button>
         </div>
       </header>
-      <ScrollableList ref={scrollableListRef} placeList={placeList} />
+      <ScrollableList ref={scrollableListRef} placeList={placeList} weatherForecast={weatherForecast} />
     </div>
   );
 }
