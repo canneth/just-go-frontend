@@ -7,6 +7,7 @@ import styles from './ScrollableList.module.css';
 
 interface ScrollableListProps {
   placeList: PlaceData[];
+  currentWeather: WeatherForecast | undefined;
   weatherForecast: WeatherForecast | undefined;
   className?: string;
 }
@@ -29,7 +30,14 @@ const ScrollableList = forwardRef((props: ScrollableListProps, ref: ForwardedRef
     <div ref={selfRef} className={`${styles.overallContainer} ${props.className}`}>
       <ol ref={listRef} className={styles.list}>
         {
-          props.placeList.map((x, i) => <PlaceCard key={i} placeData={x} weatherForecast={props.weatherForecast} />)
+          props.placeList.map((x, i) => (
+            <PlaceCard
+              key={i}
+              placeData={x}
+              currentWeather={props.currentWeather}
+              weatherForecast={props.weatherForecast}
+            />
+          ))
         }
       </ol>
     </div>

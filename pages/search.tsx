@@ -16,6 +16,7 @@ export default function RevisitPage() {
   const scrollableListRef = useRef<ScrollableListImperativeRef>(null);
   const [lastSearchInput, setLastSearchInput] = useState<string>('');
   const [placeList, setPlaceList] = useState<PlaceData[]>([]);
+  const [currentWeather, setCurrentWeather] = useState<WeatherForecast>();
   const [weatherForecast, setWeatherForecast] = useState<WeatherForecast>();
 
   const intersectionObserverRef = useRef<IntersectionObserver>();
@@ -65,9 +66,7 @@ export default function RevisitPage() {
     if (!rawSearchString) setPlaceList([]); // Prevent pointless API calls.
     setLastSearchInput(rawSearchString);
     const formattedParamsString = encodeURIComponent(rawSearchString);
-    console.log('Search!');
     (async function () {
-      console.log('Place API is called!');
       // Make the API call to fetch search results.
       const searchResults = (await axios.get<PlaceData[]>(
         `https://nominatim.openstreetmap.org/search?
@@ -79,20 +78,44 @@ export default function RevisitPage() {
           &q=${formattedParamsString}
         `.replaceAll(/\s/g, '')
       )).data;
-      console.log('Place API call has returned!');
       // If there are no additional search results to display, no-op and return.
       if (searchResults.length <= 0 && rawSearchString === lastSearchInput) return;
       // Update search results to be displayed.
       setPlaceList(searchResults);
+      // Grab and format current date-times for querying weather API.
+      const now = new Date();
+      const nowDateQueryString = encodeURIComponent(`
+        ${now.getFullYear()}
+        -${`${now.getMonth() + 1}`.padStart(2, '0')}
+        -${`${now.getDate()}`.padStart(2, '0')}
+        T${`${now.getHours()}`.padStart(2, '0')}
+        :${`${now.getMinutes()}`.padStart(2, '0')}
+        :00
+      `.replaceAll(/\s/g, ''));
+      now.setHours(now.getHours() - 2);
+      const pastDateQueryString = encodeURIComponent(`
+        ${now.getFullYear()}
+        -${`${now.getMonth() + 1}`.padStart(2, '0')}
+        -${`${now.getDate()}`.padStart(2, '0')}
+        T${`${now.getHours() - 2}`.padStart(2, '0')}
+        :${`${now.getMinutes()}`.padStart(2, '0')}
+        :00
+      `.replaceAll(/\s/g, ''));
       // Make the API call to fetch weather forecast.
-      const forecastReturns = (await axios.get<WeatherForecast>(
+      const forecastedWeather = (await axios.get<WeatherForecast>(
         `https://api.data.gov.sg/v1/environment/2-hour-weather-forecast?
-          date_time=2022-01-04T22%3A23%3A00
+          date_time=${nowDateQueryString}
         `.replaceAll(/\s/g, '')
       )).data;
-      console.log('Weather API call has returned!');
-      // Update weather forecast.
-      setWeatherForecast(forecastReturns);
+      // Make the API call to fetch current weather.
+      const currentWeather = (await axios.get<WeatherForecast>(
+        `https://api.data.gov.sg/v1/environment/2-hour-weather-forecast?
+          date_time=${pastDateQueryString}
+        `.replaceAll(/\s/g, '')
+      )).data;
+      // Update weather forecast and current weather.
+      setWeatherForecast(forecastedWeather);
+      setCurrentWeather(currentWeather);
     })();
   }
 
@@ -130,7 +153,12 @@ export default function RevisitPage() {
           </button>
         </div>
       </header>
-      <ScrollableList ref={scrollableListRef} placeList={placeList} weatherForecast={weatherForecast} />
+      <ScrollableList
+        ref={scrollableListRef}
+        placeList={placeList}
+        currentWeather={currentWeather}
+        weatherForecast={weatherForecast}
+      />
     </div>
   );
 }
