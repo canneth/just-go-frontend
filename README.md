@@ -14,6 +14,8 @@
   This humble app helps you decide on that special somewhere!
 </p>
 
+<br />
+
 <h2>Foreword</h2>
 This is my first crack at developing an entire web app, and this entire project is primarily a learning exercise in implementing a proper backend. This repo contains only the frontend of this web app. To view the corresponding backend repo, <a href='https://github.com/canneth/just-go-backend' rel='noreferrer'>click here</a>.
 
@@ -53,10 +55,13 @@ View the chosen place on a map with a rain radar map overlay to check if the wea
 The web app is <strong>very incomplete</strong>, and is undergoing <strong>active development</strong>, meaning that what works today may break tomorrow, and vice versa.
 
 <h3>Outstanding todos (non-exhaustive):</h3>
-- In progress - The page on which users choose an activity to browse a list of favourites with that activity tag
-- In progress - The page on which users search for places
-- Not started - The page that displays the selected place on a map
-- Not started - The rain radar map overlay over the ground map
-- Not started - The login and sign-up page and functionality
-- Not started - User profile page and functionality
-- Not started - Favourites management page and functionality
+<ul>
+  <li>In progress - The page on which users search for places</li>
+  <li>In progress - Place card design and functionality</li>
+  <li>In progress - The page on which users choose an activity to browse a list of favourites with that activity tag</li>
+  <li>Not started - The page that displays the selected place on a map</li>
+  <li>Not started - The rain radar map overlay over the ground map</li>
+  <li>Not started - The login and sign-up page and functionality</li>
+  <li>Not started - User profile page and functionality</li>
+  <li>Not started - Favourites management page and functionality</li>
+</ul>
