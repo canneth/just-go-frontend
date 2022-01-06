@@ -1,8 +1,8 @@
 <div align='center'>
   <h1>
-    <div display='flex' align-items='center' margin-top='500px'>
+    <div display='flex' align-items='center'>
       JustGo!
-      <img src='https://user-images.githubusercontent.com/23531034/148371444-6a9e799d-74ba-4c96-be74-b5610618bafe.png' />
+      <img src='https://user-images.githubusercontent.com/23531034/148372740-681d6810-c6ef-4560-b64e-996db9079e1e.png' />
     </div>
   </h1>
 </div>
