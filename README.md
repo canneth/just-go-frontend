@@ -28,3 +28,4 @@ Get recommendations for places to go depending on what you feel like doing:
 <br />
 <br />
 `TODO: Add a screenshot of a favourites list with the cursor over the favourite icon on a place card`
+# Testing
