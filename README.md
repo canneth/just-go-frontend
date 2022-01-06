@@ -35,17 +35,17 @@ Search for places and view real-time hyperlocal weather forecasts:
 <code>TODO: Add a gif navigating, from the landing page, to the search page and searching for places</code>
 <br />
 <br />
-Curate your list of favourite haunts:
+Create an account and curate your list of favourite haunts:
 <br />
 <code>TODO: Add a gif walking through the favouriting process from the search page</code>
 <br />
 <br />
-Get recommendations for places to go depending on what you feel like doing:
+Want to go somewhere to do something? Browse your favourite places for your activity of choice:
 <br />
 <code>TODO: Add a gif navigating to the "I feel like..." page, choosing an option, then showing the corresponding results</code>
 <br />
 <br />
-View the chosen place on a map with a rain radar map overlay:
+View the chosen place on a map with a rain radar map overlay to check if the weather is in your favour:
 <br />
 <code>TODO: Add a gif clicking on a place card, with the ground map and the rain radar map over it</code>
 
