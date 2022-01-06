@@ -38,8 +38,8 @@ export default function PlaceCard(props: PlaceCardProps) {
     return x;
   });
   const nearestStationCoords = [nearestWeatherStation?.label_location.latitude, nearestWeatherStation?.label_location.longitude]; // TODO: Remove as this is only for debugging.
-  const nextWeatherHere = props.weatherForecast?.items[0].forecasts.find(x => x.area === nearestWeatherStation?.name);
-  const currWeatherHere = props.currentWeather?.items[0].forecasts.find(x => x.area === nearestWeatherStation?.name);
+  const nextWeatherHere = props.weatherForecast?.items[0].forecasts.find(x => x.area === nearestWeatherStation?.name)?.forecast;
+  const currWeatherHere = props.currentWeather?.items[0].forecasts.find(x => x.area === nearestWeatherStation?.name)?.forecast;
 
   return (
     <div className={styles.overallContainer}>
@@ -59,11 +59,11 @@ export default function PlaceCard(props: PlaceCardProps) {
         </ol>
       </div>
       <div className={styles.weatherColumn}>
-        <p>Place Coords: {placeCoords[0]} | Lon: {placeCoords[1]}</p>
-        <p>Station Coords: {nearestStationCoords[0]} | Lon: {nearestStationCoords[1]}</p>
         <p>Station Name: {nearestWeatherStation?.name}</p>
+        <p>Station Coords: {nearestStationCoords[0]} | Lon: {nearestStationCoords[1]}</p>
+        <p>Place Coords: {placeCoords[0]} | Lon: {placeCoords[1]}</p>
         <p>Distance: {shortestDistance}</p>
-        <p>Weahter now: {currWeatherHere}</p>
+        <p>Weather now: {currWeatherHere}</p>
         <p>Weahter in 2 hrs: {nextWeatherHere}</p>
       </div>
     </div>
