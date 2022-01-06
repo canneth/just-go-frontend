@@ -16,7 +16,7 @@ export default function SelectPage() {
       <ol className={styles.optionsList}>
         <li className={styles.option} onClick={clickHandlerRevisit}><a>I want to revisit a favourite spot...</a></li>
         <p className={styles.divider}>or</p>
-        <li className={styles.option} onClick={clickHandlerRecommendations}><a>I'm looking for a good place...</a></li>
+        <li className={styles.option} onClick={clickHandlerRecommendations}><a>I&apos;m looking for a good place...</a></li>
         <p className={styles.divider}>or</p>
         <li className={styles.option} onClick={clickHandlerSearch}><a>I have a place in mind!</a></li>
       </ol>
