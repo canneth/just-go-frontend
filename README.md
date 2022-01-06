@@ -14,7 +14,7 @@ Feel the sudden urge to be out and about, but just can't think of the place to g
 As a frequent victim of these feelings, I figured that this would be a fun problem to solve for my first web app project (with a proper backend, user authentication, API calls, database management and so on), so here it is.
 
 <h2>About</h2>
-I'm sure that many people can agree that the allure of a certain place is heavily influenced by the weather. For myself, when deciding between places to go, I always consult the weather forecast for that location, and check the island-wide (Singapore) rain radar map on <a href='https://play.google.com/store/apps/details?id=sg.gov.nea&hl=en_SG&gl=US' rel='noreferrer'>myENV</a> to determine if it has rained within the last 30 minutes at that location.
+I'm sure that many people can agree that the allure of a certain place is heavily influenced by the weather. For myself, when deciding between places to go, I always consult the weather forecast for that location and check the island-wide (Singapore) rain radar map on <a href='https://play.google.com/store/apps/details?id=sg.gov.nea&hl=en_SG&gl=US' rel='noreferrer'>myENV</a> to see if it had rained within the last 30 minutes at that location.
 <br />
 <br />
 Switching between multiple apps and websites to gather all this information about the place just to decide if I'd like to go there is tedious and time-consuming.
