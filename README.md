@@ -11,10 +11,6 @@
 <p align='center'>
   Feel the sudden urge to be out and about, but just can't think of the place to go?
   <br />
-  Wish to grind some work out at a cozy cafe, but can't decide on where?
-  <br />
-  Planning a dinner out, but can't recall your favourite restaurants?
-  <br />
   This humble app helps you decide on that special somewhere!
 </p>
 
@@ -22,6 +18,9 @@
 This is my first crack at developing an entire web app, and this entire project is primarily a learning exercise in implementing a proper backend. This repo contains only the frontend of this web app. To view the corresponding backend repo, <a href='https://github.com/canneth/just-go-backend' rel='noreferrer'>click here</a>.
 
 <h2>About the web app</h2>
+I like going outside, be it to do some work at a cafe, read a book in a park or just to enjoy some quality time on my skateboard. The problem is that I often have a thing I wish to do in mind but not the place, and I end up spending more time deciding where to do the thing rather than actually doing the thing. Seeking a meaningful idea to build my first web app around, I figured this would make for an interesting problem to solve, and thus: JustGo!
+<br />
+<br />
 I'm sure that many people can agree that the allure of a certain place is heavily influenced by the weather. For myself, when deciding between places to go, I always consult the weather forecast for that location and check the island-wide (Singapore) rain radar map on <a href='https://play.google.com/store/apps/details?id=sg.gov.nea&hl=en_SG&gl=US' rel='noreferrer'>myENV</a> to see if it had rained within the last 30 minutes at that location.
 <br />
 <br />
