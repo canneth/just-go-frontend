@@ -49,5 +49,14 @@ View the chosen place on a map with a rain radar map overlay to check if the wea
 <br />
 <code>TODO: Add a gif clicking on a place card, with the ground map and the rain radar map over it</code>
 
-<h2>Why does it seem so broken in places?</h2>
+<h2>Development status</h2>
 The web app is <strong>very incomplete</strong>, and is undergoing <strong>active development</strong>, meaning that what works today may break tomorrow, and vice versa.
+
+<h3>Outstanding todos (non-exhaustive):</h3>
+- In progress - The page on which users choose an activity to browse a list of favourites with that activity tag
+- In progress - The page on which users search for places
+- Not started - The page that displays the selected place on a map
+- Not started - The rain radar map overlay over the ground map
+- Not started - The login and sign-up page and functionality
+- Not started - User profile page and functionality
+- Not started - Favourites management page and functionality
