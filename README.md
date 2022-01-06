@@ -65,4 +65,5 @@ The web app is <strong>very incomplete</strong>, and is undergoing <strong>activ
   <li>Not started - The <a href='https://justgo.dev/login' rel='noreferrer'>login and sign-up page</a> and functionality</li>
   <li>Not started - User <a href='https://justgo.dev/profile' rel='noreferrer'>profile page</a> and functionality</li>
   <li>Not started - <a href='https://justgo.dev/profile/favourites' rel='noreferrer'>Favourites management page</a> and functionality</li>
+  <li>Not started - The <a href='https://justgo.dev/recommendations' rel='noreferrer'>recommendations page</a> that recommends places based on a user's favourites (unsure if this is feasible at the moment)
 </ul>
