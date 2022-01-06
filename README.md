@@ -8,7 +8,7 @@
   </h1>
 </div>
 
-Feel the sudden urge to be out and about, but just can't think of the place to go? Wish to grind some work out at a cozy cafe, but couldn't decide on where? Planning a dinner out, but can't recall your favourite restaurants? This humble app helps you decide on that special somewhere!
+Feel the sudden urge to be out and about, but just can't think of the place to go? Wish to grind some work out at a cozy cafe, but can't decide on where? Planning a dinner out, but can't recall your favourite restaurants? This humble app helps you decide on that special somewhere!
 <br />
 <br />
 As a frequent victim of these feelings, I figured that this would be a fun problem to solve for my first web app project (with a proper backend, user authentication, API calls, database management and so on), so here it is.
