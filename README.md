@@ -54,10 +54,10 @@ The web app is <strong>very incomplete</strong>, and is undergoing <strong>activ
 
 <h3>Outstanding todos (non-exhaustive):</h3>
 <ul>
-  <li color='blue'>In progress - The page on which users choose an activity to browse a list of favourites with that activity tag</li>
+  <li>In progress - The page on which users choose an activity to browse a list of favourites with that activity tag</li>
   <li>In progress - The page on which users search for places</li>
   <li>Not started - The page that displays the selected place on a map</li>
-  <li style="color:#FF0000">Not started - The rain radar map overlay over the ground map</li>
+  <li><p style="color:#FF0000">Not started - The rain radar map overlay over the ground map</p></li>
   <li>Not started - The login and sign-up page and functionality</li>
   <li>Not started - User profile page and functionality</li>
   <li>Not started - Favourites management page and functionality</li>
