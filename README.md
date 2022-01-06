@@ -15,7 +15,7 @@ Ever got the sudden urge to be out and about, but just couldn't think of the pla
 Curate a list of your favourite haunts:
 <br />
 <br />
-```TODO: Add a gif here that shows a short walkthrough of the favouriting process from the search page```
+<code>TODO: Add a gif here that shows a short walkthrough of the favouriting process from the search page</code>
 <br />
 <br />
 Get recommendations for places to go depending on what you feel like doing:
@@ -28,4 +28,3 @@ Get recommendations for places to go depending on what you feel like doing:
 <br />
 <br />
 `TODO: Add a screenshot of a favourites list with the cursor over the favourite icon on a place card`
-# Testing
