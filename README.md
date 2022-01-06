@@ -8,7 +8,15 @@
   </h1>
 </div>
 
-Feel the sudden urge to be out and about, but just can't think of the place to go? Wish to grind some work out at a cozy cafe, but can't decide on where? Planning a dinner out, but can't recall your favourite restaurants? This humble app helps you decide on that special somewhere!
+<p align='center'>
+  Feel the sudden urge to be out and about, but just can't think of the place to go?
+  <br />
+  Wish to grind some work out at a cozy cafe, but can't decide on where?
+  <br />
+  Planning a dinner out, but can't recall your favourite restaurants?
+  <br />
+  This humble app helps you decide on that special somewhere!
+</p>
 
 <h2>What's this?</h2>
 This is my first crack at developing an entire web app, and this entire project is primarily an exercise in learning the ropes of a proper backend. This repo contains only the frontend of this web app. To view the corresponding backend repo, <a href='https://github.com/canneth/just-go-backend' rel='noreferrer'>click here</a>.
