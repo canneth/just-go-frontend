@@ -24,15 +24,22 @@ In this app, I attempt to create a user experience where all of this information
 
 <h2>What can I do on this app?</h2>
 Search for places and view real-time hyperlocal weather forecasts:
+<br />
 <code>TODO: Add a gif navigating, from the landing page, to the search page and searching for places</code>
 <br />
 <br />
 Curate your list of favourite haunts:
+<br />
 <code>TODO: Add a gif walking through the favouriting process from the search page</code>
 <br />
 <br />
 Get recommendations for places to go depending on what you feel like doing:
+<br />
 <code>TODO: Add a gif navigating to the "I feel like..." page, choosing an option, then showing the corresponding results</code>
 <br />
 <br />
-View the chosen place on a map with a rain radar map:
+View the chosen place on a map with a rain radar map overlay:
+<br />
+<code>TODO: Add a gif clicking on a place card, with the ground map and the rain radar map over it</code>
+
+<h2>Development status so far</h2>
