@@ -56,12 +56,12 @@ The web app is <strong>very incomplete</strong>, and is undergoing <strong>activ
 
 <h3>Outstanding todos (non-exhaustive):</h3>
 <ul>
-  <li>In progress - The page on which users search for places</li>
+  <li>In progress - The <a href='https://justgo.dev/search' rel='noreferrer'>search page</a> where users search for places</li>
   <li>In progress - Place card design and functionality</li>
-  <li>In progress - The page on which users choose an activity to browse a list of favourites with that activity tag</li>
-  <li>Not started - The page that displays the selected place on a map</li>
+  <li>In progress - The <a href='https://justgo.dev/revisit' rel='noreferrer'>revisit page</a> where users choose an activity to browse a list of their relevant favourites</li>
+  <li>Not started - The <a href='https://justgo.dev/map' rel='noreferrer'>map page</a> that displays the selected place on a map</li>
   <li>Not started - The rain radar map overlay over the ground map</li>
-  <li>Not started - The login and sign-up page and functionality</li>
-  <li>Not started - User profile page and functionality</li>
-  <li>Not started - Favourites management page and functionality</li>
+  <li>Not started - The <a href='https://justgo.dev/login' rel='noreferrer'>login and sign-up page</a> and functionality</li>
+  <li>Not started - User <a href='https://justgo.dev/profile' rel='noreferrer'>profile page</a> and functionality</li>
+  <li>Not started - <a href='https://justgo.dev/profile/favourites' rel='noreferrer'>Favourites management page</a> and functionality</li>
 </ul>
