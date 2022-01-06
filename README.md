@@ -9,11 +9,11 @@
 </div>
 
 Feel the sudden urge to be out and about, but just can't think of the place to go? Wish to grind some work out at a cozy cafe, but can't decide on where? Planning a dinner out, but can't recall your favourite restaurants? This humble app helps you decide on that special somewhere!
-<br />
-<br />
-As a frequent victim of these feelings, I figured that this would be a fun problem to solve for my first web app project (with a proper backend, user authentication, API calls, database management and so on), so here it is.
 
-<h2>About</h2>
+<h2>What's this?</h2>
+This is my first crack at developing an entire web app, and this entire project is primarily an exercise in learning the ropes of a proper backend. This repo contains only the frontend of this web app. To view the corresponding backend repo, <a href='https://github.com/canneth/just-go-backend' rel='noreferrer'>click here</a>.
+
+<h2>About the web app</h2>
 I'm sure that many people can agree that the allure of a certain place is heavily influenced by the weather. For myself, when deciding between places to go, I always consult the weather forecast for that location and check the island-wide (Singapore) rain radar map on <a href='https://play.google.com/store/apps/details?id=sg.gov.nea&hl=en_SG&gl=US' rel='noreferrer'>myENV</a> to see if it had rained within the last 30 minutes at that location.
 <br />
 <br />
