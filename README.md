@@ -7,3 +7,24 @@
     </div>
   </h1>
 </div>
+
+<h2>What's this?</h2>
+Ever got the sudden urge to be out and about, but just couldn't think of the place to go? This humble app helps you decide on that special somewhere!
+<br />
+<br />
+Curate a list of your favourite haunts:
+<br />
+<br />
+`TODO: Add a gif here that shows a short walkthrough of the favouriting process from the search page`
+<br />
+<br />
+Get recommendations for places to go depending on what you feel like doing:
+<br />
+<br />
+`TODO: Add a screenshot of a favourites list with the cursor over the favourite icon on a place card`
+<br />
+<br />
+Get recommendations for places to go depending on what you feel like doing:
+<br />
+<br />
+`TODO: Add a screenshot of a favourites list with the cursor over the favourite icon on a place card`
