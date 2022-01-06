@@ -14,6 +14,8 @@
   This humble app helps you decide on that special somewhere!
 </p>
 
+<br />
+
 <h2>Foreword</h2>
 This is my first crack at developing an entire web app, and this entire project is primarily a learning exercise in implementing a proper backend. This repo contains only the frontend of this web app. To view the corresponding backend repo, <a href='https://github.com/canneth/just-go-backend' rel='noreferrer'>click here</a>.
 
