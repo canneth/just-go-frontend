@@ -49,4 +49,5 @@ View the chosen place on a map with a rain radar map overlay to check if the wea
 <br />
 <code>TODO: Add a gif clicking on a place card, with the ground map and the rain radar map over it</code>
 
-<h2>Development status so far</h2>
+<h2>Why does it seem so broken in places?</h2>
+The web app is <strong>very incomplete</strong>, and is undergoing <strong>active development</strong>, meaning that what works today may break tomorrow, and vice versa.
