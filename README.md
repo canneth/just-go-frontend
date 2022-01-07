@@ -95,7 +95,7 @@
     </tr>
     <tr>
       <td>Sniffing for all possible values for <code>forecase</code> parameter from weather API</td>
-      <td>In progress</td>
+      <td>On-going</td>
     </tr>
     <tr>
       <td>Place card design and functionality</td>
