@@ -107,7 +107,7 @@
     </tr>
     <tr>
       <td>The <a href='https://justgo.dev/map' rel='noreferrer'>map page</a> UI and functionality</td>
-      <td white-space='nowrap'>Not started</td>
+      <td><p white-space='nowrap'>Not started</p></td>
     </tr>
     <tr>
       <td>The rain radar map overlay in the <a href='https://justgo.dev/map' rel='noreferrer'>map page</a></td>
