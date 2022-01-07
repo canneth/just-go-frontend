@@ -94,7 +94,7 @@
       <th>&nbsp;&nbsp;&nbsp;&nbsp;Status&nbsp;&nbsp;&nbsp;&nbsp;</th>
     </tr>
     <tr>
-      <td>Sniffing for all possible values for <code>forecase</code> parameter from weather API</td>
+      <td>Sniffing for all possible values for <code>forecast</code> parameter from weather API</td>
       <td>On-going</td>
     </tr>
     <tr>
