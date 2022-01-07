@@ -55,15 +55,31 @@ View the chosen place on a map with a rain radar map overlay to check if the wea
 The web app is <strong>very incomplete</strong>, and is undergoing <strong>active development</strong>, meaning that what works today may break tomorrow, and vice versa.
 
 <h3>Outstanding todos (non-exhaustive):</h3>
+
+<table>
+  <tr> <th>Priority</th> <th>Task</th> <th>Status</th> </tr>
+
+  <tr>1</tr> <tr>Place card design and functionality</tr> <tr>In progress</tr>
+  <tr>2</tr> <tr>Place card design and functionality</tr> <tr>In progress</tr>
+  <tr>3</tr> <tr>Place card design and functionality</tr> <tr>In progress</tr>
+  <tr>4</tr> <tr>Place card design and functionality</tr> <tr>In progress</tr>
+  <tr>5</tr> <tr>Place card design and functionality</tr> <tr>In progress</tr>
+  <tr>6</tr> <tr>Place card design and functionality</tr> <tr>In progress</tr>
+  <tr>7</tr> <tr>Place card design and functionality</tr> <tr>In progress</tr>
+  <tr>8</tr> <tr>Place card design and functionality</tr> <tr>In progress</tr>
+</table>
+
 <ul>
+  <li>In progress - </li>
   <li>In progress - The <a href='https://justgo.dev/search' rel='noreferrer'>search page</a> where users search for places</li>
-  <li>In progress - Place card design and functionality</li>
-  <li>In progress - The <a href='https://justgo.dev/revisit' rel='noreferrer'>revisit page</a> where users choose an activity to browse a list of their relevant favourites</li>
   <li>Not started - The <a href='https://justgo.dev/about' rel='noreferrer'>about page</a></li>
   <li>Not started - The <a href='https://justgo.dev/map' rel='noreferrer'>map page</a> that displays the selected place on a map</li>
+  <li>Incomlete - The <a href='https://justgo.dev/revisit' rel='noreferrer'>revisit page</a> where users choose an activity to browse a list of their relevant favourites</li>
   <li>Not started - The rain radar map overlay over the ground map</li>
   <li>Not started - The <a href='https://justgo.dev/login' rel='noreferrer'>login and sign-up page</a> and functionality</li>
   <li>Not started - User <a href='https://justgo.dev/profile' rel='noreferrer'>profile page</a> and functionality</li>
   <li>Not started - <a href='https://justgo.dev/profile/favourites' rel='noreferrer'>Favourites management page</a> and functionality</li>
-  <li>Not started - The <a href='https://justgo.dev/recommendations' rel='noreferrer'>recommendations page</a> that recommends places based on a user's favourites (unsure if this is feasible at the moment)
+  <li>Not started - The <a href='https://justgo.dev/recommendations' rel='noreferrer'>recommendations page</a> that recommends places based on a user's favourites (unsure if this is feasible at the moment)</li>
+  <li>Not started - Media queries for mobile views</li>
+  <li>Not started - Other mobile-related considerations</li>
 </ul>
