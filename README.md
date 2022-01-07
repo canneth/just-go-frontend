@@ -91,7 +91,7 @@
   <table>
     <tr>
       <th>Task</th>
-      <th><p white-space='nowrap'>&nbsp;&nbsp;&nbsp;&nbsp;Status&nbsp;&nbsp;&nbsp;&nbsp;</p></th>
+      <th>&nbsp;&nbsp;&nbsp;&nbsp;Status&nbsp;&nbsp;&nbsp;&nbsp;</th>
     </tr>
     <tr>
       <td>Place card design and functionality</td>
