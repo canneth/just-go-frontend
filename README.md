@@ -94,6 +94,10 @@
       <th>&nbsp;&nbsp;&nbsp;&nbsp;Status&nbsp;&nbsp;&nbsp;&nbsp;</th>
     </tr>
     <tr>
+      <td>Sniffing for all possible values for <code>forecase</code> parameter from weather API</td>
+      <td>In progress</td>
+    </tr>
+    <tr>
       <td>Place card design and functionality</td>
       <td>In progress</td>
     </tr>
