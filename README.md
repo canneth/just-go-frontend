@@ -91,71 +91,71 @@
   <table>
     <tr>
       <th>Task</th>
-      <th>Status</th>
+      <th><p white-space='nowrap'>&nbsp;&nbsp;&nbsp;&nbsp;Status&nbsp;&nbsp;&nbsp;&nbsp;</p></th>
     </tr>
     <tr>
       <td>Place card design and functionality</td>
-      <td white-space='nowrap'>In progress</td>
+      <td>In progress</td>
     </tr>
     <tr>
       <td>The <a href='https://justgo.dev/search' rel='noreferrer'>search page</a> functionality</td>
-      <td white-space='nowrap'>In progress</td>
+      <td>In progress</td>
     </tr>
     <tr>
       <td>The <a href='https://justgo.dev/about' rel='noreferrer'>about page</a> content and formatting</td>
-      <td white-space='nowrap'>Incomplete</td>
+      <td>Incomplete</td>
     </tr>
     <tr>
       <td>The <a href='https://justgo.dev/map' rel='noreferrer'>map page</a> UI and functionality</td>
-      <td><p white-space='nowrap'>Not started</p></td>
+      <td>Not started</td>
     </tr>
     <tr>
       <td>The rain radar map overlay in the <a href='https://justgo.dev/map' rel='noreferrer'>map page</a></td>
-      <td white-space='nowrap'>Not started</td>
+      <td>Not started</td>
     </tr>
     <tr>
       <td>The <a href='https://justgo.dev/login' rel='noreferrer'>login and sign-up page</a> UI</td>
-      <td white-space='nowrap'>Not started</td>
+      <td>Not started</td>
     </tr>
     <tr>
       <td>The <a href='https://justgo.dev/revisit' rel='noreferrer'>revisit page</a> UI</td>
-      <td white-space='nowrap'>Incomplete</td>
+      <td>Incomplete</td>
     </tr>
     <tr>
       <td>The user <a href='https://justgo.dev/profile' rel='noreferrer'>profile page</a> UI</td>
-      <td white-space='nowrap'>Not started</td>
+      <td>Not started</td>
     </tr>
     <tr>
       <td>The <a href='https://justgo.dev/profile/favourites' rel='noreferrer'>favourites management page</a> UI</td>
-      <td white-space='nowrap'>Not started</td>
+      <td>Not started</td>
     </tr>
     <tr>
       <td>Media queries for mobile views</td>
-      <td white-space='nowrap'>Not started</td>
+      <td>Not started</td>
     </tr>
     <tr>
       <td>Backend development concurrent with the functionality tasks below</td>
-      <td white-space='nowrap'>Not started</td>
+      <td>Not started</td>
     </tr>
     <tr>
       <td>The <a href='https://justgo.dev/login' rel='noreferrer'>login and sign-up page</a> functionality</td>
-      <td white-space='nowrap'>Not started</td>
+      <td>Not started</td>
     </tr>
     <tr>
       <td>The <a href='https://justgo.dev/revisit' rel='noreferrer'>revisit page</a> functionality</td>
-      <td white-space='nowrap'>Incomplete</td>
+      <td>Incomplete</td>
     </tr>
     <tr>
       <td>The user <a href='https://justgo.dev/profile' rel='noreferrer'>profile page</a> functionality</td>
-      <td white-space='nowrap'>Not started</td>
+      <td>Not started</td>
     </tr>
     <tr>
       <td>The <a href='https://justgo.dev/profile/favourites' rel='noreferrer'>favourites management page</a> functionality</td>
-      <td white-space='nowrap'>Not started</td>
+      <td>Not started</td>
     </tr>
     <tr>
       <td>The <a href='https://justgo.dev/recommendations' rel='noreferrer'>recommendations page</a> that recommends places based on a user's favourites (unsure if this is feasible at the moment)</td>
-      <td white-space='nowrap'>KIV</td>
+      <td>KIV</td>
     </tr>
   </table>
 </section>
