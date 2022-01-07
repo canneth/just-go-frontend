@@ -93,7 +93,6 @@
       <th>Task</th>
       <th>Status</th>
     </tr>
-
     <tr>
       <td>Place card design and functionality</td>
       <td>In progress</td>
