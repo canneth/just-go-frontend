@@ -59,14 +59,10 @@ The web app is <strong>very incomplete</strong>, and is undergoing <strong>activ
 <table>
   <tr> <th>Priority</th> <th>Task</th> <th>Status</th> </tr>
 
-  <tr>1</tr> <tr>Place card design and functionality</tr> <tr>In progress</tr>
-  <tr>2</tr> <tr>Place card design and functionality</tr> <tr>In progress</tr>
-  <tr>3</tr> <tr>Place card design and functionality</tr> <tr>In progress</tr>
-  <tr>4</tr> <tr>Place card design and functionality</tr> <tr>In progress</tr>
-  <tr>5</tr> <tr>Place card design and functionality</tr> <tr>In progress</tr>
-  <tr>6</tr> <tr>Place card design and functionality</tr> <tr>In progress</tr>
-  <tr>7</tr> <tr>Place card design and functionality</tr> <tr>In progress</tr>
-  <tr>8</tr> <tr>Place card design and functionality</tr> <tr>In progress</tr>
+  <tr> <td>1</td> <td>Place card design and functionality In progress</td>  <td>In progress</td> </tr>
+  <tr> <td>1</td> <td>Place card design and functionality In progress</td>  <td>In progress</td> </tr>
+  <tr> <td>1</td> <td>Place card design and functionality In progress</td>  <td>In progress</td> </tr>
+  <tr> <td>1</td> <td>Place card design and functionality In progress</td>  <td>In progress</td> </tr>
 </table>
 
 <ul>
