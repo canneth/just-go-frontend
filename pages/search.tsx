@@ -103,13 +103,13 @@ export default function RevisitPage() {
       `.replaceAll(/\s/g, ''));
       // Make the API call to fetch weather forecast.
       const forecastedWeather = (await axios.get<ForecastAPIResponse>(
-        `https://api.data.gov.sg/v1/environment/2-hour-WeatherForecast?
+        `https://api.data.gov.sg/v1/environment/2-hour-weather-forecast?
           date_time=${nowDateQueryString}
         `.replaceAll(/\s/g, '')
       )).data;
       // Make the API call to fetch current weather.
       const currentWeather = (await axios.get<ForecastAPIResponse>(
-        `https://api.data.gov.sg/v1/environment/2-hour-WeatherForecast?
+        `https://api.data.gov.sg/v1/environment/2-hour-weather-forecast?
           date_time=${pastDateQueryString}
         `.replaceAll(/\s/g, '')
       )).data;

@@ -1,7 +1,7 @@
 
 /*
   Models the JSON returned from a call to the API:
-  https://api.data.gov.sg/v1/environment/2-hour-WeatherForecast?date_time=YYYY-MM-DD[T]HH:MM:SS
+  https://api.data.gov.sg/v1/environment/2-hour-weather-forecast?date_time=YYYY-MM-DD[T]HH:MM:SS
 */
 
 export default interface ForecastAPIResponse {
