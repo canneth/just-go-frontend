@@ -1,5 +1,15 @@
 
 .overallContainer {
   position: relative;
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.overallContainer.isCurrent > .time {
+  font-weight: bold;
+}
+
+.iconContainer {
+  position: relative;
+  width: 50px;
 }

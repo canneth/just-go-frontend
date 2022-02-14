@@ -18,7 +18,7 @@ export default function WeatherTimeline(props: WeatherTimelineProps) {
   return (
     <div className={styles.overallContainer}>
       {props.pastWeather && <WeatherBadge date={pastDate} weather={props.pastWeather} />}
-      {props.currWeather && <WeatherBadge date={nowDate} weather={props.currWeather} />}
+      {props.currWeather && <WeatherBadge date={nowDate} weather={props.currWeather} current />}
       {props.nextWeather && <WeatherBadge date={nextDate} weather={props.nextWeather} />}
     </div>
   );
