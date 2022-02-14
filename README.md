@@ -154,6 +154,10 @@
       <td>Not started</td>
     </tr>
     <tr>
+      <td>PlaceCard tag list actual functionality (with tags drawn from user data)</td>
+      <td>Not started</td>
+    </tr>
+    <tr>
       <td>The <a href='https://justgo.dev/recommendations' rel='noreferrer'>recommendations page</a> that recommends places based on a user's favourites (unsure if this is feasible at the moment)</td>
       <td>KIV</td>
     </tr>
