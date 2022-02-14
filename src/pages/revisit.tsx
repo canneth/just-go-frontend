@@ -32,12 +32,6 @@ export default function RevisitPage() {
           </select>
         </div>
       </header>
-      <ScrollableList
-        ref={undefined}
-        placeList={[]}
-        currWeather={undefined}
-        weatherForecast={undefined}
-      />
     </div>
   );
 }

@@ -21,9 +21,6 @@ export default function RevisitPage() {
           </select>
         </div>
       </header>
-      <div className={styles.cardScrollViewport}>
-        Hi I am a card scroll viewport
-      </div>
     </div>
   );
 }
