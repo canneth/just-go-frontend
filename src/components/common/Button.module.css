@@ -7,7 +7,7 @@
   align-items: center;
   width: 100px;
   height: 40px;
-  font-size: var(--font-size-web-regular);
+  font-size: var(--font-size-regular);
   font-weight: bold;
   line-height: 0px;
   color: var(--color-grey-white);
