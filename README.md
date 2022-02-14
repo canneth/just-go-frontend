@@ -91,7 +91,7 @@
   <table>
     <tr>
       <th>Task</th>
-      <th>&nbsp;&nbsp;&nbsp;&nbsp;Status&nbsp;&nbsp;&nbsp;&nbsp;</th>
+      <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
     </tr>
     <tr>
       <td>Sniffing for all possible values for <code>forecast</code> parameter from weather API</td>
