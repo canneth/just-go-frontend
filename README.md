@@ -98,8 +98,12 @@
       <td>In progress</td>
     </tr>
     <tr>
-      <td>The <a href='https://justgo.dev/map' rel='noreferrer'>map page</a> UI and functionality</td>
+      <td>Place search loading state visual indicators</td>
       <td>In progress</td>
+    </tr>
+    <tr>
+      <td>The <a href='https://justgo.dev/map' rel='noreferrer'>map page</a> UI and functionality</td>
+      <td>Not started</td>
     </tr>
     <tr>
       <td>Functionality that links a PlaceCard to the <a href='https://justgo.dev/map' rel='noreferrer'>map page</a></td>
