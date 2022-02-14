@@ -94,24 +94,20 @@
       <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
     </tr>
     <tr>
-      <td>Sniffing for all possible values for <code>forecast</code> parameter from weather API</td>
-      <td>Done</td>
-    </tr>
-    <tr>
-      <td>Place card design and functionality</td>
+      <td>PlaceCard's WeatherBadge mouse-over behaviour</td>
       <td>In progress</td>
     </tr>
     <tr>
-      <td>The <a href='https://justgo.dev/search' rel='noreferrer'>search page</a> functionality</td>
+      <td>The <a href='https://justgo.dev/map' rel='noreferrer'>map page</a> UI and functionality</td>
       <td>In progress</td>
+    </tr>
+    <tr>
+      <td>Functionality that links a PlaceCard to the <a href='https://justgo.dev/map' rel='noreferrer'>map page</a></td>
+      <td>Not started</td>
     </tr>
     <tr>
       <td>The <a href='https://justgo.dev/about' rel='noreferrer'>about page</a> content and formatting</td>
       <td>Incomplete</td>
-    </tr>
-    <tr>
-      <td>The <a href='https://justgo.dev/map' rel='noreferrer'>map page</a> UI and functionality</td>
-      <td>Not started</td>
     </tr>
     <tr>
       <td>The rain radar map overlay in the <a href='https://justgo.dev/map' rel='noreferrer'>map page</a></td>
