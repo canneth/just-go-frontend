@@ -11,5 +11,8 @@
 
 .iconContainer {
   position: relative;
-  width: 50px;
+  width: 60px;
+}
+.time {
+  font-size: var(--font-size-smaller);
 }
