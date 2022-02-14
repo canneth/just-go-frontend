@@ -35,7 +35,7 @@ export default function RevisitPage() {
       <ScrollableList
         ref={undefined}
         placeList={[]}
-        currentWeather={undefined}
+        currWeather={undefined}
         weatherForecast={undefined}
       />
     </div>

@@ -16,8 +16,9 @@ export default function RevisitPage() {
   const scrollableListRef = useRef<ScrollableListImperativeRef>(null);
   const [lastSearchInput, setLastSearchInput] = useState<string>('');
   const [placeList, setPlaceList] = useState<PlaceData[]>([]);
-  const [currentWeather, setCurrentWeather] = useState<ForecastAPIResponse>();
-  const [weatherForecast, setWeatherForecast] = useState<ForecastAPIResponse>();
+  const [pastWeather, setPastWeather] = useState<ForecastAPIResponse>();
+  const [currWeather, setCurrWeather] = useState<ForecastAPIResponse>();
+  const [nextWeather, setNextWeather] = useState<ForecastAPIResponse>();
 
   const intersectionObserverRef = useRef<IntersectionObserver>();
 
@@ -61,6 +62,7 @@ export default function RevisitPage() {
     return () => intersectionObserverRef.current?.disconnect(); // Cleanup the old intersection observer.
   }, [lastSearchInput, placeList]);
 
+
   function formattedSearch(rawSearchString: string) {
     if (rawSearchString === lastSearchInput) return; // Prevent repeated idempotent API calls.
     if (!rawSearchString) setPlaceList([]); // Prevent pointless API calls.
@@ -83,39 +85,44 @@ export default function RevisitPage() {
       // Update search results to be displayed.
       setPlaceList(searchResults);
       // Grab and format current date-times for querying weather API.
+      function dateToQueryString(date: Date) {
+        return encodeURIComponent(`
+          ${date.getFullYear()}
+          -${`${date.getMonth() + 1}`.padStart(2, '0')}
+          -${`${date.getDate()}`.padStart(2, '0')}
+          T${`${date.getHours()}`.padStart(2, '0')}
+          :${`${date.getMinutes()}`.padStart(2, '0')}
+          :00
+        `.replaceAll(/\s/g, ''));
+      }
       const now = new Date();
-      const nowDateQueryString = encodeURIComponent(`
-        ${now.getFullYear()}
-        -${`${now.getMonth() + 1}`.padStart(2, '0')}
-        -${`${now.getDate()}`.padStart(2, '0')}
-        T${`${now.getHours()}`.padStart(2, '0')}
-        :${`${now.getMinutes()}`.padStart(2, '0')}
-        :00
-      `.replaceAll(/\s/g, ''));
+      const nowDateQueryString = dateToQueryString(now);
       now.setHours(now.getHours() - 2);
-      const pastDateQueryString = encodeURIComponent(`
-        ${now.getFullYear()}
-        -${`${now.getMonth() + 1}`.padStart(2, '0')}
-        -${`${now.getDate()}`.padStart(2, '0')}
-        T${`${now.getHours() - 2}`.padStart(2, '0')}
-        :${`${now.getMinutes()}`.padStart(2, '0')}
-        :00
-      `.replaceAll(/\s/g, ''));
-      // Make the API call to fetch weather forecast.
+      const pastDateQueryString = dateToQueryString(now);
+      now.setHours(now.getHours() - 2);
+      const furtherPastDateQueryString = dateToQueryString(now);
+      // Make the API call to fetch weather forecast for 2 hours from now.
       const forecastedWeather = (await axios.get<ForecastAPIResponse>(
         `https://api.data.gov.sg/v1/environment/2-hour-weather-forecast?
           date_time=${nowDateQueryString}
         `.replaceAll(/\s/g, '')
       )).data;
       // Make the API call to fetch current weather.
-      const currentWeather = (await axios.get<ForecastAPIResponse>(
+      const currWeather = (await axios.get<ForecastAPIResponse>(
         `https://api.data.gov.sg/v1/environment/2-hour-weather-forecast?
           date_time=${pastDateQueryString}
         `.replaceAll(/\s/g, '')
       )).data;
+      // Make the API call to fetch weather for 2 hours ago.
+      const pastWeather = (await axios.get<ForecastAPIResponse>(
+        `https://api.data.gov.sg/v1/environment/2-hour-weather-forecast?
+          date_time=${furtherPastDateQueryString}
+        `.replaceAll(/\s/g, '')
+      )).data;
       // Update weather forecast and current weather.
-      setWeatherForecast(forecastedWeather);
-      setCurrentWeather(currentWeather);
+      setNextWeather(forecastedWeather);
+      setCurrWeather(currWeather);
+      setPastWeather(pastWeather);
     })();
   }
 
@@ -156,8 +163,9 @@ export default function RevisitPage() {
       <ScrollableList
         ref={scrollableListRef}
         placeList={placeList}
-        currentWeather={currentWeather}
-        weatherForecast={weatherForecast}
+        pastWeather={pastWeather}
+        currWeather={currWeather}
+        nextWeather={nextWeather}
       />
     </div>
   );

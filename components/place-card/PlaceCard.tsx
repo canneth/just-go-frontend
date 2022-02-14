@@ -4,11 +4,13 @@ import PlaceData from '@/models/PlaceData';
 import ForecastAPIResponse from '@/models/WeatherForecast';
 import { haversineDistance, LatLonCoords } from '@/globals/utils';
 import styles from './PlaceCard.module.css';
+import WeatherTimeline from '@/components/weather-timeline/WeatherTimeline';
 
 interface PlaceCardProps {
   placeData: PlaceData;
-  currentWeather: ForecastAPIResponse | undefined;
-  weatherForecast: ForecastAPIResponse | undefined;
+  pastWeather: ForecastAPIResponse | undefined;
+  currWeather: ForecastAPIResponse | undefined;
+  nextWeather: ForecastAPIResponse | undefined;
 }
 
 export default function PlaceCard(props: PlaceCardProps) {
@@ -30,7 +32,7 @@ export default function PlaceCard(props: PlaceCardProps) {
   // Find closest weather station to lookup weather data from.
   const placeCoords: LatLonCoords = [parseFloat(props.placeData.lat), parseFloat(props.placeData.lon)];
   let shortestDistance = Infinity;
-  const nearestWeatherStation = props.weatherForecast?.area_metadata.reduce((agg, x) => {
+  const nearestWeatherStation = props.nextWeather?.area_metadata.reduce((agg, x) => {
     const stationCoords: LatLonCoords = [x.label_location.latitude, x.label_location.longitude];
     const currDistance = haversineDistance(stationCoords, placeCoords);
     if (currDistance >= shortestDistance) return agg;
@@ -38,8 +40,9 @@ export default function PlaceCard(props: PlaceCardProps) {
     return x;
   });
   const nearestStationCoords = [nearestWeatherStation?.label_location.latitude, nearestWeatherStation?.label_location.longitude]; // TODO: Remove as this is only for debugging.
-  const nextWeatherHere = props.weatherForecast?.items[0].forecasts.find(x => x.area === nearestWeatherStation?.name)?.forecast;
-  const currWeatherHere = props.currentWeather?.items[0].forecasts.find(x => x.area === nearestWeatherStation?.name)?.forecast;
+  const pastWeatherHere = props.pastWeather?.items[0].forecasts.find(x => x.area === nearestWeatherStation?.name)?.forecast;
+  const currWeatherHere = props.currWeather?.items[0].forecasts.find(x => x.area === nearestWeatherStation?.name)?.forecast;
+  const nextWeatherHere = props.nextWeather?.items[0].forecasts.find(x => x.area === nearestWeatherStation?.name)?.forecast;
 
   return (
     <div className={styles.overallContainer}>
@@ -59,12 +62,11 @@ export default function PlaceCard(props: PlaceCardProps) {
         </ol>
       </div>
       <div className={styles.weatherColumn}>
-        <p>Station Name: {nearestWeatherStation?.name}</p>
-        <p>Station Coords: {nearestStationCoords[0]} | Lon: {nearestStationCoords[1]}</p>
-        <p>Place Coords: {placeCoords[0]} | Lon: {placeCoords[1]}</p>
-        <p>Distance: {shortestDistance}</p>
-        <p>Weather now: {currWeatherHere}</p>
-        <p>Weahter in 2 hrs: {nextWeatherHere}</p>
+        <WeatherTimeline
+          pastWeather={pastWeatherHere}
+          currWeather={currWeatherHere}
+          nextWeather={nextWeatherHere}
+        />
       </div>
     </div>
   );

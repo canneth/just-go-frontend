@@ -7,8 +7,9 @@ import styles from './ScrollableList.module.css';
 
 interface ScrollableListProps {
   placeList: PlaceData[];
-  currentWeather: ForecastAPIResponse | undefined;
-  weatherForecast: ForecastAPIResponse | undefined;
+  pastWeather: ForecastAPIResponse | undefined;
+  currWeather: ForecastAPIResponse | undefined;
+  nextWeather: ForecastAPIResponse | undefined;
   className?: string;
 }
 export interface ScrollableListImperativeRef {
@@ -34,8 +35,9 @@ const ScrollableList = forwardRef((props: ScrollableListProps, ref: ForwardedRef
             <PlaceCard
               key={i}
               placeData={x}
-              currentWeather={props.currentWeather}
-              weatherForecast={props.weatherForecast}
+              pastWeather={props.pastWeather}
+              currWeather={props.currWeather}
+              nextWeather={props.nextWeather}
             />
           ))
         }
