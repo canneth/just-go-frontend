@@ -21,7 +21,7 @@
   <p>
     This is my first crack at developing an entire web app, and this entire project is primarily a
     learning exercise in implementing a proper backend. This repo contains only the frontend of this
-    web app. To view the corresponding backend repo,&nbsp;
+    web app. To view the corresponding backend repo,
     <a href='https://github.com/canneth/just-go-backend' rel='noreferrer'>click here</a>.
   </p>
 </section>
@@ -38,8 +38,8 @@
     <br />
     I'm sure that many people can agree that the allure of a certain place is heavily influenced by the weather.
     For myself, when deciding between places to go, I always consult the weather forecast for that location and
-    check the island-wide (Singapore) rain radar map on&nbsp;
-    <a href='https://play.google.com/store/apps/details?id=sg.gov.nea&hl=en_SG&gl=US' rel='noreferrer'>myENV</a>&nbsp;
+    check the island-wide (Singapore) rain radar map on
+    <a href='https://play.google.com/store/apps/details?id=sg.gov.nea&hl=en_SG&gl=US' rel='noreferrer'>myENV</a>
     to see if it had rained within the last 30 minutes at that location.
     <br />
     <br />
