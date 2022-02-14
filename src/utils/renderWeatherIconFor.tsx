@@ -6,13 +6,13 @@ export default function renderWeatherIconFor(weatherString: Forecast) {
   switch (weatherString) {
     case 'Fair (Day)':
       return <span className='iconify' data-icon='wi:day-sunny' data-width='100%' data-height='100%' />
-    case 'Fair':
+    case 'Fair (Night)':
       return <span className='iconify' data-icon='wi:night-clear' data-width='100%' data-height='100%' />
     case 'Fair &amp; Warm':
       return <span className='iconify' data-icon='wi:hot' data-width='100%' data-height='100%' />
     case 'Partly Cloudy (Day)':
       return <span className='iconify' data-icon='wi:day-cloudy' data-width='100%' data-height='100%' />
-    case 'Partly Cloudy':
+    case 'Partly Cloudy (Night)':
       return <span className='iconify' data-icon='wi:night-alt-cloudy' data-width='100%' data-height='100%' />
     case 'Cloudy':
       return <span className='iconify' data-icon='wi:cloud' data-width='100%' data-height='100%' />

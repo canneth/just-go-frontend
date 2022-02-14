@@ -37,10 +37,10 @@ export default interface ForecastAPIResponse {
 
 export type Forecast = (
   | 'Fair (Day)'
-  | 'Fair'
+  | 'Fair (Night)'
   | 'Fair &amp; Warm'
   | 'Partly Cloudy (Day)'
-  | 'Partly Cloudy'
+  | 'Partly Cloudy (Night)'
   | 'Cloudy'
   | 'Hazy'
   | 'Slightly Hazy'
