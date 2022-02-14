@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import PlaceData from '@/models/PlaceData';
 import ForecastAPIResponse from '@/models/WeatherForecast';
-import { haversineDistance, LatLonCoords } from '@/globals/utils';
+import { haversineDistance, LatLonCoords } from '@/utils/harversineDistance';
 import styles from './PlaceCard.module.css';
 import WeatherTimeline from '@/components/weather-timeline/WeatherTimeline';
 
