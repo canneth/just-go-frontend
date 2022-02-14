@@ -48,7 +48,7 @@
     <br />
     <br />
     In this app, I attempt to create a user experience where all of this information is conveniently presented to
-    help users spend less time pondering, and more time going!
+    help users spend less time pondering and more time going!
   </p>
 </section>
 
