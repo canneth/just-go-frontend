@@ -4,7 +4,7 @@ import ScrollableList from '@/components/place-card/ScrollableList';
 import usePageFadeInOut from '@/hooks/usePageFadeInOut';
 import usePageChangeClickHandler from '@/hooks/usePageChangeClickHandler';
 import { ACTIVITIES } from '@/globals/constants';
-import PlaceData from '@/models/place-data';
+import PlaceData from '@/models/PlaceData';
 import styles from './revisit.module.css';
 
 export default function RevisitPage() {

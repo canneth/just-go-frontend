@@ -1,14 +1,14 @@
 
 import { useImperativeHandle, useRef, forwardRef, ForwardedRef } from 'react';
 import PlaceCard from '@/components/place-card/PlaceCard';
-import PlaceData from '@/models/place-data';
-import WeatherForecast from '@/models/weather-forecast';
+import PlaceData from '@/models/PlaceData';
+import ForecastAPIResponse from '@/models/WeatherForecast';
 import styles from './ScrollableList.module.css';
 
 interface ScrollableListProps {
   placeList: PlaceData[];
-  currentWeather: WeatherForecast | undefined;
-  weatherForecast: WeatherForecast | undefined;
+  currentWeather: ForecastAPIResponse | undefined;
+  weatherForecast: ForecastAPIResponse | undefined;
   className?: string;
 }
 export interface ScrollableListImperativeRef {

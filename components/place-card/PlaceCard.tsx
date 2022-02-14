@@ -1,14 +1,14 @@
 
 import Image from 'next/image';
-import PlaceData from '@/models/place-data';
-import WeatherForecast from '@/models/weather-forecast';
+import PlaceData from '@/models/PlaceData';
+import ForecastAPIResponse from '@/models/WeatherForecast';
 import { haversineDistance, LatLonCoords } from '@/globals/utils';
 import styles from './PlaceCard.module.css';
 
 interface PlaceCardProps {
   placeData: PlaceData;
-  currentWeather: WeatherForecast | undefined;
-  weatherForecast: WeatherForecast | undefined;
+  currentWeather: ForecastAPIResponse | undefined;
+  weatherForecast: ForecastAPIResponse | undefined;
 }
 
 export default function PlaceCard(props: PlaceCardProps) {

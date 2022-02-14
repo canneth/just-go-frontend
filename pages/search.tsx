@@ -4,8 +4,8 @@ import { useState, useEffect, useRef, MouseEvent, KeyboardEvent } from 'react';
 import ScrollableList, { ScrollableListImperativeRef } from '@/components/place-card/ScrollableList';
 import usePageFadeInOut from '@/hooks/usePageFadeInOut';
 import usePageChangeClickHandler from '@/hooks/usePageChangeClickHandler';
-import PlaceData from '@/models/place-data';
-import WeatherForecast from '@/models/weather-forecast';
+import PlaceData from '@/models/PlaceData';
+import ForecastAPIResponse from '@/models/WeatherForecast';
 import styles from './search.module.css';
 
 export default function RevisitPage() {
@@ -16,8 +16,8 @@ export default function RevisitPage() {
   const scrollableListRef = useRef<ScrollableListImperativeRef>(null);
   const [lastSearchInput, setLastSearchInput] = useState<string>('');
   const [placeList, setPlaceList] = useState<PlaceData[]>([]);
-  const [currentWeather, setCurrentWeather] = useState<WeatherForecast>();
-  const [weatherForecast, setWeatherForecast] = useState<WeatherForecast>();
+  const [currentWeather, setCurrentWeather] = useState<ForecastAPIResponse>();
+  const [weatherForecast, setWeatherForecast] = useState<ForecastAPIResponse>();
 
   const intersectionObserverRef = useRef<IntersectionObserver>();
 
@@ -102,14 +102,14 @@ export default function RevisitPage() {
         :00
       `.replaceAll(/\s/g, ''));
       // Make the API call to fetch weather forecast.
-      const forecastedWeather = (await axios.get<WeatherForecast>(
-        `https://api.data.gov.sg/v1/environment/2-hour-weather-forecast?
+      const forecastedWeather = (await axios.get<ForecastAPIResponse>(
+        `https://api.data.gov.sg/v1/environment/2-hour-WeatherForecast?
           date_time=${nowDateQueryString}
         `.replaceAll(/\s/g, '')
       )).data;
       // Make the API call to fetch current weather.
-      const currentWeather = (await axios.get<WeatherForecast>(
-        `https://api.data.gov.sg/v1/environment/2-hour-weather-forecast?
+      const currentWeather = (await axios.get<ForecastAPIResponse>(
+        `https://api.data.gov.sg/v1/environment/2-hour-WeatherForecast?
           date_time=${pastDateQueryString}
         `.replaceAll(/\s/g, '')
       )).data;

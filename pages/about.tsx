@@ -8,7 +8,7 @@ export default function About() {
       <h2>Weather Data</h2>
       <p>
         All weather data is pulled from the Weather Forecast dataset&apos;s&nbsp;
-        <a href='https://data.gov.sg/dataset/weather-forecast?view_id=9bfd2345-62ed-491d-ba2c-940b3eaee39c&resource_id=571ef5fb-ed31-48b2-85c9-61677de42ca9' rel='noreferrer'>
+        <a href='https://data.gov.sg/dataset/WeatherForecast?view_id=9bfd2345-62ed-491d-ba2c-940b3eaee39c&resource_id=571ef5fb-ed31-48b2-85c9-61677de42ca9' rel='noreferrer'>
           2-hour Weather Forecast API&nbsp;
         </a>
         which is made available under the terms of the&nbsp;
