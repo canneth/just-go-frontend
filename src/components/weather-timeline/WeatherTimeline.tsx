@@ -7,6 +7,7 @@ interface WeatherTimelineProps {
   pastWeather: Forecast | undefined;
   currWeather: Forecast | undefined;
   nextWeather: Forecast | undefined;
+  className?: string;
 }
 
 export default function WeatherTimeline(props: WeatherTimelineProps) {
@@ -16,7 +17,7 @@ export default function WeatherTimeline(props: WeatherTimelineProps) {
   pastDate.setHours(nowDate.getHours() - 2);
   nextDate.setHours(nowDate.getHours() + 2);
   return (
-    <div className={styles.overallContainer}>
+    <div className={`${styles.overallContainer} ${props.className}`}>
       {props.pastWeather && <WeatherBadge date={pastDate} weather={props.pastWeather} />}
       {props.currWeather && <WeatherBadge date={nowDate} weather={props.currWeather} current />}
       {props.nextWeather && <WeatherBadge date={nextDate} weather={props.nextWeather} />}

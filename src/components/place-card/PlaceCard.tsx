@@ -61,13 +61,12 @@ export default function PlaceCard(props: PlaceCardProps) {
           <li className={styles.tagItem}>Drink</li>
         </ol>
       </div>
-      <div className={styles.weatherColumn}>
-        <WeatherTimeline
-          pastWeather={pastWeatherHere}
-          currWeather={currWeatherHere}
-          nextWeather={nextWeatherHere}
-        />
-      </div>
+      <WeatherTimeline
+        className={styles.weatherTimeline}
+        pastWeather={pastWeatherHere}
+        currWeather={currWeatherHere}
+        nextWeather={nextWeatherHere}
+      />
     </div>
   );
 }
