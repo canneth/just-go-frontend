@@ -1,10 +1,11 @@
 
 import Image from 'next/image';
+import WeatherTimeline from '@/components/weather-timeline/WeatherTimeline';
 import PlaceData from '@/models/PlaceData';
 import ForecastAPIResponse from '@/models/WeatherForecast';
+import usePageChangeClickHandler from '@/hooks/usePageChangeClickHandler';
 import { haversineDistance, LatLonCoords } from '@/utils/harversineDistance';
 import styles from './PlaceCard.module.css';
-import WeatherTimeline from '@/components/weather-timeline/WeatherTimeline';
 
 interface PlaceCardProps {
   placeData: PlaceData;
@@ -44,8 +45,10 @@ export default function PlaceCard(props: PlaceCardProps) {
   const currWeatherHere = props.currWeather?.items[0].forecasts.find(x => x.area === nearestWeatherStation?.name)?.forecast;
   const nextWeatherHere = props.nextWeather?.items[0].forecasts.find(x => x.area === nearestWeatherStation?.name)?.forecast;
 
+  const handleClickCard = usePageChangeClickHandler(`/map?lat=${placeCoords[0]}&lon=${placeCoords[1]}`);
+
   return (
-    <div className={styles.overallContainer}>
+    <div className={styles.overallContainer} onClick={handleClickCard}>
       <div className={styles.descriptionColumn}>
         <p className={styles.placeName}>{placeName}</p>
         <div className={styles.typeLine}>
