@@ -11,7 +11,7 @@ export default function MapPage() {
 
   const selfRef = usePageFadeInOut();
   const router = useRouter();
-  const osmId = parseFloat(router.query.osmId as string);
+  const osmIdWithType = router.query.osmIdWithType as string;
 
   return (
     <>
@@ -24,7 +24,7 @@ export default function MapPage() {
         />
       </Head>
       <div ref={selfRef} className={styles.overallContainer}>
-        <Map osmId={osmId} />
+        <Map osmIdWithType={osmIdWithType} />
       </div>
     </>
   );
