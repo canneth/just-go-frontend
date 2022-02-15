@@ -17,6 +17,7 @@ interface PlaceCardProps {
 export default function PlaceCard(props: PlaceCardProps) {
 
   // Format place data for display.
+  const placeOsmId = props.placeData.osm_id;
   const placeName = props.placeData.display_name.split(', ')[0];
   const placeIconSource = props.placeData.icon;
   const placeType = `${props.placeData.type.charAt(0).toUpperCase()}${props.placeData.type.slice(1)}`;
@@ -45,7 +46,7 @@ export default function PlaceCard(props: PlaceCardProps) {
   const currWeatherHere = props.currWeather?.items[0].forecasts.find(x => x.area === nearestWeatherStation?.name)?.forecast;
   const nextWeatherHere = props.nextWeather?.items[0].forecasts.find(x => x.area === nearestWeatherStation?.name)?.forecast;
 
-  const handleClickCard = usePageChangeClickHandler(`/map?lat=${placeCoords[0]}&lon=${placeCoords[1]}`);
+  const handleClickCard = usePageChangeClickHandler(`/map?osmId=${placeOsmId});
 
   return (
     <div className={styles.overallContainer} onClick={handleClickCard}>
