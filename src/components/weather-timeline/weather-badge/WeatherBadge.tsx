@@ -17,8 +17,11 @@ export default function WeatherBadge(props: WeatherBadgeProps) {
 
   return (
     <div className={`${styles.overallContainer} ${props.current && styles.isCurrent}`}>
-      <div className={styles.iconContainer}>
-        {renderWeatherIconFor(props.weather)}
+      <div className={styles.mouseoverContainer}>
+        <div className={styles.iconContainer}>
+          {renderWeatherIconFor(props.weather)}
+        </div>
+        <aside className={styles.tooltip}>{displayText}</aside>
       </div>
       <p className={styles.time}>{displayTime}</p>
     </div>

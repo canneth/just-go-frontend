@@ -9,10 +9,41 @@
   font-weight: bold;
 }
 
+.mouseoverContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .iconContainer {
   position: relative;
   width: 60px;
+  transition: transform 100ms ease-out;
 }
+.tooltip {
+  position: absolute;
+  color: var(--color-grey-black);
+  padding: 5px 10px;
+  font-size: var(--font-size-smaller);
+  top: -42%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 100ms ease-out, visibility 100ms ease-out;
+}
+.mouseoverContainer:hover > .iconContainer {
+  filter: var(--drop-shadow-mouseon);
+  transform: scale(1.05);
+  color: var(--color-primary-base);
+}
+.mouseoverContainer:hover > .tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
 .time {
   font-size: var(--font-size-smaller);
 }
