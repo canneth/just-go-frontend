@@ -1,15 +1,16 @@
 
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
 import usePageFadeInOut from '@/hooks/usePageFadeInOut';
-import styles from './Map.module.css';
-import Map from '@/components/map/Map';
+import styles from './map.module.css';
+
+const Map = dynamic(() => import('@/components/map/Map'), { ssr: false });
 
 export default function MapPage() {
 
   const selfRef = usePageFadeInOut();
   const router = useRouter();
-  console.log(router.query);
   const osmId = parseFloat(router.query.osmId as string);
 
   return (
@@ -24,7 +25,6 @@ export default function MapPage() {
       </Head>
       <div ref={selfRef} className={styles.overallContainer}>
         <Map osmId={osmId} />
-        <div>HELLO</div>
       </div>
     </>
   );
