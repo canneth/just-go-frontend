@@ -95,7 +95,7 @@
     </tr>
     <tr>
       <td>The <a href='https://justgo.dev/map' rel='noreferrer'>map page</a> UI and functionality</td>
-      <td>Not started</td>
+      <td>In progress</td>
     </tr>
     <tr>
       <td>Place search loading state visual indicators</td>
