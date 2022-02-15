@@ -7,7 +7,7 @@
 export default interface PlaceData {
   place_id: number;
   licence: string;
-  osm_type: string;
+  osm_type: 'node' | 'way' | 'relation';
   osm_id: number;
   boundingbox: string[];
   lat: string;
