@@ -94,15 +94,15 @@
       <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
     </tr>
     <tr>
-      <td>PlaceCard's WeatherBadge mouse-over behaviour</td>
-      <td>In progress</td>
-    </tr>
-    <tr>
-      <td>Place search loading state visual indicators</td>
+      <td>PlaceCard's mouse-over behaviour</td>
       <td>In progress</td>
     </tr>
     <tr>
       <td>The <a href='https://justgo.dev/map' rel='noreferrer'>map page</a> UI and functionality</td>
+      <td>Not started</td>
+    </tr>
+    <tr>
+      <td>Place search loading state visual indicators</td>
       <td>Not started</td>
     </tr>
     <tr>
