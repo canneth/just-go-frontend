@@ -46,7 +46,7 @@ export default function PlaceCard(props: PlaceCardProps) {
   const currWeatherHere = props.currWeather?.items[0].forecasts.find(x => x.area === nearestWeatherStation?.name)?.forecast;
   const nextWeatherHere = props.nextWeather?.items[0].forecasts.find(x => x.area === nearestWeatherStation?.name)?.forecast;
 
-  const handleClickCard = usePageChangeClickHandler(`/map?osmId=${placeOsmId});
+  const handleClickCard = usePageChangeClickHandler(`/map?osmId=${placeOsmId}`);
 
   return (
     <div className={styles.overallContainer} onClick={handleClickCard}>
