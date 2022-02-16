@@ -18,6 +18,9 @@
   width: 100%;
   z-index: 2;
 }
+.sidePanelsContainer {
+  margin-left: 12px;
+}
 .placeCard {
   position: relative;
   pointer-events: auto;
