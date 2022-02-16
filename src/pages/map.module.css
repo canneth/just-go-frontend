@@ -10,12 +10,27 @@
   width: 100vw;
   z-index: 1;
 }
-.foreground {
+.foregroundContainer {
+  position: relative;
+  pointer-events: none;
+  padding-top: 90px;
+  height: 100%;
+  width: 100%;
   z-index: 2;
 }
 .placeCard {
   position: relative;
+  pointer-events: auto;
+  width: 500px;
+  height: 200px;
+  background: var(--color-grey-white);
+  border: 2px solid;
 }
 .weatherCard {
   position: relative;
+  pointer-events: auto;
+  width: 500px;
+  height: 200px;
+  background: var(--color-grey-white);
+  border: 2px solid;
 }
