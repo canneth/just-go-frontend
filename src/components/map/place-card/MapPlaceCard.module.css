@@ -1,8 +1,46 @@
 
 .overallContainer {
   position: relative;
-  width: 500px;
-  height: 200px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 6px;
+  width: 400px;
+  padding: 24px;
   background: var(--color-grey-white);
+  box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.1);
+}
+.descriptionColumn {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+.placeName {
+  font-weight: bold;
+}
+.weatherTimeline {
+  position: relative;
+}
+.typeLine {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+.tagList {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2px;
+}
+.tagItem {
+  position: relative;
   border: 1px solid;
+  border-radius: 100px;
+  padding: 2px 10px;
 }
