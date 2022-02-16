@@ -26,9 +26,9 @@ export default function Map(props: MapProps) {
 
   useEffect(() => {
     if (!map) return;
-    map.setView(props.placeLatLng, 18);
+    map.setView(props.placeLatLng, 18); // Update map view.
     if (!marker) return;
-    marker.setLatLng(props.placeLatLng);
+    marker.setLatLng(props.placeLatLng); // Update marker location.
   }, [map, marker, props.placeLatLng]);
 
   return (
