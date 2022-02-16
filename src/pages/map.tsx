@@ -2,18 +2,39 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import MapPlaceCard from '@/components/map/place-card/MapPlaceCard';
 import MapWeatherCard from '@/components/map/place-card/MapWeatherCard';
 import usePageFadeInOut from '@/hooks/usePageFadeInOut';
+import PlaceData from '@/models/PlaceData';
 import styles from './map.module.css';
+import { LatLngTuple } from 'leaflet';
 
 const Map = dynamic(() => import('@/components/map/Map'), { ssr: false });
 
 export default function MapPage() {
 
-  const selfRef = usePageFadeInOut();
   const router = useRouter();
   const osmIdWithType = router.query.osmIdWithType as string;
+
+  const selfRef = usePageFadeInOut();
+  const [placeData, setPlaceData] = useState<PlaceData>();
+
+  useEffect(() => {
+    (async function () {
+      // Make API call to fetch place data.
+      const placeData = (await axios.get<PlaceData[]>(
+        `https://nominatim.openstreetmap.org/lookup?
+          format=json
+          &addressdetails=1
+          &extratags=1
+          &osm_ids=${osmIdWithType}
+        `.replaceAll(/\s/g, '')
+      )).data[0];
+      setPlaceData(placeData);
+    })();
+  }, [osmIdWithType]);
 
   return (
     <>
@@ -27,11 +48,11 @@ export default function MapPage() {
       </Head>
       <div ref={selfRef} className={styles.overallContainer}>
         <div className={styles.backgroundContainer}>
-          <Map className={styles.map} osmIdWithType={osmIdWithType} />
+          <Map className={styles.map} placeLatLng={placeData ? [parseFloat(placeData.lat), parseFloat(placeData.lon)] : [0, 0]} />
         </div>
         <div className={styles.foregroundContainer}>
-          <MapPlaceCard className={styles.placeCard} />
-          <MapWeatherCard className={styles.weatherCard} />
+          {placeData && <MapPlaceCard className={styles.placeCard} placeData={placeData} />}
+          {placeData && <MapWeatherCard className={styles.weatherCard} />}
         </div>
       </div>
     </>
