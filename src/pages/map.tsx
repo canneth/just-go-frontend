@@ -9,7 +9,6 @@ import MapWeatherCard from '@/components/map/place-card/MapWeatherCard';
 import usePageFadeInOut from '@/hooks/usePageFadeInOut';
 import PlaceData from '@/models/PlaceData';
 import styles from './map.module.css';
-import { LatLngTuple } from 'leaflet';
 
 const Map = dynamic(() => import('@/components/map/Map'), { ssr: false });
 
@@ -51,8 +50,10 @@ export default function MapPage() {
           <Map className={styles.map} placeLatLng={placeData ? [parseFloat(placeData.lat), parseFloat(placeData.lon)] : [0, 0]} />
         </div>
         <div className={styles.foregroundContainer}>
-          {placeData && <MapPlaceCard className={styles.placeCard} placeData={placeData} />}
-          {placeData && <MapWeatherCard className={styles.weatherCard} />}
+          <div className={styles.sidePanelsContainer}>
+            {placeData && <MapPlaceCard className={styles.placeCard} placeData={placeData} />}
+            {placeData && <MapWeatherCard className={styles.weatherCard} />}
+          </div>
         </div>
       </div>
     </>
