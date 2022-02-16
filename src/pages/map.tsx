@@ -2,6 +2,8 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
+import MapPlaceCard from '@/components/map/place-card/MapPlaceCard';
+import MapWeatherCard from '@/components/map/place-card/MapWeatherCard';
 import usePageFadeInOut from '@/hooks/usePageFadeInOut';
 import styles from './map.module.css';
 
@@ -28,12 +30,8 @@ export default function MapPage() {
           <Map className={styles.map} osmIdWithType={osmIdWithType} />
         </div>
         <div className={styles.foregroundContainer}>
-          <div className={`${styles.placeCard} ${styles.foreground}`}>
-            HELLO I AM PLACE DETAILS
-          </div>
-          <div className={`${styles.weatherCard} ${styles.foreground}`}>
-            HELLO I AM WEATHER
-          </div>
+          <MapPlaceCard className={styles.placeCard} />
+          <MapWeatherCard className={styles.weatherCard} />
         </div>
       </div>
     </>

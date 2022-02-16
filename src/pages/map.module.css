@@ -21,16 +21,8 @@
 .placeCard {
   position: relative;
   pointer-events: auto;
-  width: 500px;
-  height: 200px;
-  background: var(--color-grey-white);
-  border: 2px solid;
 }
 .weatherCard {
   position: relative;
   pointer-events: auto;
-  width: 500px;
-  height: 200px;
-  background: var(--color-grey-white);
-  border: 2px solid;
 }

@@ -1,0 +1,8 @@
+
+.overallContainer {
+  position: relative;
+  width: 500px;
+  height: 200px;
+  background: var(--color-grey-white);
+  border: 1px solid;
+}
