@@ -4,3 +4,18 @@
   height: 100%;
   width: 100%;
 }
+.backgroundContainer {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  z-index: 1;
+}
+.foreground {
+  z-index: 2;
+}
+.placeCard {
+  position: relative;
+}
+.weatherCard {
+  position: relative;
+}

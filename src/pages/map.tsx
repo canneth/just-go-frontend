@@ -24,7 +24,15 @@ export default function MapPage() {
         />
       </Head>
       <div ref={selfRef} className={styles.overallContainer}>
-        <Map osmIdWithType={osmIdWithType} />
+        <div className={styles.backgroundContainer}>
+          <Map className={styles.map} osmIdWithType={osmIdWithType} />
+        </div>
+        <div className={`${styles.placeCard} ${styles.foreground}`}>
+          HELLO I AM PLACE DETAILS
+        </div>
+        <div className={`${styles.weatherCard} ${styles.foreground}`}>
+          HELLO I AM WEATHER
+        </div>
       </div>
     </>
   );

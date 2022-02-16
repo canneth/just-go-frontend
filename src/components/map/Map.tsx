@@ -7,6 +7,7 @@ import styles from './Map.module.css';
 
 interface MapProps {
   osmIdWithType: string;
+  className?: string;
 }
 
 export default function Map(props: MapProps) {
@@ -40,6 +41,6 @@ export default function Map(props: MapProps) {
   }, [props.osmIdWithType]);
 
   return (
-    <div id='map' className={styles.map} />
+    <div id='map' className={`${props.className} ${styles.map}`} />
   );
 }
