@@ -12,6 +12,8 @@ import ForecastAPIResponse from '@/models/WeatherForecast';
 import usePageFadeInOut from '@/hooks/usePageFadeInOut';
 import { haversineDistance, LatLonCoords } from '@/utils/harversineDistance';
 import styles from './map.module.css';
+import Button from '@/components/common/Button';
+import usePageChangeClickHandler from '@/hooks/usePageChangeClickHandler';
 
 const Map = dynamic(() => import('@/components/map/Map'), { ssr: false });
 
@@ -23,6 +25,11 @@ export default function MapPage() {
   const selfRef = usePageFadeInOut();
   const [placeData, setPlaceData] = useState<PlaceData>();
   const [weatherList, setWeatherList] = useState<TimeSeriesLocalWeather>();
+
+  const placePostalCode = placeData?.address?.postcode;
+
+  const backButtonClickHandler = usePageChangeClickHandler('/search');
+  const googleMapsButtonClickHandler = usePageChangeClickHandler(`https://www.google.com/maps/place/Singapore+${placePostalCode}`, { toExternal: true });
 
   useEffect(() => {
     (async function () {
@@ -118,6 +125,10 @@ export default function MapPage() {
           <div className={styles.sidePanelsContainer}>
             {placeData && <MapPlaceCard className={styles.placeCard} placeData={placeData} tagList={['work', 'dine']} />}
             {placeData && <MapWeatherCard className={styles.weatherCard} weatherList={weatherList} />}
+          </div>
+          <div className={styles.bottomBarContainer}>
+            <Button text='Back' clickHandler={backButtonClickHandler} />
+            {placePostalCode && <Button text='Open in Google Maps' clickHandler={googleMapsButtonClickHandler} />}
           </div>
         </div>
       </div>

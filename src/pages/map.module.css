@@ -12,8 +12,14 @@
 }
 .foregroundContainer {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   pointer-events: none;
   padding-top: 90px;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-bottom: 16px;
   height: 100%;
   width: 100%;
   z-index: 2;
@@ -23,7 +29,6 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-left: 12px;
 }
 .placeCard {
   position: relative;
@@ -31,5 +36,11 @@
 }
 .weatherCard {
   position: relative;
+  pointer-events: auto;
+}
+.bottomBarContainer {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
   pointer-events: auto;
 }
