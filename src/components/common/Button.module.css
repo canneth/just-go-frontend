@@ -5,8 +5,10 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 100px;
+  width: fit-content;
   height: 40px;
+  padding-left: 16px;
+  padding-right: 16px;
   font-size: var(--font-size-regular);
   font-weight: bold;
   line-height: 0px;
