@@ -1,8 +1,8 @@
 
 .overallContainer {
   position: relative;
-  width: 500px;
-  height: 200px;
+  width: fit-content;
+  border-radius: 6px;
   background: var(--color-grey-white);
-  border: 1px solid;
+  box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.1);
 }
