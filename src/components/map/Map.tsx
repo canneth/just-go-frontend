@@ -18,7 +18,7 @@ export default function Map(props: MapProps) {
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
-    L.control.zoom({ position: 'bottomleft' }).addTo(map); // Add zoom controls.
+    // L.control.zoom({ position: 'bottomleft' }).addTo(map); // Add zoom controls.
     const marker = L.marker([0, 0]).addTo(map); // Add marker.
     setMap(map);
     setMarker(marker);
