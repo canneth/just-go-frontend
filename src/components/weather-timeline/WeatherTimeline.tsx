@@ -11,7 +11,6 @@ interface WeatherTimelineProps {
 }
 
 export default function WeatherTimeline(props: WeatherTimelineProps) {
-  console.log(props.weatherList);
   return (
     <div className={`${styles.overallContainer} ${props.className}`}>
       {
