@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import MapPlaceCard from '@/components/map/place-card/MapPlaceCard';
-import MapWeatherCard from '@/components/map/place-card/MapWeatherCard';
+import MapWeatherCard from '@/components/map/weather-card/MapWeatherCard';
 import usePageFadeInOut from '@/hooks/usePageFadeInOut';
 import PlaceData from '@/models/PlaceData';
 import styles from './map.module.css';
