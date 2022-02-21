@@ -1,7 +1,7 @@
 
 import { Forecast } from '@/models/WeatherForecast';
 
-export default function renderWeatherIconFor(weatherString: Forecast) {
+export default function renderWeatherIconFor(weatherString: Forecast | undefined | null) {
 
   switch (weatherString) {
     case 'Fair (Day)':
@@ -70,6 +70,7 @@ export default function renderWeatherIconFor(weatherString: Forecast) {
       return <span className='iconify' data-icon='wi:rain-wind' data-width='100%' data-height='100%' />
     case 'Strong Winds, Showers':
       return <span className='iconify' data-icon='wi:rain-wind' data-width='100%' data-height='100%' />
-    default: return null;
+    default:
+      return <span className='iconify' data-icon='ant-design:question-circle-outlined' data-width='100%' data-height='100%' />;
   }
 }
