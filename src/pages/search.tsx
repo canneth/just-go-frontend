@@ -1,7 +1,7 @@
 
 import axios from 'axios';
 import { useState, useEffect, useRef, MouseEvent, KeyboardEvent } from 'react';
-import ScrollableList, { ScrollableListImperativeRef } from '@/components/place-card/ScrollableList';
+import ScrollableList, { ScrollableListImperativeRef } from '@/components/scrollable-list/ScrollableList';
 import usePageFadeInOut from '@/hooks/usePageFadeInOut';
 import usePageChangeClickHandler from '@/hooks/usePageChangeClickHandler';
 import PlaceData from '@/models/PlaceData';

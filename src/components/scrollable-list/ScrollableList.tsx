@@ -1,6 +1,6 @@
 
 import { useImperativeHandle, useRef, forwardRef, ForwardedRef } from 'react';
-import PlaceCard from '@/components/place-card/PlaceCard';
+import PlaceCard from './place-card/PlaceCard';
 import { TimeSeriesLocalWeather } from '@/components/weather-timeline/WeatherTimeline';
 import PlaceData from '@/models/PlaceData';
 import ForecastAPIResponse from '@/models/WeatherForecast';
