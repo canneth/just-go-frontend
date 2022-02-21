@@ -3,13 +3,18 @@ import { CurrPageContext } from '@/components/layout/Layout';
 import { useRouter } from 'next/router';
 import { useEffect, useContext, MouseEventHandler, MouseEvent } from 'react';
 
-export default function usePageChangeClickHandler(destinationURL: string): MouseEventHandler {
+interface usePageChangeClickHandlerOptions {
+  toExternal?: boolean;
+}
+
+export default function usePageChangeClickHandler(destinationURL: string, options?: usePageChangeClickHandlerOptions): MouseEventHandler {
   const router = useRouter();
   const [currPageEl, _] = useContext(CurrPageContext);
 
   useEffect(() => {
+    if (options?.toExternal) return;
     router.prefetch(destinationURL)
-  }, [router, destinationURL]);
+  }, [router, destinationURL, options?.toExternal]);
 
   function handleClick(_: MouseEvent) {
     if (router.pathname === destinationURL) return;
