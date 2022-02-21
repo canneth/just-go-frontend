@@ -1,10 +1,12 @@
 
 import Image from 'next/image';
 import PlaceData from '@/models/PlaceData';
+import Tag from '@/models/Tag';
 import styles from './MapPlaceCard.module.css';
 
 interface MapPlaceCardProps {
   placeData: PlaceData;
+  tagList: Array<Tag>;
   className?: string;
 }
 
@@ -35,10 +37,13 @@ export default function MapPlaceCard(props: MapPlaceCardProps) {
         <p>{placeAddress}</p>
         <p>{placeRegion}</p>
         <ol className={styles.tagList}>
-          <li className={styles.tagItem}>Chill</li>
-          <li className={styles.tagItem}>Dine</li>
-          <li className={styles.tagItem}>Snack</li>
-          <li className={styles.tagItem}>Drink</li>
+          {
+            props.tagList.map(tag => (
+              <li key={tag} className={styles.tagItem}>
+                {`${tag.charAt(0).toUpperCase()}${tag.slice(1)}`}
+              </li>
+            ))
+          }
         </ol>
       </div>
     </div>

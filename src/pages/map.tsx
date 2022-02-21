@@ -51,7 +51,7 @@ export default function MapPage() {
         </div>
         <div className={styles.foregroundContainer}>
           <div className={styles.sidePanelsContainer}>
-            {placeData && <MapPlaceCard className={styles.placeCard} placeData={placeData} />}
+            {placeData && <MapPlaceCard className={styles.placeCard} placeData={placeData} tagList={['work', 'dine']} />}
             {placeData && <MapWeatherCard className={styles.weatherCard} />}
           </div>
         </div>
