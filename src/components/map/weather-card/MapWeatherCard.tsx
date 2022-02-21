@@ -10,7 +10,7 @@ interface MapWeatherCardProps {
 export default function MapWeatherCard(props: MapWeatherCardProps) {
   return (
     <div className={`${styles.overallContainer} ${props.className}`}>
-      {props.weatherList && <WeatherTimeline weatherList={props.weatherList} />}
+      {props.weatherList && <WeatherTimeline className={styles.weatherTimeline} weatherList={props.weatherList} />}
     </div>
   );
 }

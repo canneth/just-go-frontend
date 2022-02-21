@@ -28,6 +28,8 @@
 }
 .weatherTimeline {
   position: relative;
+  width: 250px;
+  margin-right: 30px;
 }
 .typeLine {
   position: relative;

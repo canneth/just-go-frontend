@@ -16,32 +16,34 @@
   align-items: center;
 }
 .iconContainer {
+  color: var(--color-grey-black);
   position: relative;
   width: 60px;
-  transition: transform 100ms ease-out;
+  transition:
+    transform 100ms ease-out,
+    filter 100ms ease-out,
+    color 100ms ease-out;
 }
 .tooltip {
   position: absolute;
   color: var(--color-grey-black);
-  padding: 5px 10px;
   font-size: var(--font-size-smaller);
-  top: -42%;
+  font-weight: bold;
+  top: 20px;
   left: 50%;
   transform: translateX(-50%);
-  border-radius: 4px;
   white-space: nowrap;
   opacity: 0;
-  visibility: hidden;
-  transition: opacity 100ms ease-out, visibility 100ms ease-out;
+  pointer-events: none;
+  transition: opacity 100ms ease-out, top 100ms ease-out;
 }
 .mouseoverContainer:hover > .iconContainer {
-  filter: var(--drop-shadow-mouseon);
-  transform: scale(1.05);
   color: var(--color-primary-base);
+  opacity: 0.1;
 }
 .mouseoverContainer:hover > .tooltip {
+  top: 16px;
   opacity: 1;
-  visibility: visible;
 }
 
 .time {
