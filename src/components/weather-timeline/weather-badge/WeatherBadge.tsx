@@ -5,7 +5,7 @@ import styles from './WeatherBadge.module.css';
 
 interface WeatherBadgeProps {
   date: Date;
-  weather: Forecast;
+  weather: Forecast | undefined;
   current?: boolean;
 }
 
@@ -13,7 +13,7 @@ export default function WeatherBadge(props: WeatherBadgeProps) {
 
   const hour24Format = props.date.getHours();
   const displayTime = hour24Format > 12 ? `${hour24Format - 12} pm` : `${hour24Format} am`
-  const displayText = props.weather.replaceAll(' (Day)', '');
+  const displayText = props.weather?.replaceAll(' (Day)', '');
 
   return (
     <div className={`${styles.overallContainer} ${props.current && styles.isCurrent}`}>
