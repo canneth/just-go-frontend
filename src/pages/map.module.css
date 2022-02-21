@@ -19,6 +19,10 @@
   z-index: 2;
 }
 .sidePanelsContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   margin-left: 12px;
 }
 .placeCard {
