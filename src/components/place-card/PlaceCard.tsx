@@ -1,17 +1,13 @@
 
 import Image from 'next/image';
-import WeatherTimeline from '@/components/weather-timeline/WeatherTimeline';
+import WeatherTimeline, { TimeSeriesLocalWeather } from '@/components/weather-timeline/WeatherTimeline';
 import PlaceData from '@/models/PlaceData';
-import ForecastAPIResponse from '@/models/WeatherForecast';
 import usePageChangeClickHandler from '@/hooks/usePageChangeClickHandler';
-import { haversineDistance, LatLonCoords } from '@/utils/harversineDistance';
 import styles from './PlaceCard.module.css';
 
 interface PlaceCardProps {
   placeData: PlaceData;
-  pastWeather: ForecastAPIResponse | undefined;
-  currWeather: ForecastAPIResponse | undefined;
-  nextWeather: ForecastAPIResponse | undefined;
+  weatherList: TimeSeriesLocalWeather;
 }
 
 export default function PlaceCard(props: PlaceCardProps) {
@@ -30,21 +26,6 @@ export default function PlaceCard(props: PlaceCardProps) {
     ${props.placeData.address?.county ? props.placeData.address?.county : ''}
   `;
 
-  // Find closest weather station to lookup weather data from.
-  const placeCoords: LatLonCoords = [parseFloat(props.placeData.lat), parseFloat(props.placeData.lon)];
-  let shortestDistance = Infinity;
-  const nearestWeatherStation = props.nextWeather?.area_metadata.reduce((agg, x) => {
-    const stationCoords: LatLonCoords = [x.label_location.latitude, x.label_location.longitude];
-    const currDistance = haversineDistance(stationCoords, placeCoords);
-    if (currDistance >= shortestDistance) return agg;
-    shortestDistance = currDistance;
-    return x;
-  });
-  const nearestStationCoords = [nearestWeatherStation?.label_location.latitude, nearestWeatherStation?.label_location.longitude]; // TODO: Remove as this is only for debugging.
-  const pastWeatherHere = props.pastWeather?.items[0].forecasts.find(x => x.area === nearestWeatherStation?.name)?.forecast;
-  const currWeatherHere = props.currWeather?.items[0].forecasts.find(x => x.area === nearestWeatherStation?.name)?.forecast;
-  const nextWeatherHere = props.nextWeather?.items[0].forecasts.find(x => x.area === nearestWeatherStation?.name)?.forecast;
-
   let placeOsmId = null;
   switch (props.placeData.osm_type) {
     case 'node':
@@ -58,6 +39,8 @@ export default function PlaceCard(props: PlaceCardProps) {
       break;
   }
   const handleClickCard = usePageChangeClickHandler(`/map?osmIdWithType=${placeOsmId}`);
+
+  console.log(props.weatherList);
 
   return (
     <div className={styles.overallContainer} onClick={handleClickCard}>
@@ -78,9 +61,7 @@ export default function PlaceCard(props: PlaceCardProps) {
       </div>
       <WeatherTimeline
         className={styles.weatherTimeline}
-        pastWeather={pastWeatherHere}
-        currWeather={currWeatherHere}
-        nextWeather={nextWeatherHere}
+        weatherList={props.weatherList}
       />
     </div>
   );
