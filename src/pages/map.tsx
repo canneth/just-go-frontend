@@ -6,8 +6,11 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import MapPlaceCard from '@/components/map/place-card/MapPlaceCard';
 import MapWeatherCard from '@/components/map/weather-card/MapWeatherCard';
-import usePageFadeInOut from '@/hooks/usePageFadeInOut';
+import { TimeSeriesLocalWeather } from '@/components/weather-timeline/WeatherTimeline';
 import PlaceData from '@/models/PlaceData';
+import ForecastAPIResponse from '@/models/WeatherForecast';
+import usePageFadeInOut from '@/hooks/usePageFadeInOut';
+import { haversineDistance, LatLonCoords } from '@/utils/harversineDistance';
 import styles from './map.module.css';
 
 const Map = dynamic(() => import('@/components/map/Map'), { ssr: false });
@@ -19,6 +22,7 @@ export default function MapPage() {
 
   const selfRef = usePageFadeInOut();
   const [placeData, setPlaceData] = useState<PlaceData>();
+  const [weatherList, setWeatherList] = useState<TimeSeriesLocalWeather>();
 
   useEffect(() => {
     (async function () {
@@ -31,7 +35,68 @@ export default function MapPage() {
           &osm_ids=${osmIdWithType}
         `.replaceAll(/\s/g, '')
       )).data[0];
+      if (!placeData) return;
       setPlaceData(placeData);
+      // Grab and format current date-times for querying weather API.
+      function dateToQueryString(date: Date) {
+        return encodeURIComponent(`
+          ${date.getFullYear()}
+          -${`${date.getMonth() + 1}`.padStart(2, '0')}
+          -${`${date.getDate()}`.padStart(2, '0')}
+          T${`${date.getHours()}`.padStart(2, '0')}
+          :${`${date.getMinutes()}`.padStart(2, '0')}
+          :00
+        `.replaceAll(/\s/g, ''));
+      }
+      const now = new Date();
+      const nowDateQueryString = dateToQueryString(now);
+      now.setHours(now.getHours() - 2);
+      const pastDateQueryString = dateToQueryString(now);
+      now.setHours(now.getHours() - 2);
+      const furtherPastDateQueryString = dateToQueryString(now);
+      // Make the API call to fetch weather forecast for 2 hours from now.
+      const nextWeather = (await axios.get<ForecastAPIResponse>(
+        `https://api.data.gov.sg/v1/environment/2-hour-weather-forecast?
+          date_time=${nowDateQueryString}
+        `.replaceAll(/\s/g, '')
+      )).data;
+      // Make the API call to fetch current weather.
+      const currWeather = (await axios.get<ForecastAPIResponse>(
+        `https://api.data.gov.sg/v1/environment/2-hour-weather-forecast?
+          date_time=${pastDateQueryString}
+        `.replaceAll(/\s/g, '')
+      )).data;
+      // Make the API call to fetch weather for 2 hours ago.
+      const pastWeather = (await axios.get<ForecastAPIResponse>(
+        `https://api.data.gov.sg/v1/environment/2-hour-weather-forecast?
+          date_time=${furtherPastDateQueryString}
+        `.replaceAll(/\s/g, '')
+      )).data;
+      // Find closest weather station to lookup weather data from.
+      const placeCoords: LatLonCoords = [parseFloat(placeData.lat), parseFloat(placeData.lon)];
+      let shortestDistance = Infinity;
+      const nearestWeatherStation = nextWeather?.area_metadata.reduce((agg, station) => {
+        const stationCoords: LatLonCoords = [station.label_location.latitude, station.label_location.longitude];
+        const currDistance = haversineDistance(stationCoords, placeCoords);
+        if (currDistance >= shortestDistance) return agg;
+        shortestDistance = currDistance;
+        return station;
+      });
+      // Build local time-series weather for PlaceCard.
+      const pastWeatherHere = pastWeather?.items[0].forecasts.find(x => x.area === nearestWeatherStation?.name)?.forecast;
+      const currWeatherHere = currWeather?.items[0].forecasts.find(x => x.area === nearestWeatherStation?.name)?.forecast;
+      const nextWeatherHere = nextWeather?.items[0].forecasts.find(x => x.area === nearestWeatherStation?.name)?.forecast;
+      const nowDate = new Date();
+      const pastDate = new Date();
+      const nextDate = new Date();
+      pastDate.setHours(nowDate.getHours() - 2);
+      nextDate.setHours(nowDate.getHours() + 2);
+      const weatherList: TimeSeriesLocalWeather = [
+        { date: pastDate, weather: pastWeatherHere, current: false },
+        { date: nowDate, weather: currWeatherHere, current: true },
+        { date: nextDate, weather: nextWeatherHere, current: false }
+      ];
+      setWeatherList(weatherList);
     })();
   }, [osmIdWithType]);
 
@@ -52,7 +117,7 @@ export default function MapPage() {
         <div className={styles.foregroundContainer}>
           <div className={styles.sidePanelsContainer}>
             {placeData && <MapPlaceCard className={styles.placeCard} placeData={placeData} tagList={['work', 'dine']} />}
-            {placeData && <MapWeatherCard className={styles.weatherCard} />}
+            {placeData && <MapWeatherCard className={styles.weatherCard} weatherList={weatherList} />}
           </div>
         </div>
       </div>
