@@ -94,43 +94,43 @@
       <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
     </tr>
     <tr>
-      <td>The <a href='https://justgo.dev/map' rel='noreferrer'>map page</a> UI and functionality</td>
-      <td>In progress</td>
+      <td>Mobile views for existing pages (index, /select, /search, /map)</td>
+      <td>Not started</td>
+    </tr>
+    <tr>
+      <td>Make panels in the <a href='https://justgo.dev/map' rel='noreferrer'>/map page</a> retractable</td>
+      <td>Not started</td>
+    </tr>
+    <tr>
+      <td>The rain radar map overlay in the <a href='https://justgo.dev/map' rel='noreferrer'>/map page</a></td>
+      <td>Not started</td>
+    </tr>
+    <tr>
+      <td>Controls to re-focus map on marker in <a href='https://justgo.dev/map' rel='noreferrer'>/map page</a></td>
+      <td>Not started</td>
+    </tr>
+    <tr>
+      <td>The <a href='https://justgo.dev/about' rel='noreferrer'>/about page</a> content and formatting</td>
+      <td>Incomplete</td>
+    </tr>
+    <tr>
+      <td>The <a href='https://justgo.dev/login' rel='noreferrer'>/login and sign-up page</a> UI</td>
+      <td>Not started</td>
+    </tr>
+    <tr>
+      <td>The <a href='https://justgo.dev/revisit' rel='noreferrer'>/revisit page</a> UI</td>
+      <td>Incomplete</td>
+    </tr>
+    <tr>
+      <td>The user <a href='https://justgo.dev/profile' rel='noreferrer'>/profile page</a> UI</td>
+      <td>Not started</td>
+    </tr>
+    <tr>
+      <td>The <a href='https://justgo.dev/profile/favourites' rel='noreferrer'>/favourites</a> management page UI</td>
+      <td>Not started</td>
     </tr>
     <tr>
       <td>Place search loading state visual indicators</td>
-      <td>Not started</td>
-    </tr>
-    <tr>
-      <td>Functionality that links a PlaceCard to the <a href='https://justgo.dev/map' rel='noreferrer'>map page</a></td>
-      <td>Not started</td>
-    </tr>
-    <tr>
-      <td>The <a href='https://justgo.dev/about' rel='noreferrer'>about page</a> content and formatting</td>
-      <td>Incomplete</td>
-    </tr>
-    <tr>
-      <td>The rain radar map overlay in the <a href='https://justgo.dev/map' rel='noreferrer'>map page</a></td>
-      <td>Not started</td>
-    </tr>
-    <tr>
-      <td>The <a href='https://justgo.dev/login' rel='noreferrer'>login and sign-up page</a> UI</td>
-      <td>Not started</td>
-    </tr>
-    <tr>
-      <td>The <a href='https://justgo.dev/revisit' rel='noreferrer'>revisit page</a> UI</td>
-      <td>Incomplete</td>
-    </tr>
-    <tr>
-      <td>The user <a href='https://justgo.dev/profile' rel='noreferrer'>profile page</a> UI</td>
-      <td>Not started</td>
-    </tr>
-    <tr>
-      <td>The <a href='https://justgo.dev/profile/favourites' rel='noreferrer'>favourites management page</a> UI</td>
-      <td>Not started</td>
-    </tr>
-    <tr>
-      <td>Media queries for mobile views</td>
       <td>Not started</td>
     </tr>
     <tr>
