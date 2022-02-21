@@ -63,6 +63,7 @@ const ScrollableList = forwardRef((props: ScrollableListProps, ref: ForwardedRef
                 key={placeData.osm_id}
                 placeData={placeData}
                 weatherList={weatherList}
+                tagList={['play', 'work', 'dine']}
               />
             );
           })

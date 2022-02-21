@@ -2,12 +2,14 @@
 import Image from 'next/image';
 import WeatherTimeline, { TimeSeriesLocalWeather } from '@/components/weather-timeline/WeatherTimeline';
 import PlaceData from '@/models/PlaceData';
+import Tag from '@/models/Tag';
 import usePageChangeClickHandler from '@/hooks/usePageChangeClickHandler';
 import styles from './PlaceCard.module.css';
 
 interface PlaceCardProps {
   placeData: PlaceData;
   weatherList: TimeSeriesLocalWeather;
+  tagList: Array<Tag>;
 }
 
 export default function PlaceCard(props: PlaceCardProps) {
@@ -53,10 +55,13 @@ export default function PlaceCard(props: PlaceCardProps) {
         <p>{placeAddress}</p>
         <p>{placeRegion}</p>
         <ol className={styles.tagList}>
-          <li className={styles.tagItem}>Chill</li>
-          <li className={styles.tagItem}>Dine</li>
-          <li className={styles.tagItem}>Snack</li>
-          <li className={styles.tagItem}>Drink</li>
+          {
+            props.tagList.map(tag => (
+              <li key={tag} className={styles.tagItem}>
+                {`${tag.charAt(0).toUpperCase()}${tag.slice(1)}`}
+              </li>
+            ))
+          }
         </ol>
       </div>
       <WeatherTimeline

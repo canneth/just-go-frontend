@@ -9,4 +9,4 @@ export const ACTIVITIES = [
   'drink',
   'escape',
   'relax'
-];
+] as const;
