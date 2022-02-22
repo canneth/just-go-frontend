@@ -94,7 +94,11 @@
       <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
     </tr>
     <tr>
-      <td>Mobile views for existing pages (index, /select, /search, /map)</td>
+      <td>Implement favouriting mechanism for PlaceCards</td>
+      <td>Not started</td>
+    </tr>
+    <tr>
+      <td>Implement toast notifications (eg. when adding to and removing from favourites)</td>
       <td>Not started</td>
     </tr>
     <tr>
