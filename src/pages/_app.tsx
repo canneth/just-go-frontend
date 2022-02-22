@@ -8,12 +8,13 @@ import PlaceData from '@/models/PlaceData';
 import '@/styles/global.css';
 import { createContext, Dispatch, SetStateAction, useState, useEffect } from 'react';
 
-const UserContext = createContext<[User | undefined, Dispatch<SetStateAction<User>> | undefined]>([undefined, undefined]);
+export const UserContext = createContext<[User | undefined, Dispatch<SetStateAction<User>> | undefined]>([undefined, undefined]);
+export const FavoritesContext = createContext<[Array<PlaceData['osm_id']>, Dispatch<SetStateAction<Array<PlaceData['osm_id']>>> | undefined]>([[], undefined]);
 
 export default function MyApp({ Component, pageProps }: AppProps) {
 
   const [user, setUser] = useState<User>();
-  const [userFavorites, setUserFavorites] = useState<Array<PlaceData['osm_id']>>();
+  const [favorites, setFavorites] = useState<Array<PlaceData['osm_id']>>([]);
 
   useEffect(() => {
     // TODO: This is temporary for simulating a logged-in user's favorites. Remove after!
@@ -24,7 +25,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       5850832734, // Joe & Dough
       7001537860 // Decathlon
     ];
-    setUserFavorites(simulatedFavorites);
+    setFavorites(simulatedFavorites);
   }, []);
 
   return (
@@ -33,11 +34,13 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <title>JustGo!</title>
       </Head>
       <Script src='https://code.iconify.design/2/2.1.0/iconify.min.js' />
-      <UserContext.Provider value={[user, setUser]}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </UserContext.Provider>
+      <FavoritesContext.Provider value={[favorites, setFavorites]}>
+        <UserContext.Provider value={[user, setUser]}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </UserContext.Provider>
+      </FavoritesContext.Provider>
     </>
   );
 }
