@@ -16,9 +16,9 @@ export default function RevisitPage() {
   const scrollableListRef = useRef<ScrollableListImperativeRef>(null);
   const [lastSearchInput, setLastSearchInput] = useState<string>('');
   const [placeList, setPlaceList] = useState<PlaceData[]>([]);
-  const [pastWeather, setPastWeather] = useState<ForecastAPIResponse>();
-  const [currWeather, setCurrWeather] = useState<ForecastAPIResponse>();
-  const [nextWeather, setNextWeather] = useState<ForecastAPIResponse>();
+  const [pastWeather, setPastWeather] = useState<ForecastAPIResponse | undefined>(undefined);
+  const [currWeather, setCurrWeather] = useState<ForecastAPIResponse | undefined>(undefined);
+  const [nextWeather, setNextWeather] = useState<ForecastAPIResponse | undefined>(undefined);
 
   const intersectionObserverRef = useRef<IntersectionObserver>();
 
@@ -62,6 +62,50 @@ export default function RevisitPage() {
     return () => intersectionObserverRef.current?.disconnect(); // Cleanup the old intersection observer.
   }, [lastSearchInput, placeList]);
 
+  useEffect(() => {
+    if (pastWeather && currWeather && nextWeather) return;
+    (async function () {
+      // Grab and format current date-times for querying weather API.
+      function dateToQueryString(date: Date) {
+        return encodeURIComponent(`
+            ${date.getFullYear()}
+            -${`${date.getMonth() + 1}`.padStart(2, '0')}
+            -${`${date.getDate()}`.padStart(2, '0')}
+            T${`${date.getHours()}`.padStart(2, '0')}
+            :${`${date.getMinutes()}`.padStart(2, '0')}
+            :00
+          `.replaceAll(/\s/g, ''));
+      }
+      const now = new Date();
+      const nowDateQueryString = dateToQueryString(now);
+      now.setHours(now.getHours() - 2);
+      const pastDateQueryString = dateToQueryString(now);
+      now.setHours(now.getHours() - 2);
+      const furtherPastDateQueryString = dateToQueryString(now);
+      // Make the API call to fetch weather forecast for 2 hours from now.
+      const forecastedWeather = (await axios.get<ForecastAPIResponse>(
+        `https://api.data.gov.sg/v1/environment/2-hour-weather-forecast?
+            date_time=${nowDateQueryString}
+          `.replaceAll(/\s/g, '')
+      )).data;
+      // Make the API call to fetch current weather.
+      const currWeather = (await axios.get<ForecastAPIResponse>(
+        `https://api.data.gov.sg/v1/environment/2-hour-weather-forecast?
+            date_time=${pastDateQueryString}
+          `.replaceAll(/\s/g, '')
+      )).data;
+      // Make the API call to fetch weather for 2 hours ago.
+      const pastWeather = (await axios.get<ForecastAPIResponse>(
+        `https://api.data.gov.sg/v1/environment/2-hour-weather-forecast?
+            date_time=${furtherPastDateQueryString}
+          `.replaceAll(/\s/g, '')
+      )).data;
+      // Update weather forecast and current weather.
+      setNextWeather(forecastedWeather);
+      setCurrWeather(currWeather);
+      setPastWeather(pastWeather);
+    })();
+  }, [pastWeather, currWeather, nextWeather]);
 
   function formattedSearch(rawSearchString: string) {
     if (rawSearchString === lastSearchInput) return; // Prevent repeated idempotent API calls.
@@ -84,45 +128,6 @@ export default function RevisitPage() {
       if (searchResults.length <= 0 && rawSearchString === lastSearchInput) return;
       // Update search results to be displayed.
       setPlaceList(searchResults);
-      // Grab and format current date-times for querying weather API.
-      function dateToQueryString(date: Date) {
-        return encodeURIComponent(`
-          ${date.getFullYear()}
-          -${`${date.getMonth() + 1}`.padStart(2, '0')}
-          -${`${date.getDate()}`.padStart(2, '0')}
-          T${`${date.getHours()}`.padStart(2, '0')}
-          :${`${date.getMinutes()}`.padStart(2, '0')}
-          :00
-        `.replaceAll(/\s/g, ''));
-      }
-      const now = new Date();
-      const nowDateQueryString = dateToQueryString(now);
-      now.setHours(now.getHours() - 2);
-      const pastDateQueryString = dateToQueryString(now);
-      now.setHours(now.getHours() - 2);
-      const furtherPastDateQueryString = dateToQueryString(now);
-      // Make the API call to fetch weather forecast for 2 hours from now.
-      const forecastedWeather = (await axios.get<ForecastAPIResponse>(
-        `https://api.data.gov.sg/v1/environment/2-hour-weather-forecast?
-          date_time=${nowDateQueryString}
-        `.replaceAll(/\s/g, '')
-      )).data;
-      // Make the API call to fetch current weather.
-      const currWeather = (await axios.get<ForecastAPIResponse>(
-        `https://api.data.gov.sg/v1/environment/2-hour-weather-forecast?
-          date_time=${pastDateQueryString}
-        `.replaceAll(/\s/g, '')
-      )).data;
-      // Make the API call to fetch weather for 2 hours ago.
-      const pastWeather = (await axios.get<ForecastAPIResponse>(
-        `https://api.data.gov.sg/v1/environment/2-hour-weather-forecast?
-          date_time=${furtherPastDateQueryString}
-        `.replaceAll(/\s/g, '')
-      )).data;
-      // Update weather forecast and current weather.
-      setNextWeather(forecastedWeather);
-      setCurrWeather(currWeather);
-      setPastWeather(pastWeather);
     })();
   }
 
