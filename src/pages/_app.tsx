@@ -6,7 +6,7 @@ import Layout from '@/components/layout/Layout';
 import User from '@/models/User';
 import PlaceData from '@/models/PlaceData';
 import '@/styles/global.css';
-import { createContext, Dispatch, SetStateAction, useState } from 'react';
+import { createContext, Dispatch, SetStateAction, useState, useEffect } from 'react';
 
 const UserContext = createContext<[User | undefined, Dispatch<SetStateAction<User>> | undefined]>([undefined, undefined]);
 
@@ -14,6 +14,18 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
   const [user, setUser] = useState<User>();
   const [userFavorites, setUserFavorites] = useState<Array<PlaceData['osm_id']>>();
+
+  useEffect(() => {
+    // TODO: This is temporary for simulating a logged-in user's favorites. Remove after!
+    const simulatedFavorites = [
+      3666196448, // Starbucks
+      3668837080, // McDonald's
+      9063526147, // Coffee Bean
+      5850832734, // Joe & Dough
+      7001537860 // Decathlon
+    ];
+    setUserFavorites(simulatedFavorites);
+  }, []);
 
   return (
     <>
