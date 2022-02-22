@@ -1,5 +1,6 @@
 
-import { useImperativeHandle, useRef, forwardRef, ForwardedRef } from 'react';
+import { useImperativeHandle, useRef, forwardRef, ForwardedRef, useContext } from 'react';
+import { FavoritesContext } from '@/pages/_app';
 import PlaceCard from './place-card/PlaceCard';
 import { TimeSeriesLocalWeather } from '@/components/weather-timeline/WeatherTimeline';
 import PlaceData from '@/models/PlaceData';
@@ -28,6 +29,8 @@ const ScrollableList = forwardRef((props: ScrollableListProps, ref: ForwardedRef
     get viewportElement() { return selfRef.current!; },
     get listElement() { return listRef.current!; }
   }));
+
+  const [favorites, _] = useContext(FavoritesContext);
 
   return (
     <div ref={selfRef} className={`${styles.overallContainer} ${props.className}`}>
@@ -58,12 +61,14 @@ const ScrollableList = forwardRef((props: ScrollableListProps, ref: ForwardedRef
               { date: nowDate, weather: currWeatherHere, current: true },
               { date: nextDate, weather: nextWeatherHere, current: false }
             ];
+            const isFavorited = favorites.findIndex(x => x === placeData.osm_id) !== -1;
             return (
               <PlaceCard
                 key={placeData.osm_id}
                 placeData={placeData}
                 weatherList={weatherList}
                 tagList={['play', 'work', 'dine']}
+                isFavorited={isFavorited}
               />
             );
           })
