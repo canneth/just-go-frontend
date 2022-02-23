@@ -1,4 +1,5 @@
 
+import { memo } from 'react';
 import Logo from '@/components/svgs/Logo';
 import Button from '@/components/common/Button';
 import usePageChangeClickHandler from '@/hooks/usePageChangeClickHandler';
@@ -8,7 +9,7 @@ interface NavBarProps {
   className?: string;
 }
 
-export default function NavBar(props: NavBarProps) {
+const NavBar = memo((props: NavBarProps) => {
 
   const clickHandlerLogin = usePageChangeClickHandler('/login');
   const clickHandlerSignup = usePageChangeClickHandler('/signup');
@@ -25,4 +26,7 @@ export default function NavBar(props: NavBarProps) {
       </div>
     </nav>
   );
-}
+});
+NavBar.displayName = 'NavBar';
+
+export default NavBar;
