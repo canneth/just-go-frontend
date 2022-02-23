@@ -1,0 +1,34 @@
+
+.overallContainer {
+  position: fixed;
+  top: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+}
+
+.toast {
+  position: relative;
+  margin-bottom: 30px;
+  color: var(--color-grey-white);
+  background: var(--color-grey-base);
+  padding: 10px 16px;
+  border-radius: 4px;
+  font-size: var(--font-size-smaller);
+  visibility: hidden;
+  animation: none;
+}
+.toast.show {
+  visibility: visible;
+  animation: toastAnimation 3s linear both;
+}
+
+@keyframes toastAnimation {
+  0% { opacity: 0; }
+  5% { opacity: 1; }
+  95% { opacity: 1; }
+  100% { opacity: 0; }
+}
