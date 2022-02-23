@@ -45,6 +45,8 @@ export default function RevisitPage() {
             )).data;
             if (searchResults.length <= 0) return;
             setPlaceList(currPlaceList => {
+              // Check if placeList is up-to-date.
+              // Append search results to placeList only if so.
               const currPlaceIdList = currPlaceList.map(placeData => placeData.osm_id);
               const placeIdList = placeList.map(placeData => placeData.osm_id);
               if (currPlaceIdList.every((placeId, i) => placeIdList[i] && placeId === placeIdList[i])) return [...currPlaceList, ...searchResults];
