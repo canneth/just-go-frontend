@@ -1,7 +1,7 @@
 
 import { memo } from 'react';
 import Logo from '@/components/svgs/Logo';
-import Button from '@/components/common/Button';
+import Button from '@/components/common/button/Button';
 import usePageChangeClickHandler from '@/hooks/usePageChangeClickHandler';
 import styles from './NavBar.module.css';
 

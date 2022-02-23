@@ -1,7 +1,7 @@
 
 import { useEffect, useRef } from 'react';
 import Logo from '@/components/svgs/Logo';
-import Button from '@/components/common/Button';
+import Button from '@/components/common/button/Button';
 import usePageFadeInOut from '@/hooks/usePageFadeInOut';
 import usePageChangeClickHandler from '@/hooks/usePageChangeClickHandler';
 import { ACTIVITIES } from '@/globals/constants';
