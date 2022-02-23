@@ -8,7 +8,7 @@ import PlaceData from '@/models/PlaceData';
 import ForecastAPIResponse from '@/models/WeatherForecast';
 import styles from './search.module.css';
 
-export default function RevisitPage() {
+export default function SearchPage() {
   const selfRef = usePageFadeInOut();
   const clickHandlerBack = usePageChangeClickHandler('/select');
 
