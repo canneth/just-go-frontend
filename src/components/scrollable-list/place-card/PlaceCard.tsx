@@ -1,7 +1,7 @@
 
 import Image from 'next/image';
 import { MouseEvent, useContext } from 'react';
-import { FavoritesContext } from '@/pages/_app';
+import { FavoritesContext } from '@/components/layout/Layout';
 import WeatherTimeline, { TimeSeriesLocalWeather } from '@/components/weather-timeline/WeatherTimeline';
 import PlaceData from '@/models/PlaceData';
 import Tag from '@/models/Tag';

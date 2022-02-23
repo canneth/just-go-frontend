@@ -1,6 +1,6 @@
 
 import { useImperativeHandle, useRef, forwardRef, ForwardedRef, useContext } from 'react';
-import { FavoritesContext } from '@/pages/_app';
+import { FavoritesContext } from '@/components/layout/Layout';
 import PlaceCard from './place-card/PlaceCard';
 import { TimeSeriesLocalWeather } from '@/components/weather-timeline/WeatherTimeline';
 import PlaceData from '@/models/PlaceData';
