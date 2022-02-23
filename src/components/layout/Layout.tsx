@@ -45,7 +45,7 @@ export default function Layout(props: LayoutProps) {
         <FavoritesContext.Provider value={favoritesContextProviderValue}>
           <div className={styles.overallContainer}>
             <NavBar className={styles.navBar} />
-            <main className={styles.mainColumn}>
+            <main id='main' className={styles.mainColumn}>
               {props.children}
             </main>
           </div>
