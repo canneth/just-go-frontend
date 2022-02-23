@@ -1,13 +1,14 @@
 
 import Image from 'next/image';
-import { MouseEvent, useContext } from 'react';
+import { MouseEvent, useContext, useState } from 'react';
 import { FavoritesContext } from '@/components/layout/Layout';
 import WeatherTimeline, { TimeSeriesLocalWeather } from '@/components/weather-timeline/WeatherTimeline';
+import FavoriteToggle from '@/components/common/favorite-toggle/FavoriteToggle';
+import Toast from '@/components/common/toast/Toast';
 import PlaceData from '@/models/PlaceData';
 import Tag from '@/models/Tag';
 import usePageChangeClickHandler from '@/hooks/usePageChangeClickHandler';
 import styles from './PlaceCard.module.css';
-import FavoriteToggle from '@/components/common/favorite-toggle/FavoriteToggle';
 
 interface PlaceCardProps {
   placeData: PlaceData;
@@ -19,6 +20,8 @@ interface PlaceCardProps {
 export default function PlaceCard(props: PlaceCardProps) {
 
   const [_, setFavorites] = useContext(FavoritesContext);
+  const [addedToFavorites, setAddedToFavorites] = useState<boolean>(false);
+  const [removedFromFavorites, setRemovedFromFavorites] = useState<boolean>(false);
 
   // Format place data for display.
   const placeName = props.placeData.display_name.split(', ')[0];
@@ -52,37 +55,45 @@ export default function PlaceCard(props: PlaceCardProps) {
     e.stopPropagation();
     if (props.isFavorited) {
       setFavorites!(oldFavorites => oldFavorites.filter(x => x !== props.placeData.osm_id));
+      setRemovedFromFavorites(true);
+      setAddedToFavorites(false);
     } else {
       setFavorites!(oldFavorites => [...oldFavorites, props.placeData.osm_id]);
+      setRemovedFromFavorites(false);
+      setAddedToFavorites(true);
     }
   }
 
   return (
-    <div className={styles.overallContainer} onClick={handleClickCard}>
-      <div className={styles.leftColumn}>
-        <div className={styles.descriptionColumn}>
-          <p className={styles.placeName}>{placeName}</p>
-          <div className={styles.typeLine}>
-            {placeIconSource ? <Image src={placeIconSource} alt='Place icon' height={20} width={20} /> : null}
-            <p>{placeType}</p>
+    <>
+      <div className={styles.overallContainer} onClick={handleClickCard}>
+        <div className={styles.leftColumn}>
+          <div className={styles.descriptionColumn}>
+            <p className={styles.placeName}>{placeName}</p>
+            <div className={styles.typeLine}>
+              {placeIconSource ? <Image src={placeIconSource} alt='Place icon' height={20} width={20} /> : null}
+              <p>{placeType}</p>
+            </div>
+            <p>{placeAddress}</p>
+            <p>{placeRegion}</p>
+            <ol className={styles.tagList}>
+              {
+                props.tagList.map(tag => (
+                  <li key={tag} className={styles.tagItem}>
+                    {`${tag.charAt(0).toUpperCase()}${tag.slice(1)}`}
+                  </li>
+                ))
+              }
+            </ol>
           </div>
-          <p>{placeAddress}</p>
-          <p>{placeRegion}</p>
-          <ol className={styles.tagList}>
-            {
-              props.tagList.map(tag => (
-                <li key={tag} className={styles.tagItem}>
-                  {`${tag.charAt(0).toUpperCase()}${tag.slice(1)}`}
-                </li>
-              ))
-            }
-          </ol>
+          <WeatherTimeline className={styles.weatherTimeline} weatherList={props.weatherList} />
         </div>
-        <WeatherTimeline className={styles.weatherTimeline} weatherList={props.weatherList} />
+        <div className={styles.rightColumn}>
+          {props.isFavorited !== undefined && <FavoriteToggle isFavorited={props.isFavorited} clickHandler={favoriteIconClickHandler} />}
+        </div>
       </div>
-      <div className={styles.rightColumn}>
-        {props.isFavorited !== undefined && <FavoriteToggle isFavorited={props.isFavorited} clickHandler={favoriteIconClickHandler} />}
-      </div>
-    </div>
+      <Toast text={`Added to favorites`} show={addedToFavorites} />
+      <Toast text={`Removed from favorites`} show={removedFromFavorites} />
+    </>
   );
 }
