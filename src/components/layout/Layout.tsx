@@ -1,5 +1,5 @@
 
-import { useState, useEffect, createContext, Dispatch, SetStateAction } from 'react';
+import { useState, useEffect, createContext, Dispatch, SetStateAction, useMemo } from 'react';
 import NavBar from '@/components/nav-bar/NavBar';
 import User from '@/models/User';
 import PlaceData from '@/models/PlaceData';
@@ -9,17 +9,23 @@ interface LayoutProps {
   children: JSX.Element;
 }
 
-export const CurrPageContext = createContext<
-  [HTMLDivElement | null, Dispatch<SetStateAction<HTMLDivElement | null>> | null]
->([null, null]);
-export const UserContext = createContext<[User | undefined, Dispatch<SetStateAction<User>> | undefined]>([undefined, undefined]);
-export const FavoritesContext = createContext<[Array<PlaceData['osm_id']>, Dispatch<SetStateAction<Array<PlaceData['osm_id']>>> | undefined]>([[], undefined]);
+type CurrPageContext = [HTMLDivElement | null, Dispatch<SetStateAction<HTMLDivElement | null>> | null];
+export const CurrPageContext = createContext<CurrPageContext>([null, null]);
+type UserContext = [User | undefined, Dispatch<SetStateAction<User>> | undefined];
+export const UserContext = createContext<UserContext>([undefined, undefined]);
+type FavoritesContext = [Array<PlaceData['osm_id']>, Dispatch<SetStateAction<Array<PlaceData['osm_id']>>> | undefined];
+export const FavoritesContext = createContext<FavoritesContext>([[], undefined]);
 
 export default function Layout(props: LayoutProps) {
 
   const [currPageEl, setCurrPageEl] = useState<HTMLDivElement | null>(null);
   const [user, setUser] = useState<User>();
   const [favorites, setFavorites] = useState<Array<PlaceData['osm_id']>>([]);
+
+  // Create memoised [state, setState] tuples for context providers.
+  const currPageContextProviderValue = useMemo<CurrPageContext>(() => [currPageEl, setCurrPageEl], [currPageEl]);
+  const userContextProviderValue = useMemo<UserContext>(() => [user, setUser], [user]);
+  const favoritesContextProviderValue = useMemo<FavoritesContext>(() => [favorites, setFavorites], [favorites]);
 
   useEffect(() => {
     // TODO: This is temporary for simulating a logged-in user's favorites. Remove after!
@@ -34,9 +40,9 @@ export default function Layout(props: LayoutProps) {
   }, []);
 
   return (
-    <CurrPageContext.Provider value={[currPageEl, setCurrPageEl]}>
-      <UserContext.Provider value={[user, setUser]}>
-        <FavoritesContext.Provider value={[favorites, setFavorites]}>
+    <CurrPageContext.Provider value={currPageContextProviderValue}>
+      <UserContext.Provider value={userContextProviderValue}>
+        <FavoritesContext.Provider value={favoritesContextProviderValue}>
           <div className={styles.overallContainer}>
             <NavBar className={styles.navBar} />
             <main className={styles.mainColumn}>
