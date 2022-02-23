@@ -7,6 +7,7 @@ import PlaceData from '@/models/PlaceData';
 import Tag from '@/models/Tag';
 import usePageChangeClickHandler from '@/hooks/usePageChangeClickHandler';
 import styles from './PlaceCard.module.css';
+import FavoriteToggle from '@/components/common/favorite-toggle/FavoriteToggle';
 
 interface PlaceCardProps {
   placeData: PlaceData;
@@ -77,15 +78,10 @@ export default function PlaceCard(props: PlaceCardProps) {
             }
           </ol>
         </div>
-        <WeatherTimeline
-          className={styles.weatherTimeline}
-          weatherList={props.weatherList}
-        />
+        <WeatherTimeline className={styles.weatherTimeline} weatherList={props.weatherList} />
       </div>
       <div className={styles.rightColumn}>
-        <div className={`${styles.favoriteIconContainer} ${props.isFavorited ? styles.isFavorited : null}`} onClick={favoriteIconClickHandler} >
-          <span className={`iconify ${styles.favoriteIcon}`} data-icon='akar-icons:heart'></span>
-        </div>
+        {props.isFavorited !== undefined && <FavoriteToggle isFavorited={props.isFavorited} clickHandler={favoriteIconClickHandler} />}
       </div>
     </div>
   );
