@@ -94,15 +94,15 @@
       <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
     </tr>
     <tr>
-      <td>Figure out why ScrollableList is rendering so many times on first render of <a href='https://justgo.dev/revisit' rel='noreferrer'>/search page</a></td>
-      <td>Not started</td>
-    </tr>
-    <tr>
-      <td>Implement toast notifications (eg. when adding to and removing from favourites)</td>
+      <td>Refine toast mechanism (including to handle toasts in quick succession)</td>
       <td>Not started</td>
     </tr>
     <tr>
       <td>Make panels in the <a href='https://justgo.dev/map' rel='noreferrer'>/map page</a> retractable</td>
+      <td>Not started</td>
+    </tr>
+    <tr>
+      <td>Figure out why ScrollableList is rendering so many times on first render of <a href='https://justgo.dev/revisit' rel='noreferrer'>/search page</a></td>
       <td>Not started</td>
     </tr>
     <tr>
