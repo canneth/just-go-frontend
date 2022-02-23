@@ -94,7 +94,7 @@
       <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
     </tr>
     <tr>
-      <td>Implement favouriting mechanism for the PlaceCard on the <a href='https://justgo.dev/map' rel='noreferrer'>/map page</a></td>
+      <td>Figure out why ScrollableList is rendering so many times on first render of <a href='https://justgo.dev/revisit' rel='noreferrer'>/search page</a></td>
       <td>Not started</td>
     </tr>
     <tr>
