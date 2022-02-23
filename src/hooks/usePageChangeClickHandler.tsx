@@ -1,7 +1,7 @@
 
 import { CurrPageContext } from '@/components/layout/Layout';
 import { useRouter } from 'next/router';
-import { useEffect, useContext, MouseEventHandler, MouseEvent } from 'react';
+import { useEffect, useContext, MouseEventHandler, MouseEvent, useCallback } from 'react';
 
 interface usePageChangeClickHandlerOptions {
   toExternal?: boolean;
@@ -16,13 +16,13 @@ export default function usePageChangeClickHandler(destinationURL: string, option
     router.prefetch(destinationURL)
   }, [router, destinationURL, options?.toExternal]);
 
-  function handleClick(_: MouseEvent) {
+  const handleClick = useCallback((_: MouseEvent) => {
     if (router.pathname === destinationURL) return;
     currPageEl?.classList.add('pageFadeOut');
     setTimeout(() => {
       router.push(destinationURL);
     }, 250);
-  }
+  }, [router, currPageEl?.classList, destinationURL]);
 
   return handleClick;
 }
