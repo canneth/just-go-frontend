@@ -2,18 +2,19 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import MapPlaceCard from '@/components/map/place-card/MapPlaceCard';
 import MapWeatherCard from '@/components/map/weather-card/MapWeatherCard';
 import { TimeSeriesLocalWeather } from '@/components/weather-timeline/WeatherTimeline';
+import Button from '@/components/common/button/Button';
+import { FavoritesContext } from '@/components/layout/Layout';
 import PlaceData from '@/models/PlaceData';
 import ForecastAPIResponse from '@/models/WeatherForecast';
 import usePageFadeInOut from '@/hooks/usePageFadeInOut';
+import usePageChangeClickHandler from '@/hooks/usePageChangeClickHandler';
 import { haversineDistance, LatLonCoords } from '@/utils/harversineDistance';
 import styles from './map.module.css';
-import Button from '@/components/common/Button';
-import usePageChangeClickHandler from '@/hooks/usePageChangeClickHandler';
 
 const Map = dynamic(() => import('@/components/map/Map'), { ssr: false });
 
@@ -25,6 +26,9 @@ export default function MapPage() {
   const selfRef = usePageFadeInOut();
   const [placeData, setPlaceData] = useState<PlaceData>();
   const [weatherList, setWeatherList] = useState<TimeSeriesLocalWeather>();
+  const [isFavorited, setIsFavorited] = useState<boolean>();
+
+  const [favorites, _] = useContext(FavoritesContext);
 
   const placePostalCode = placeData?.address?.postcode;
 
@@ -107,6 +111,11 @@ export default function MapPage() {
     })();
   }, [osmIdWithType]);
 
+  useEffect(() => {
+    if (!placeData) return;
+    setIsFavorited(favorites.includes(placeData.osm_id));
+  }, [favorites, placeData]);
+
   return (
     <>
       <Head>
@@ -123,7 +132,7 @@ export default function MapPage() {
         </div>
         <div className={styles.foregroundContainer}>
           <div className={styles.sidePanelsContainer}>
-            {placeData && <MapPlaceCard className={styles.placeCard} placeData={placeData} tagList={['work', 'dine']} />}
+            {placeData && <MapPlaceCard className={styles.placeCard} placeData={placeData} tagList={['work', 'dine']} isFavorited={isFavorited} />}
             {placeData && <MapWeatherCard className={styles.weatherCard} weatherList={weatherList} />}
           </div>
           <div className={styles.bottomBarContainer}>

@@ -1,5 +1,8 @@
 
+import { MouseEvent, useContext } from 'react';
 import Image from 'next/image';
+import FavoriteToggle from '@/components/common/favorite-toggle/FavoriteToggle';
+import { FavoritesContext } from '@/components/layout/Layout';
 import PlaceData from '@/models/PlaceData';
 import Tag from '@/models/Tag';
 import styles from './MapPlaceCard.module.css';
@@ -7,10 +10,13 @@ import styles from './MapPlaceCard.module.css';
 interface MapPlaceCardProps {
   placeData: PlaceData;
   tagList: Array<Tag>;
+  isFavorited?: boolean;
   className?: string;
 }
 
 export default function MapPlaceCard(props: MapPlaceCardProps) {
+
+  const [_, setFavorites] = useContext(FavoritesContext);
 
   // Format place data for display.
   const placeName = props.placeData.display_name.split(', ')[0];
@@ -25,6 +31,15 @@ export default function MapPlaceCard(props: MapPlaceCardProps) {
     ${props.placeData.address?.suburb ? props.placeData.address?.suburb : ''} | 
     ${props.placeData.address?.county ? props.placeData.address?.county : ''}
   `;
+
+  function favoriteIconClickHandler(e: MouseEvent) {
+    e.stopPropagation();
+    if (props.isFavorited) {
+      setFavorites!(oldFavorites => oldFavorites.filter(x => x !== props.placeData.osm_id));
+    } else {
+      setFavorites!(oldFavorites => [...oldFavorites, props.placeData.osm_id]);
+    }
+  }
 
   return (
     <div className={`${styles.overallContainer} ${props.className}`}>
@@ -46,6 +61,7 @@ export default function MapPlaceCard(props: MapPlaceCardProps) {
           }
         </ol>
       </div>
+      {props.isFavorited !== undefined && <FavoriteToggle isFavorited={props.isFavorited} clickHandler={favoriteIconClickHandler} />}
     </div>
   );
 }
