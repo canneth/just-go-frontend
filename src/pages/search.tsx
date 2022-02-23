@@ -23,30 +23,38 @@ export default function RevisitPage() {
   const intersectionObserverRef = useRef<IntersectionObserver>();
 
   useEffect(() => {
+    if (searchInputRef.current!.value !== lastSearchInput) return;
+
     function handleIntersection(entries: IntersectionObserverEntry[]) {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           intersectionObserverRef.current!.unobserve(entry.target);
           const formattedParamsString = encodeURIComponent(lastSearchInput);
-          const exclude_place_ids = placeList.map(x => x.place_id).join(',');
+          const placeIdsToExclude = placeList.map(x => x.place_id).join(',');
           (async function () {
             const searchResults = (await axios.get<PlaceData[]>(
               `https://nominatim.openstreetmap.org/search?
-                format=json
-                &countrycodes=sg
-                &addressdetails=1
-                &extratags=1
-                &limit=10
-                &exclude_place_ids=${exclude_place_ids}
-                &q=${formattedParamsString}
-              `.replaceAll(/\s/g, '')
+                  format=json
+                  &countrycodes=sg
+                  &addressdetails=1
+                  &extratags=1
+                  &limit=10
+                  &exclude_place_ids=${placeIdsToExclude}
+                  &q=${formattedParamsString}
+                `.replaceAll(/\s/g, '')
             )).data;
             if (searchResults.length <= 0) return;
-            setPlaceList(placeList => [...placeList, ...searchResults]);
+            setPlaceList(currPlaceList => {
+              const currPlaceIdList = currPlaceList.map(placeData => placeData.osm_id);
+              const placeIdList = placeList.map(placeData => placeData.osm_id);
+              if (currPlaceIdList.every((placeId, i) => placeIdList[i] && placeId === placeIdList[i])) return [...currPlaceList, ...searchResults];
+              return currPlaceList;
+            });
           })();
         }
       });
     }
+
     // Register new intersection observer with the updated intersection handler.
     intersectionObserverRef.current = new IntersectionObserver(
       handleIntersection,
