@@ -4,7 +4,7 @@ import NavBar from '@/components/nav-bar/NavBar';
 import User from '@/models/User';
 import PlaceData from '@/models/PlaceData';
 import styles from './Layout.module.css';
-import ToastManager from '../common/toast/ToastManager';
+import ToastManager from '../common/toast-manager/ToastManager';
 
 interface LayoutProps {
   children: JSX.Element;
