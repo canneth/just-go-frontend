@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import Button from '@/components/common/button/Button';
-import Toast from '@/components/common/toast/Toast';
+import Toast from '@/components/common/toast-manager/toast/Toast';
 import styles from './Test.module.css';
 import usePageFadeInOut from '@/hooks/usePageFadeInOut';
 

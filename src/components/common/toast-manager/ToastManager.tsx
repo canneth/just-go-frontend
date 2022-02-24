@@ -1,6 +1,6 @@
 
 import styles from './ToastManager.module.css';
-import Toast from './Toast';
+import Toast from './toast/Toast';
 
 export default function ToastManager() {
   return (
