@@ -24,8 +24,8 @@ export default function FavoriteToggle(props: FavoriteToggleProps) {
       <div className={`${styles.overallContainer} ${props.isFavorited ? styles.isFavorited : null}`} onClick={clickHandlerWithToasts} >
         <span className={`iconify ${styles.favoriteIcon}`} data-icon='akar-icons:heart'></span>
       </div>
-      <Toast text={`Added to favorites`} trigger={addedToFavorites} />
-      <Toast text={`Removed from favorites`} trigger={removedFromFavorites} />
+      {addedToFavorites && <Toast text={`Added to favorites`} duration={2000} />}
+      {removedFromFavorites && <Toast text={`Removed from favorites`} duration={2000} />}
     </>
   );
 }
