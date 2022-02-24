@@ -1,7 +1,8 @@
 
-import { memo } from 'react';
+import { memo, MouseEvent, useRef, useState } from 'react';
 import Logo from '@/components/svgs/Logo';
 import Button from '@/components/common/button/Button';
+import Toast from '@/components/common/toast-manager/toast/Toast';
 import usePageChangeClickHandler from '@/hooks/usePageChangeClickHandler';
 import styles from './NavBar.module.css';
 
@@ -15,16 +16,31 @@ const NavBar = memo((props: NavBarProps) => {
   const clickHandlerSignup = usePageChangeClickHandler('/signup');
   const clickHandlerHome = usePageChangeClickHandler('/');
 
+  const [showToast, setShowToast] = useState<boolean>(false);
+  const toastTimeoutRef = useRef<NodeJS.Timeout>();
+  const toastDuration = 2000;
+
+  function clickHandlerWithToast(e: MouseEvent) {
+    if (showToast) return;
+    const existingTimeout = toastTimeoutRef.current;
+    if (existingTimeout) clearTimeout(existingTimeout);
+    setShowToast(true);
+    toastTimeoutRef.current = setTimeout(() => setShowToast(false), toastDuration);
+  }
+
   return (
-    <nav className={`${styles.overallContainer} ${props.className}`}>
-      <div className={styles.itemsContainer}>
-        <Logo className={styles.logoSvg} clickHandler={clickHandlerHome} />
-        <ol className={styles.buttonList}>
-          <li><Button text='Log in' clickHandler={clickHandlerLogin} noBackground /></li>
-          <li><Button text='Sign up' clickHandler={clickHandlerSignup} /></li>
-        </ol>
-      </div>
-    </nav>
+    <>
+      <nav className={`${styles.overallContainer} ${props.className}`}>
+        <div className={styles.itemsContainer}>
+          <Logo className={styles.logoSvg} clickHandler={clickHandlerHome} />
+          <ol className={styles.buttonList}>
+            <li><Button text='Log in' clickHandler={clickHandlerWithToast} noBackground /></li>
+            <li><Button text='Sign up' clickHandler={clickHandlerWithToast} /></li>
+          </ol>
+        </div>
+      </nav>
+      {showToast && <Toast text='Sorry! This feature has yet to be implemented. ):' duration={toastDuration} />}
+    </>
   );
 });
 NavBar.displayName = 'NavBar';
