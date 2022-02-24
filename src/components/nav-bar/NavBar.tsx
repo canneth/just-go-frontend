@@ -20,7 +20,7 @@ const NavBar = memo((props: NavBarProps) => {
   const toastTimeoutRef = useRef<NodeJS.Timeout>();
   const toastDuration = 2000;
 
-  function clickHandlerWithToast(e: MouseEvent) {
+  function clickHandlerWithNotImplementedToast(_: MouseEvent) {
     if (showToast) return;
     const existingTimeout = toastTimeoutRef.current;
     if (existingTimeout) clearTimeout(existingTimeout);
@@ -34,8 +34,8 @@ const NavBar = memo((props: NavBarProps) => {
         <div className={styles.itemsContainer}>
           <Logo className={styles.logoSvg} clickHandler={clickHandlerHome} />
           <ol className={styles.buttonList}>
-            <li><Button text='Log in' clickHandler={clickHandlerWithToast} noBackground /></li>
-            <li><Button text='Sign up' clickHandler={clickHandlerWithToast} /></li>
+            <li><Button text='Log in' clickHandler={clickHandlerWithNotImplementedToast} noBackground /></li>
+            <li><Button text='Sign up' clickHandler={clickHandlerWithNotImplementedToast} /></li>
           </ol>
         </div>
       </nav>
