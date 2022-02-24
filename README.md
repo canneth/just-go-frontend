@@ -94,15 +94,7 @@
       <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
     </tr>
     <tr>
-      <td>Refine ToastManager</td>
-      <td>In progress</td>
-    </tr>
-    <tr>
       <td>Make panels in the <a href='https://justgo.dev/map' rel='noreferrer'>/map page</a> retractable</td>
-      <td>Not started</td>
-    </tr>
-    <tr>
-      <td>Figure out why ScrollableList is rendering so many times on first render of <a href='https://justgo.dev/revisit' rel='noreferrer'>/search page</a></td>
       <td>Not started</td>
     </tr>
     <tr>
@@ -160,6 +152,14 @@
     <tr>
       <td>PlaceCard tag list actual functionality (with tags drawn from user data)</td>
       <td>Not started</td>
+    </tr>
+    <tr>
+      <td>Figure out why ScrollableList is rendering so many times on first render of <a href='https://justgo.dev/revisit' rel='noreferrer'>/search page</a></td>
+      <td>Not started</td>
+    </tr>
+    <tr>
+      <td>Figure out a good way to generate and manage distinct toasts from the same action on the same target</td>
+      <td>KIV</td>
     </tr>
     <tr>
       <td>The <a href='https://justgo.dev/recommendations' rel='noreferrer'>recommendations page</a> that recommends places based on a user's favourites (unsure if this is feasible at the moment)</td>
