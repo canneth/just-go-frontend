@@ -94,8 +94,8 @@
       <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
     </tr>
     <tr>
-      <td>Refine toast mechanism (including to handle toasts in quick succession)</td>
-      <td>Not started</td>
+      <td>Refine ToastManager</td>
+      <td>In progress</td>
     </tr>
     <tr>
       <td>Make panels in the <a href='https://justgo.dev/map' rel='noreferrer'>/map page</a> retractable</td>
