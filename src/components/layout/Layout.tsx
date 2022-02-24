@@ -4,6 +4,7 @@ import NavBar from '@/components/nav-bar/NavBar';
 import User from '@/models/User';
 import PlaceData from '@/models/PlaceData';
 import styles from './Layout.module.css';
+import ToastManager from '../common/toast/ToastManager';
 
 interface LayoutProps {
   children: JSX.Element;
@@ -48,6 +49,7 @@ export default function Layout(props: LayoutProps) {
             <main id='main' className={styles.mainColumn}>
               {props.children}
             </main>
+            <ToastManager />
           </div>
         </FavoritesContext.Provider>
       </UserContext.Provider>

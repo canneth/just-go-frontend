@@ -1,29 +1,43 @@
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import styles from './Toast.module.css';
 
 interface ToastProps {
   text: string;
-  show: boolean;
+  trigger: boolean;
 }
 
 export default function Toast(props: ToastProps) {
 
-  const [mounted, setMounted] = useState<boolean>();
+  const selfRef = useRef<HTMLDivElement>(null);
+  const [show, setShow] = useState<boolean>(false);
+  const [documentReady, setDocumentReady] = useState<boolean>();
 
   useEffect(() => {
-    setMounted(true);
-    return () => setMounted(false);
+    setDocumentReady(true);
   }, []);
 
-  const toastJsx = (
-    <div className={styles.overallContainer}>
-      <div className={`${styles.toast} ${props.show ? styles.show : null}`}>
-        {props.text}
-      </div>
-    </div>
-  );
+  useEffect(() => {
+    let timeout: NodeJS.Timeout | null = null;
+    if (!props.trigger) {
+      setShow(false);
+    } else {
+      setShow(true);
+      timeout = setTimeout(() => setShow(false), 2000);
+    }
+    return () => { timeout && clearTimeout(timeout) };
+  }, [props.trigger]);
 
-  return mounted ? createPortal(toastJsx, document.getElementById('main')!) : null;
+  return documentReady ? createPortal(
+    <>
+      {
+        show &&
+        <div ref={selfRef} className={`${styles.toast} ${props.trigger ? styles.trigger : null}`}>
+          {props.text}
+        </div>
+      }
+    </>,
+    document.getElementById('toast-container')!
+  ) : null;
 }
