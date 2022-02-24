@@ -1,19 +1,25 @@
 
 .toast {
+  --transition-duration: 100ms;
+
   position: relative;
   color: var(--color-grey-white);
   background: var(--color-grey-base);
   padding: 10px 16px;
   border-radius: 4px;
   font-size: var(--font-size-smaller);
-  animation: toastAnimation 2s linear both;
   width: fit-content;
   box-shadow: var(--box-shadow-standard);
+  opacity: 0;
+  transition: opacity var(--transition-duration) linear;
 }
 
-@keyframes toastAnimation {
-  0% { opacity: 0; }
-  5% { opacity: 1; }
-  95% { opacity: 1; }
-  100% { opacity: 0; }
+.toast.show {
+  animation: fade-in var(--transition-duration) linear;
+  opacity: 1;
+}
+
+@keyframes fade-in {
+  0% { opacity: 0 }
+  100% { opacity: 1 }
 }

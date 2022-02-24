@@ -5,39 +5,29 @@ import styles from './Toast.module.css';
 
 interface ToastProps {
   text: string;
-  trigger: boolean;
+  duration: number; // in ms.
 }
 
 export default function Toast(props: ToastProps) {
 
   const selfRef = useRef<HTMLDivElement>(null);
-  const [show, setShow] = useState<boolean>(false);
+  const [show, setShow] = useState<boolean>(true);
   const [documentReady, setDocumentReady] = useState<boolean>();
+
+  const transitionDuration = 100; // in ms. Ensure this corresponds to counterpart in css.
 
   useEffect(() => {
     setDocumentReady(true);
-  }, []);
-
-  useEffect(() => {
-    let timeout: NodeJS.Timeout | null = null;
-    if (!props.trigger) {
+    const timeout = setTimeout(() => {
       setShow(false);
-    } else {
-      setShow(true);
-      timeout = setTimeout(() => setShow(false), 2000);
-    }
-    return () => { timeout && clearTimeout(timeout) };
-  }, [props.trigger]);
+    }, props.duration - 2 * transitionDuration);
+    return () => clearTimeout(timeout);
+  }, [props.duration]);
 
   return documentReady ? createPortal(
-    <>
-      {
-        show &&
-        <div ref={selfRef} className={styles.toast}>
-          {props.text}
-        </div>
-      }
-    </>,
+    <div ref={selfRef} className={`${styles.toast} ${show ? styles.show : null}`}>
+      {props.text}
+    </div>,
     document.getElementById('toast-container')!
   ) : null;
 }
