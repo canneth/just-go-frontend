@@ -32,8 +32,8 @@ export default function MapPage() {
 
   const placePostalCode = placeData?.address?.postcode;
 
-  const backButtonClickHandler = usePageChangeClickHandler('/search');
-  const googleMapsButtonClickHandler = usePageChangeClickHandler(`https://www.google.com/maps/place/Singapore+${placePostalCode}`, { toExternal: true });
+  const clickHandlerBack = usePageChangeClickHandler('/search');
+  const clickHandlerGoogleMaps = usePageChangeClickHandler(`https://www.google.com/maps/place/Singapore+${placePostalCode}`, { toExternal: true });
 
   useEffect(() => {
     (async function () {
@@ -136,8 +136,8 @@ export default function MapPage() {
             {placeData && <MapWeatherCard className={styles.weatherCard} weatherList={weatherList} />}
           </div>
           <div className={styles.bottomBarContainer}>
-            <Button text='Back' clickHandler={backButtonClickHandler} />
-            {placePostalCode && <Button text='Open in Google Maps' clickHandler={googleMapsButtonClickHandler} />}
+            <Button text='Back' clickHandler={clickHandlerBack} />
+            {placePostalCode && <Button text='Open in Google Maps' clickHandler={clickHandlerGoogleMaps} />}
           </div>
         </div>
       </div>
