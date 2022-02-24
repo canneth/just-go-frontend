@@ -4,7 +4,6 @@ import { MouseEvent, useContext, useState } from 'react';
 import { FavoritesContext } from '@/components/layout/Layout';
 import WeatherTimeline, { TimeSeriesLocalWeather } from '@/components/weather-timeline/WeatherTimeline';
 import FavoriteToggle from '@/components/common/favorite-toggle/FavoriteToggle';
-import Toast from '@/components/common/toast-manager/toast/Toast';
 import PlaceData from '@/models/PlaceData';
 import Tag from '@/models/Tag';
 import usePageChangeClickHandler from '@/hooks/usePageChangeClickHandler';
@@ -20,8 +19,6 @@ interface PlaceCardProps {
 export default function PlaceCard(props: PlaceCardProps) {
 
   const [_, setFavorites] = useContext(FavoritesContext);
-  const [addedToFavorites, setAddedToFavorites] = useState<boolean>(false);
-  const [removedFromFavorites, setRemovedFromFavorites] = useState<boolean>(false);
 
   // Format place data for display.
   const placeName = props.placeData.display_name.split(', ')[0];
@@ -55,12 +52,8 @@ export default function PlaceCard(props: PlaceCardProps) {
     e.stopPropagation();
     if (props.isFavorited) {
       setFavorites!(oldFavorites => oldFavorites.filter(x => x !== props.placeData.osm_id));
-      setRemovedFromFavorites(true);
-      setAddedToFavorites(false);
     } else {
       setFavorites!(oldFavorites => [...oldFavorites, props.placeData.osm_id]);
-      setRemovedFromFavorites(false);
-      setAddedToFavorites(true);
     }
   }
 
@@ -92,8 +85,6 @@ export default function PlaceCard(props: PlaceCardProps) {
           {props.isFavorited !== undefined && <FavoriteToggle isFavorited={props.isFavorited} clickHandler={favoriteIconClickHandler} />}
         </div>
       </div>
-      <Toast text={`Added to favorites`} trigger={addedToFavorites} />
-      <Toast text={`Removed from favorites`} trigger={removedFromFavorites} />
     </>
   );
 }
