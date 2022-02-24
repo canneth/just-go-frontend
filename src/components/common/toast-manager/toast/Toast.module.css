@@ -6,12 +6,9 @@
   padding: 10px 16px;
   border-radius: 4px;
   font-size: var(--font-size-smaller);
-  animation: none;
+  animation: toastAnimation 2s linear both;
   width: fit-content;
-}
-.toast.trigger {
-  animation: toastAnimation linear both;
-  animation-duration: 2s;
+  box-shadow: var(--box-shadow-standard);
 }
 
 @keyframes toastAnimation {

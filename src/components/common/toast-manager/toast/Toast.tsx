@@ -33,7 +33,7 @@ export default function Toast(props: ToastProps) {
     <>
       {
         show &&
-        <div ref={selfRef} className={`${styles.toast} ${props.trigger ? styles.trigger : null}`}>
+        <div ref={selfRef} className={styles.toast}>
           {props.text}
         </div>
       }
