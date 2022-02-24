@@ -5,7 +5,7 @@
   padding: 16px 50px;
   border-radius: 6px;
   background: var(--color-grey-white);
-  box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--box-shadow-standard);
 }
 
 .weatherTimeline {

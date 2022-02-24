@@ -37,6 +37,10 @@
   --color-grey-dark: #505050;
   --color-grey-black: #000000;
 
+  /* Box shadows */
+  --box-shadow-standard: 2px 2px 4px 1px rgba(0, 0, 0, 0.1);
+  --box-shadow-hover: 3px 3px 6px 1px rgba(0, 0, 0, 0.05);
+
   /* Scrollbar styling for Firefox */
   scrollbar-width: thin;
   scrollbar-color: var(--color-grey-light) var(--color-grey-offwhite);

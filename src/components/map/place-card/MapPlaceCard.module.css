@@ -9,7 +9,7 @@
   width: 400px;
   padding: 24px;
   background: var(--color-grey-white);
-  box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--box-shadow-standard);
 }
 .descriptionColumn {
   position: relative;
