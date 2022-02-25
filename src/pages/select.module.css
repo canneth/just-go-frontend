@@ -13,6 +13,7 @@
 .prompt {
   position: relative;
   font-weight: bold;
+  font-size: clamp(20px, 5vw, 32px);
   margin-bottom: 80px;
 }
 .optionsList {
