@@ -55,7 +55,6 @@
 }
 .weatherContainer > .weatherTimeline {
   position: relative;
-  width: 250px;
 }
 
 .tagListContainer {
@@ -83,6 +82,9 @@
   .weatherContainer {
     margin-right: 0px;
     justify-content: center;
+  }
+  .weatherContainer > .weatherTimeline {
+    width: 200px;
   }
   .tagListContainer {
     margin-left: auto;
