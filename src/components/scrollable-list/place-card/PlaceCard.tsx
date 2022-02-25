@@ -5,14 +5,15 @@ import { FavoritesContext } from '@/components/layout/Layout';
 import WeatherTimeline, { TimeSeriesLocalWeather } from '@/components/weather-timeline/WeatherTimeline';
 import FavoriteToggle from '@/components/common/favorite-toggle/FavoriteToggle';
 import PlaceData from '@/models/PlaceData';
-import Tag from '@/models/Tag';
+import TagLabel from '@/models/TagLabel';
 import usePageChangeClickHandler from '@/hooks/usePageChangeClickHandler';
 import styles from './PlaceCard.module.css';
+import TagList from '@/components/common/tag-list/TagList';
 
 interface PlaceCardProps {
   placeData: PlaceData;
   weatherList: TimeSeriesLocalWeather;
-  tagList: Array<Tag>;
+  tagList: Array<TagLabel>;
   isFavorited?: boolean;
 }
 
@@ -60,29 +61,25 @@ export default function PlaceCard(props: PlaceCardProps) {
   return (
     <>
       <div className={styles.overallContainer} onClick={handleClickCard}>
-        <div className={styles.leftColumn}>
-          <div className={styles.descriptionColumn}>
-            <p className={styles.placeName}>{placeName}</p>
-            <div className={styles.typeLine}>
-              {placeIconSource ? <Image src={placeIconSource} alt='Place icon' height={20} width={20} /> : null}
-              <p>{placeType}</p>
+        <div className={styles.topSection}>
+          <div className={styles.leftColumn}>
+            <div className={styles.descriptionColumn}>
+              <p className={styles.placeName}>{placeName}</p>
+              <div className={styles.typeLine}>
+                {placeIconSource ? <Image src={placeIconSource} alt='Place icon' height={20} width={20} /> : null}
+                <p>{placeType}</p>
+              </div>
+              <p>{placeAddress}</p>
+              <p>{placeRegion}</p>
             </div>
-            <p>{placeAddress}</p>
-            <p>{placeRegion}</p>
-            <ol className={styles.tagList}>
-              {
-                props.tagList.map(tag => (
-                  <li key={tag} className={styles.tagItem}>
-                    {`${tag.charAt(0).toUpperCase()}${tag.slice(1)}`}
-                  </li>
-                ))
-              }
-            </ol>
+            <WeatherTimeline className={styles.weatherTimeline} weatherList={props.weatherList} />
           </div>
-          <WeatherTimeline className={styles.weatherTimeline} weatherList={props.weatherList} />
+          <div className={styles.rightColumn}>
+            {props.isFavorited !== undefined && <FavoriteToggle isFavorited={props.isFavorited} clickHandler={favoriteIconClickHandler} />}
+          </div>
         </div>
-        <div className={styles.rightColumn}>
-          {props.isFavorited !== undefined && <FavoriteToggle isFavorited={props.isFavorited} clickHandler={favoriteIconClickHandler} />}
+        <div className={styles.bottomSection}>
+          <TagList tagList={props.tagList} />
         </div>
       </div>
     </>
