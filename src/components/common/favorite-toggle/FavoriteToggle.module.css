@@ -18,6 +18,7 @@
   transform: scale(0);
   opacity: 1;
   transition: transform 200ms ease-out, opacity 200ms ease-out;
+  pointer-events: none;
 }
 .favoriteIcon {
   height: 100%;
