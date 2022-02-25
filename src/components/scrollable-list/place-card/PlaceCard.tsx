@@ -61,22 +61,22 @@ export default function PlaceCard(props: PlaceCardProps) {
   return (
     <>
       <div className={styles.overallContainer} onClick={handleClickCard}>
-        <div className={styles.topSection}>
-          <div className={styles.leftColumn}>
-            <div className={styles.descriptionColumn}>
-              <p className={styles.placeName}>{placeName}</p>
-              <div className={styles.typeLine}>
-                {placeIconSource ? <Image src={placeIconSource} alt='Place icon' height={20} width={20} /> : null}
-                <p>{placeType}</p>
-              </div>
-              <p>{placeAddress}</p>
-              <p>{placeRegion}</p>
+        <div className={styles.layoutGrid}>
+          <div className={styles.placeDetailsContainer}>
+            <p className={styles.placeName}>{placeName}</p>
+            <div className={styles.typeLine}>
+              {placeIconSource ? <Image src={placeIconSource} alt='Place icon' height={20} width={20} /> : null}
+              <p>{placeType}</p>
             </div>
+            <p>{placeAddress}</p>
+            <p>{placeRegion}</p>
+          </div>
+          <div className={styles.weatherContainer}>
             <WeatherTimeline className={styles.weatherTimeline} weatherList={props.weatherList} />
           </div>
-        </div>
-        <div className={styles.bottomSection}>
-          <TagList tagList={props.tagList} />
+          <div className={styles.tagListContainer}>
+            <TagList tagList={props.tagList} />
+          </div>
         </div>
         {props.isFavorited !== undefined && <FavoriteToggle className={styles.favoriteToggle} isFavorited={props.isFavorited} clickHandler={favoriteIconClickHandler} />}
       </div>
