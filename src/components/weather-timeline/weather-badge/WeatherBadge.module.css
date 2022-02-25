@@ -18,7 +18,7 @@
 .iconContainer {
   color: var(--color-grey-black);
   position: relative;
-  width: 60px;
+  width: auto;
   transition:
     transform 100ms ease-out,
     filter 100ms ease-out,
@@ -48,4 +48,5 @@
 
 .time {
   font-size: var(--font-size-smaller);
+  margin-top: -5px;
 }

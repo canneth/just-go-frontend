@@ -2,7 +2,11 @@
 .overallContainer {
   position: relative;
   display: flex;
-  justify-content: space-between;
-  width: fit-content;
+  gap: 30px;
   align-items: center;
+}
+
+.weatherBadgeContainer {
+  position: relative;
+  max-width: 60px;
 }

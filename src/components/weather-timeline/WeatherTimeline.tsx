@@ -23,7 +23,9 @@ const WeatherTimeline = memo((props: WeatherTimelineProps) => {
     <div className={`${styles.overallContainer} ${props.className}`}>
       {
         props.weatherList.map(x => (
-          <WeatherBadge key={x.date.toISOString()} date={x.date} weather={x.weather} current={x.current} />
+          <div key={x.date.toISOString()} className={styles.weatherBadgeContainer}>
+            <WeatherBadge date={x.date} weather={x.weather} current={x.current} />
+          </div>
         ))
       }
     </div>
