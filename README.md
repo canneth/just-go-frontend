@@ -94,8 +94,12 @@
       <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
     </tr>
     <tr>
-      <td>Mobile views for existing pages</td>
-      <td>In progress</td>
+      <td>Make NavBar media-responsive</td>
+      <td>Up next!</td>
+    </tr>
+    <tr>
+      <td>Mobile view for the <a href='https://justgo.dev/map' rel='noreferrer'>/map page</a></td>
+      <td>Not started</td>
     </tr>
     <tr>
       <td>Make panels in the <a href='https://justgo.dev/map' rel='noreferrer'>/map page</a> retractable</td>
