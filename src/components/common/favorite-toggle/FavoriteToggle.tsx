@@ -6,6 +6,7 @@ import styles from './FavoriteToggle.module.css';
 interface FavoriteToggleProps {
   clickHandler: MouseEventHandler;
   isFavorited: boolean;
+  className?: string;
 }
 
 export default function FavoriteToggle(props: FavoriteToggleProps) {
@@ -21,7 +22,7 @@ export default function FavoriteToggle(props: FavoriteToggleProps) {
 
   return (
     <>
-      <div className={`${styles.overallContainer} ${props.isFavorited ? styles.isFavorited : null}`} onClick={clickHandlerWithToasts} >
+      <div className={`${styles.overallContainer} ${props.className} ${props.isFavorited ? styles.isFavorited : null}`} onClick={clickHandlerWithToasts} >
         <span className={`iconify ${styles.favoriteIcon}`} data-icon='akar-icons:heart'></span>
       </div>
       {addedToFavorites && <Toast text={`Added to favorites`} duration={2000} />}
