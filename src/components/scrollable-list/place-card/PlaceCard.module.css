@@ -1,11 +1,13 @@
 
 .overallContainer {
+  --card-padding: 16px;
+
   position: relative;
   display: flex;
   flex-direction: column;
   border-radius: 6px;
   width: 100%;
-  padding: 16px;
+  padding: var(--card-padding);
   box-shadow: var(--box-shadow-standard);
   transition: transform 100ms ease-out, box-shadow 100ms ease-out;
 }
@@ -60,4 +62,8 @@
 .bottomSection {
   position: relative;
   margin-top: 8px;
+}
+.favoriteToggle {
+  position: absolute;
+  right: var(--card-padding);
 }

@@ -74,13 +74,11 @@ export default function PlaceCard(props: PlaceCardProps) {
             </div>
             <WeatherTimeline className={styles.weatherTimeline} weatherList={props.weatherList} />
           </div>
-          <div className={styles.rightColumn}>
-            {props.isFavorited !== undefined && <FavoriteToggle isFavorited={props.isFavorited} clickHandler={favoriteIconClickHandler} />}
-          </div>
         </div>
         <div className={styles.bottomSection}>
           <TagList tagList={props.tagList} />
         </div>
+        {props.isFavorited !== undefined && <FavoriteToggle className={styles.favoriteToggle} isFavorited={props.isFavorited} clickHandler={favoriteIconClickHandler} />}
       </div>
     </>
   );
