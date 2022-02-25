@@ -23,6 +23,12 @@
   align-items: flex-start;
   margin-top: 50px;
 }
+.heroTextBlock {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
 .pretitle {
   position: relative;
   display: flex;
@@ -30,7 +36,7 @@
   align-items: center;
   justify-content: flex-start;
   height: 56px;
-  font-size: 42px;
+  font-size: clamp(24px, 5vw, 48px);
   margin-bottom: -30px;
 }
 .textCarousel {
@@ -51,7 +57,7 @@
   border-right: 4px solid #000000;
 }
 .title {
-  font-size: 150px;
+  font-size: clamp(80px, 16vw, 150px);
 }
 .buttonList {
   display: flex;
@@ -62,7 +68,7 @@
   margin-top: 25px;
 }
 .logoSvg {
-  width: clamp(100px,20vw,250px);
+  width: clamp(80px, 20vw, 250px);
   height: auto;
   animation: logo-enter 800ms ease-out both;
 }
@@ -92,4 +98,20 @@
 @keyframes text-carousel-curtain-open {
   0% { left: 10%; }
   100% { left: 125%; }
+}
+
+/* Media queries */
+@media only screen and (max-width: 600px) {
+  .heroContainer {
+    flex-direction: column-reverse;
+    gap: 0px;
+  }
+  .heroLeftBlock {
+    margin-top: 0px;
+    align-items: center;
+  }
+  .heroTextBlock {
+    align-items: center;
+  }
+
 }
