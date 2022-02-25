@@ -4,12 +4,12 @@ import Image from 'next/image';
 import FavoriteToggle from '@/components/common/favorite-toggle/FavoriteToggle';
 import { FavoritesContext } from '@/components/layout/Layout';
 import PlaceData from '@/models/PlaceData';
-import Tag from '@/models/Tag';
+import TagLabel from '@/models/TagLabel';
 import styles from './MapPlaceCard.module.css';
 
 interface MapPlaceCardProps {
   placeData: PlaceData;
-  tagList: Array<Tag>;
+  tagList: Array<TagLabel>;
   isFavorited?: boolean;
   className?: string;
 }
