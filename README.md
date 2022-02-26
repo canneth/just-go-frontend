@@ -94,7 +94,7 @@
       <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
     </tr>
     <tr>
-      <td>Throw out janky custom toast implementation and use react-toastify instead</td>
+      <td>Rework toast mechanism, using MobX to manage toast list</td>
       <td>Up next!</td>
     </tr>
     <tr>
