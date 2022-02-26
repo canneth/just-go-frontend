@@ -94,7 +94,7 @@
       <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
     </tr>
     <tr>
-      <td>Use Redux to manage global state instead of Context</td>
+      <td>Use MobX to manage global state instead of Context</td>
       <td>In progress</td>
     </tr>
     <tr>
