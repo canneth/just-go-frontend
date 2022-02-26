@@ -94,8 +94,12 @@
       <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
     </tr>
     <tr>
+      <td>Throw out janky custom toast implementation and use react-toastify instead</td>
+      <td>Up next!</td>
+    </tr>
+    <tr>
       <td>Use MobX to manage global state instead of Context</td>
-      <td>In progress</td>
+      <td>Not started</td>
     </tr>
     <tr>
       <td>Remove unnecessary React.memo() uses</td>
