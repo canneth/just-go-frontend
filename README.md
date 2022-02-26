@@ -98,6 +98,10 @@
       <td>In progress</td>
     </tr>
     <tr>
+      <td>Remove unnecessary React.memo() uses</td>
+      <td>Not started</td>
+    </tr>
+    <tr>
       <td>Make NavBar media-responsive</td>
       <td>Not started</td>
     </tr>
