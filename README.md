@@ -94,8 +94,12 @@
       <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
     </tr>
     <tr>
+      <td>Use Redux to manage global state instead of Context</td>
+      <td>In progress</td>
+    </tr>
+    <tr>
       <td>Make NavBar media-responsive</td>
-      <td>Up next!</td>
+      <td>Not started</td>
     </tr>
     <tr>
       <td>Mobile view for the <a href='https://justgo.dev/map' rel='noreferrer'>/map page</a></td>
