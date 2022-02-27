@@ -49,7 +49,7 @@ export default function Layout(props: LayoutProps) {
             <main id='main' className={styles.mainColumn}>
               {props.children}
             </main>
-            <ToastManager />
+            <ToastManager defaultToastDuration={2000} maxConcurrentToastCount={5} />
           </div>
         </FavoritesContext.Provider>
       </UserContext.Provider>
