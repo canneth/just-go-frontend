@@ -94,12 +94,8 @@
       <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
     </tr>
     <tr>
-      <td>Rework toast mechanism, using MobX to manage toast list</td>
+      <td>Use MobX to manage global state (user, favorites, etc.) instead of Context</td>
       <td>Up next!</td>
-    </tr>
-    <tr>
-      <td>Use MobX to manage global state instead of Context</td>
-      <td>Not started</td>
     </tr>
     <tr>
       <td>Remove unnecessary React.memo() uses</td>
