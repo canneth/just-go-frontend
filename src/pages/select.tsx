@@ -1,8 +1,8 @@
 
-import { MouseEvent, useRef, useState } from 'react';
-import Toast from '@/components/common/toast-manager/toast/Toast';
+import { MouseEvent } from 'react';
 import usePageChangeClickHandler from '@/hooks/usePageChangeClickHandler';
 import usePageFadeInOut from '@/hooks/usePageFadeInOut';
+import { toast } from '@/components/common/toast-manager/ToastManager';
 import styles from './select.module.css';
 
 export default function SelectPage() {
@@ -12,16 +12,8 @@ export default function SelectPage() {
   const clickHandlerRecommendations = usePageChangeClickHandler('/recommendations');
   const clickHandlerSearch = usePageChangeClickHandler('/search');
 
-  const [showToast, setShowToast] = useState<boolean>(false);
-  const toastTimeoutRef = useRef<NodeJS.Timeout>();
-  const toastDuration = 2000;
-
   function clickHandlerWithNotImplementedToast(_: MouseEvent) {
-    if (showToast) return;
-    const existingTimeout = toastTimeoutRef.current;
-    if (existingTimeout) clearTimeout(existingTimeout);
-    setShowToast(true);
-    toastTimeoutRef.current = setTimeout(() => setShowToast(false), toastDuration);
+    toast('Sorry, this feature has yet to be implemented! ):');
   }
 
   return (
@@ -36,7 +28,6 @@ export default function SelectPage() {
           <li className={styles.option} onClick={clickHandlerSearch}><a>I have a place in mind!</a></li>
         </ol>
       </div>
-      {showToast && <Toast text='Sorry! This feature has yet to be implemented. ):' duration={toastDuration} />}
     </>
   );
 }

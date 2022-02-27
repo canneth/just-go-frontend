@@ -1,9 +1,9 @@
 
-import { memo, MouseEvent, useRef, useState } from 'react';
+import { memo, MouseEvent } from 'react';
 import Logo from '@/components/svgs/Logo';
 import Button from '@/components/common/button/Button';
-import Toast from '@/components/common/toast-manager/toast/Toast';
 import usePageChangeClickHandler from '@/hooks/usePageChangeClickHandler';
+import { toast } from '@/components/common/toast-manager/ToastManager';
 import styles from './NavBar.module.css';
 
 interface NavBarProps {
@@ -16,16 +16,8 @@ const NavBar = memo((props: NavBarProps) => {
   const clickHandlerSignup = usePageChangeClickHandler('/signup');
   const clickHandlerHome = usePageChangeClickHandler('/');
 
-  const [showToast, setShowToast] = useState<boolean>(false);
-  const toastTimeoutRef = useRef<NodeJS.Timeout>();
-  const toastDuration = 2000;
-
   function clickHandlerWithNotImplementedToast(_: MouseEvent) {
-    if (showToast) return;
-    const existingTimeout = toastTimeoutRef.current;
-    if (existingTimeout) clearTimeout(existingTimeout);
-    setShowToast(true);
-    toastTimeoutRef.current = setTimeout(() => setShowToast(false), toastDuration);
+    toast('Sorry, this feature has yet to be implemented! ):');
   }
 
   return (
@@ -39,7 +31,6 @@ const NavBar = memo((props: NavBarProps) => {
           </ol>
         </div>
       </nav>
-      {showToast && <Toast text='Sorry! This feature has yet to be implemented. ):' duration={toastDuration} />}
     </>
   );
 });
