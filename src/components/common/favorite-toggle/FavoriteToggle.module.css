@@ -6,6 +6,7 @@
   transition: transform 100ms ease-out;
 }
 .overallContainer:hover {
+  cursor: pointer;
   transform: scale(1.1);
 }
 .overallContainer::before {

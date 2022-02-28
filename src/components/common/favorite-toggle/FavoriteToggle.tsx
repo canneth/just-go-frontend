@@ -1,26 +1,39 @@
 
 import { MouseEvent, MouseEventHandler } from 'react';
+import { observer } from 'mobx-react';
 import { toast } from '@/components/common/toast-manager/ToastManager';
+import PlaceData from '@/models/PlaceData';
+import { rootStore } from '@/stores/RootStore';
 import styles from './FavoriteToggle.module.css';
 
 interface FavoriteToggleProps {
-  clickHandler: MouseEventHandler;
-  isFavorited: boolean;
+  placeId: PlaceData['osm_id'];
   className?: string;
 }
 
-export default function FavoriteToggle(props: FavoriteToggleProps) {
+const FavoriteToggle = observer((props: FavoriteToggleProps) => {
 
-  function clickHandlerWithToasts(e: MouseEvent) {
-    props.isFavorited ? toast('Removed from favourites') : toast('Added to favourites');
-    props.clickHandler(e);
+  function clickHandler(e: MouseEvent) {
+    e.stopPropagation();
+    if (rootStore.domain.favorites.hasPlace(props.placeId)) {
+      rootStore.domain.favorites.removePlace(props.placeId);
+      toast('Removed from favourites');
+    } else {
+      rootStore.domain.favorites.addPlace(props.placeId);
+      toast('Added to favourites');
+    }
   }
 
   return (
     <>
-      <div className={`${styles.overallContainer} ${props.className} ${props.isFavorited ? styles.isFavorited : null}`} onClick={clickHandlerWithToasts} >
+      <div
+        className={`${styles.overallContainer} ${props.className} ${rootStore.domain.favorites.hasPlace(props.placeId) ? styles.isFavorited : null}`}
+        onClick={clickHandler}
+      >
         <span className={`iconify ${styles.favoriteIcon}`} data-icon='akar-icons:heart'></span>
       </div>
     </>
   );
-}
+});
+
+export default FavoriteToggle;

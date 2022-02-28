@@ -1,25 +1,23 @@
 
 import Image from 'next/image';
-import { MouseEvent, useContext, useState } from 'react';
-import { FavoritesContext } from '@/components/layout/Layout';
+import { MouseEvent } from 'react';
 import WeatherTimeline, { TimeSeriesLocalWeather } from '@/components/weather-timeline/WeatherTimeline';
 import FavoriteToggle from '@/components/common/favorite-toggle/FavoriteToggle';
+import TagList from '@/components/common/tag-list/TagList';
 import PlaceData from '@/models/PlaceData';
 import TagLabel from '@/models/TagLabel';
 import usePageChangeClickHandler from '@/hooks/usePageChangeClickHandler';
+import { rootStore } from '@/stores/RootStore';
 import styles from './PlaceCard.module.css';
-import TagList from '@/components/common/tag-list/TagList';
+import { observer } from 'mobx-react';
 
 interface PlaceCardProps {
   placeData: PlaceData;
   weatherList: TimeSeriesLocalWeather;
   tagList: Array<TagLabel>;
-  isFavorited?: boolean;
 }
 
-export default function PlaceCard(props: PlaceCardProps) {
-
-  const [_, setFavorites] = useContext(FavoritesContext);
+const PlaceCard = observer((props: PlaceCardProps) => {
 
   // Format place data for display.
   const placeName = props.placeData.display_name.split(', ')[0];
@@ -49,37 +47,31 @@ export default function PlaceCard(props: PlaceCardProps) {
   }
   const handleClickCard = usePageChangeClickHandler(`/map?osmIdWithType=${placeOsmId}`);
 
-  function favoriteIconClickHandler(e: MouseEvent) {
-    e.stopPropagation();
-    if (props.isFavorited) {
-      setFavorites!(oldFavorites => oldFavorites.filter(x => x !== props.placeData.osm_id));
-    } else {
-      setFavorites!(oldFavorites => [...oldFavorites, props.placeData.osm_id]);
-    }
-  }
-
   return (
-    <>
-      <div className={styles.overallContainer} onClick={handleClickCard}>
-        <div className={styles.layoutGrid}>
-          <div className={styles.placeDetailsContainer}>
-            <p className={styles.placeName}>{placeName}</p>
-            <div className={styles.typeLine}>
-              {placeIconSource ? <Image src={placeIconSource} alt='Place icon' height={20} width={20} /> : null}
-              <p>{placeType}</p>
-            </div>
-            <p>{placeAddress}</p>
-            <p>{placeRegion}</p>
+    <div className={styles.overallContainer} onClick={handleClickCard}>
+      <div className={styles.layoutGrid}>
+        <div className={styles.placeDetailsContainer}>
+          <p className={styles.placeName}>{placeName}</p>
+          <div className={styles.typeLine}>
+            {placeIconSource ? <Image src={placeIconSource} alt='Place icon' height={20} width={20} /> : null}
+            <p>{placeType}</p>
           </div>
-          <div className={styles.weatherContainer}>
-            <WeatherTimeline className={styles.weatherTimeline} weatherList={props.weatherList} />
-          </div>
-          <div className={styles.tagListContainer}>
-            <TagList tagList={props.tagList} />
-          </div>
+          <p>{placeAddress}</p>
+          <p>{placeRegion}</p>
         </div>
-        {props.isFavorited !== undefined && <FavoriteToggle className={styles.favoriteToggle} isFavorited={props.isFavorited} clickHandler={favoriteIconClickHandler} />}
+        <div className={styles.weatherContainer}>
+          <WeatherTimeline className={styles.weatherTimeline} weatherList={props.weatherList} />
+        </div>
+        <div className={styles.tagListContainer}>
+          <TagList tagList={props.tagList} />
+        </div>
       </div>
-    </>
+      <FavoriteToggle
+        className={styles.favoriteToggle}
+        placeId={props.placeData.osm_id}
+      />
+    </div>
   );
-}
+});
+
+export default PlaceCard;

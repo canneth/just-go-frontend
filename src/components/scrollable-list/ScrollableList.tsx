@@ -1,12 +1,12 @@
 
-import { useImperativeHandle, useRef, forwardRef, ForwardedRef, useContext } from 'react';
-import { FavoritesContext } from '@/components/layout/Layout';
+import { useImperativeHandle, useRef, forwardRef, ForwardedRef } from 'react';
 import PlaceCard from './place-card/PlaceCard';
 import { TimeSeriesLocalWeather } from '@/components/weather-timeline/WeatherTimeline';
 import PlaceData from '@/models/PlaceData';
 import ForecastAPIResponse from '@/models/WeatherForecast';
 import { haversineDistance, LatLonCoords } from '@/utils/harversineDistance';
 import styles from './ScrollableList.module.css';
+import { observer } from 'mobx-react';
 
 interface ScrollableListProps {
   placeList: PlaceData[];
@@ -29,8 +29,6 @@ const ScrollableList = forwardRef((props: ScrollableListProps, ref: ForwardedRef
     get viewportElement() { return selfRef.current!; },
     get listElement() { return listRef.current!; }
   }));
-
-  const [favorites, _] = useContext(FavoritesContext);
 
   return (
     <div ref={selfRef} className={`${styles.overallContainer} ${props.className}`}>
@@ -61,14 +59,12 @@ const ScrollableList = forwardRef((props: ScrollableListProps, ref: ForwardedRef
               { date: nowDate, weather: currWeatherHere, current: true },
               { date: nextDate, weather: nextWeatherHere, current: false }
             ];
-            const isFavorited = favorites.findIndex(x => x === placeData.osm_id) !== -1;
             return (
               <PlaceCard
                 key={placeData.osm_id}
                 placeData={placeData}
                 weatherList={weatherList}
                 tagList={['play', 'work', 'dine']}
-                isFavorited={isFavorited}
               />
             );
           })
@@ -79,4 +75,4 @@ const ScrollableList = forwardRef((props: ScrollableListProps, ref: ForwardedRef
 });
 ScrollableList.displayName = 'ScrollableList';
 
-export default ScrollableList;
+export default observer(ScrollableList);
