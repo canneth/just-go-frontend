@@ -1,13 +1,11 @@
 
 import Image from 'next/image';
-import { MouseEvent } from 'react';
 import WeatherTimeline, { TimeSeriesLocalWeather } from '@/components/weather-timeline/WeatherTimeline';
 import FavoriteToggle from '@/components/common/favorite-toggle/FavoriteToggle';
 import TagList from '@/components/common/tag-list/TagList';
 import PlaceData from '@/models/PlaceData';
 import TagLabel from '@/models/TagLabel';
 import usePageChangeClickHandler from '@/hooks/usePageChangeClickHandler';
-import { rootStore } from '@/stores/RootStore';
 import styles from './PlaceCard.module.css';
 import { observer } from 'mobx-react';
 

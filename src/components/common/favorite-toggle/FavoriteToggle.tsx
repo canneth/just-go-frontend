@@ -1,9 +1,9 @@
 
-import { MouseEvent, MouseEventHandler } from 'react';
+import { MouseEvent } from 'react';
 import { observer } from 'mobx-react';
 import { toast } from '@/components/common/toast-manager/ToastManager';
 import PlaceData from '@/models/PlaceData';
-import { rootStore } from '@/stores/RootStore';
+import { rootStore } from '@/pages/_app';
 import styles from './FavoriteToggle.module.css';
 
 interface FavoriteToggleProps {
