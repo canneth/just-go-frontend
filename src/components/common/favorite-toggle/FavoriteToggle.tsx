@@ -26,12 +26,12 @@ const FavoriteToggle = observer((props: FavoriteToggleProps) => {
 
   return (
     <>
-      <div
+      <button
         className={`${styles.overallContainer} ${props.className} ${rootStore.domain.favorites.hasPlace(props.placeId) ? styles.isFavorited : null}`}
         onClick={clickHandler}
       >
         <span className={`iconify ${styles.favoriteIcon}`} data-icon='akar-icons:heart'></span>
-      </div>
+      </button>
     </>
   );
 });
