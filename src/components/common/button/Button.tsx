@@ -5,16 +5,19 @@ import styles from './Button.module.css';
 interface ButtonProps {
   text: string;
   clickHandler: MouseEventHandler;
-  noBackground?: true;
+  disabled?: boolean;
+  noBackground?: boolean;
 }
 
 export default function Button(props: ButtonProps) {
+  // TODO: Implement CSS styling for disabled version!
   return (
-    <a
+    <button
       className={`${styles.overallContainer} ${props.noBackground ? styles.noBackground : null}`}
       onClick={props.clickHandler}
+      disabled={props.disabled}
     >
       {props.text}
-    </a>
+    </button>
   );
 }
