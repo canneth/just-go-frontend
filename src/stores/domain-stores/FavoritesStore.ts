@@ -13,7 +13,7 @@ export default class FavoritesStore {
   }
 
   getFavorites() {
-    return this.favoritesList;
+    return Array.from(this.favoritesList);
   }
   setFavorites(newFavorites: Array<FavoriteItem>) {
     this.favoritesList = new Set(newFavorites);
