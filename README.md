@@ -94,8 +94,12 @@
       <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
     </tr>
     <tr>
-      <td>Write unit tests for relevant components</td>
-      <td>Up next!</td>
+      <td>Write unit tests for all components so far</td>
+      <td>In progress</td>
+    </tr>
+    <tr>
+      <td>Write integration tests for pages</td>
+      <td>Not started</td>
     </tr>
     <tr>
       <td>Make NavBar media-responsive</td>
