@@ -6,7 +6,7 @@
     "build": "next build",
     "start": "next start",
     "test": "jest --watch",
-    "test:ci": "jest --ci"
+    "test-all": "jest --watchAll"
   },
   "dependencies": {
     "axios": "^0.24.0",
