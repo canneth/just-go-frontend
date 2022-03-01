@@ -10,15 +10,15 @@ const customJestConfig = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   moduleNameMapper: {
     // Handle module aliases (this will be automatically configured for you soon)
-    '^@/components/(.*)$': '<rootDir>/components/$1',
-    '^@/pages/(.*)$': '<rootDir>/pages/$1',
-    '^@/styles/(.*)$': '<rootDir>/styles/$1',
-    '^@/hooks/(.*)$': '<rootDir>/hooks/$1',
-    '^@/globals/(.*)$': '<rootDir>/globals/$1',
-    '^@/utils/(.*)$': '<rootDir>/utils/$1',
-    '^@/models/(.*)$': '<rootDir>/models/$1',
-    '^@/mocks/(.*)$': '<rootDir>/mocks/$1',
-    '^@/stores/(.*)$': '<rootDir>/stores/$1'
+    '^@/components/(.*)$': '<rootDir>/src/components/$1',
+    '^@/pages/(.*)$': '<rootDir>/src/pages/$1',
+    '^@/styles/(.*)$': '<rootDir>/src/styles/$1',
+    '^@/hooks/(.*)$': '<rootDir>/src/hooks/$1',
+    '^@/globals/(.*)$': '<rootDir>/src/globals/$1',
+    '^@/utils/(.*)$': '<rootDir>/src/utils/$1',
+    '^@/models/(.*)$': '<rootDir>/src/models/$1',
+    '^@/mocks/(.*)$': '<rootDir>/src/mocks/$1',
+    '^@/stores/(.*)$': '<rootDir>/src/stores/$1'
   },
   testEnvironment: 'jest-environment-jsdom',
 }
