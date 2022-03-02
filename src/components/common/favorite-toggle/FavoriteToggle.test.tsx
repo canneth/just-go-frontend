@@ -5,6 +5,10 @@ import userEvent from '@testing-library/user-event';
 import FavoriteToggle from './FavoriteToggle';
 
 describe('FavoriteToggle', () => {
+  afterEach(() => {
+    // Cleanups
+    rootStore.domain.favorites.reset();
+  });
   describe('on render', () => {
     it('renders a button', () => {
       render(<FavoriteToggle placeId={1} />);
@@ -13,7 +17,7 @@ describe('FavoriteToggle', () => {
   });
   describe('on click', () => {
     it('if the provided placeId is in the favoriteStore, removes it from the favoritesStore', () => {
-      const favoritesStore = rootStore.domainStore.favorites;
+      const favoritesStore = rootStore.domain.favorites;
       const placeIdToRemove = 1;
       favoritesStore.addPlace(placeIdToRemove);
       render(<FavoriteToggle placeId={1} />);
@@ -22,7 +26,7 @@ describe('FavoriteToggle', () => {
       expect(favoritesStore.hasPlace(placeIdToRemove)).toBe(false);
     });
     it('if the provided placeId is not in the favoriteStore, adds it to the favoritesStore', () => {
-      const favoritesStore = rootStore.domainStore.favorites;
+      const favoritesStore = rootStore.domain.favorites;
       const placeIdToAdd = 1;
       favoritesStore.removePlace(placeIdToAdd);
       render(<FavoriteToggle placeId={1} />);
