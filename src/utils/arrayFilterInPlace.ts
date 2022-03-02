@@ -1,7 +1,7 @@
 
-type Predicate = (x: any, i: number, arr: Array<any>) => boolean;
+type Predicate<T> = (x: T, i: number, arr: Array<T>) => boolean;
 
-export default function arrayFilterInPlace(arr: Array<any>, predicate: Predicate) {
+export default function arrayFilterInPlace<T>(arr: Array<T>, predicate: Predicate<T>) {
   let i = 0;
   let j = 0;
 
