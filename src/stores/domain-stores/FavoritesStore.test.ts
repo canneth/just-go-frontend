@@ -24,10 +24,6 @@ describe('FavoritesStore', () => {
       favoritesStore.setFavorites(newFavoritesList);
       expect(favoritesStore.getFavorites()).toStrictEqual(newFavoritesList);
     });
-    it('returns nothing', () => {
-      const favoritesStore = new FavoritesStore;
-      expect(favoritesStore.setFavorites([1])).toBeUndefined();
-    });
   });
   describe('hasPlace(place: PlaceId)', () => {
     it('returns true if place is in the favorites collection', () => {
@@ -66,10 +62,6 @@ describe('FavoritesStore', () => {
       const newFavoritesList = favoritesStore.getFavorites();
       expect(newFavoritesList).toStrictEqual(existingFavoritesList);
     });
-    it('returns nothing', () => {
-      const favoritesStore = new FavoritesStore;
-      expect(favoritesStore.addPlace(1)).toBeUndefined();
-    });
   });
   describe('removePlace(place: PlaceId)', () => {
     it('does nothing if the place does not exist in favorites collection', () => {
@@ -88,10 +80,6 @@ describe('FavoritesStore', () => {
       const newFavoritesList = favoritesStore.getFavorites();
       const expectedNewFavoritesList = [2, 3];
       expect(newFavoritesList).toStrictEqual(expectedNewFavoritesList);
-    });
-    it('returns nothing', () => {
-      const favoritesStore = new FavoritesStore;
-      expect(favoritesStore.removePlace(1)).toBeUndefined();
     });
   });
 });
