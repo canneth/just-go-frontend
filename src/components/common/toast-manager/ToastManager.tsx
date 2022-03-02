@@ -1,5 +1,5 @@
 
-import { autorun } from 'mobx';
+import { action, autorun } from 'mobx';
 import { observer } from 'mobx-react';
 import { v4 as uuidv4 } from 'uuid';
 import Toast from './toast/Toast';
@@ -22,24 +22,25 @@ const ToastManager = observer((props: ToastManagerProps) => {
   autorun(() => {
     if (!props.maxConcurrentToastCount) return;
     if (toastStore.getToastList().length <= props.maxConcurrentToastCount) return;
-    toastStore.clearOldestToast();
+    action(() => toastStore.clearOldestToast())();
   });
 
   return (
-    <div className={styles.toastContainer}>
+    <ol className={styles.toastContainer}>
       {
         toastStore.getToastList().map(toastData => {
           return (
-            <Toast
-              key={toastData.id}
-              id={toastData.id}
-              text={toastData.text}
-              duration={toastData.duration ? toastData.duration : props.defaultToastDuration}
-            />
+            <li key={toastData.id}>
+              <Toast
+                id={toastData.id}
+                text={toastData.text}
+                duration={toastData.duration ? toastData.duration : props.defaultToastDuration}
+              />
+            </li>
           );
         })
       }
-    </div>
+    </ol>
   );
 });
 
