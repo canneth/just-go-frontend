@@ -28,6 +28,7 @@ describe('ToastManager', () => {
       expect(toastManagerEl.childNodes).toHaveLength(toastList.length);
     });
     it('uses defaultToastDuration for toasts whose durations are undefined', () => {
+      jest.useFakeTimers();
       const setTimeoutSpy = jest.spyOn(global, 'setTimeout');
       const defaultDuration = 10;
       render(<ToastManager defaultToastDuration={defaultDuration} />);
