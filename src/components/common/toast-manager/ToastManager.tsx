@@ -17,7 +17,6 @@ interface ToastManagerProps {
   maxConcurrentToastCount?: number;
 }
 
-
 const ToastManager = observer((props: ToastManagerProps) => {
 
   autorun(() => {
@@ -27,21 +26,19 @@ const ToastManager = observer((props: ToastManagerProps) => {
   });
 
   return (
-    <div className={styles.overallContainer}>
-      <div className={styles.toastContainer}>
-        {
-          toastStore.getToastList().map(toastData => {
-            return (
-              <Toast
-                key={toastData.id}
-                id={toastData.id}
-                text={toastData.text}
-                duration={toastData.duration ? toastData.duration : props.defaultToastDuration}
-              />
-            );
-          })
-        }
-      </div>
+    <div className={styles.toastContainer}>
+      {
+        toastStore.getToastList().map(toastData => {
+          return (
+            <Toast
+              key={toastData.id}
+              id={toastData.id}
+              text={toastData.text}
+              duration={toastData.duration ? toastData.duration : props.defaultToastDuration}
+            />
+          );
+        })
+      }
     </div>
   );
 });
