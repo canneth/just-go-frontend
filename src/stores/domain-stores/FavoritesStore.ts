@@ -1,31 +1,36 @@
 
 import PlaceData from '@/models/PlaceData';
+import arrayFilterInPlace from '@/utils/arrayFilterInPlace';
 import { makeAutoObservable } from 'mobx';
 
 type FavoriteItem = PlaceData['osm_id'];
 
 // Store
 export default class FavoritesStore {
-  favoritesList: Set<FavoriteItem> = new Set();
+  favoritesList: Array<FavoriteItem> = [];
 
   constructor() {
     makeAutoObservable(this);
   }
 
   getFavorites() {
-    return Array.from(this.favoritesList);
+    return this.favoritesList;
   }
   setFavorites(newFavorites: Array<FavoriteItem>) {
-    this.favoritesList = new Set(newFavorites);
+    this.favoritesList = newFavorites;
   }
   hasPlace(place: FavoriteItem) {
-    return this.favoritesList.has(place);
+    return this.favoritesList.includes(place);
   }
   addPlace(place: FavoriteItem) {
-    this.favoritesList.add(place);
+    if (this.hasPlace(place)) return;
+    this.favoritesList.push(place);
   }
   removePlace(place: FavoriteItem) {
-    this.favoritesList.delete(place);
+    arrayFilterInPlace(this.favoritesList, (x) => x !== place);
+  }
+  reset() {
+    this.setFavorites([]);
   }
 }
 

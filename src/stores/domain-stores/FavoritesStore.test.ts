@@ -82,4 +82,13 @@ describe('FavoritesStore', () => {
       expect(newFavoritesList).toStrictEqual(expectedNewFavoritesList);
     });
   });
+  describe('reset()', () => {
+    it('resets to its original state (empty favorites collection)', () => {
+      const favoritesStore = new FavoritesStore;
+      const existingFavoritesList = [1, 2, 3];
+      favoritesStore.setFavorites(existingFavoritesList);
+      favoritesStore.reset();
+      expect(favoritesStore.getFavorites()).toStrictEqual([]);
+    });
+  });
 });
