@@ -1,13 +1,8 @@
 
-import RootStore from '@/stores/RootStore';
 import { rootStore } from '@/pages/_app';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import FavoriteToggle from './FavoriteToggle';
-
-jest.mock('@/pages/_app', () => ({
-  rootStore: new RootStore
-}));
 
 describe('FavoriteToggle', () => {
   describe('on render', () => {
