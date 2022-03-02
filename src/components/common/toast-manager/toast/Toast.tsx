@@ -1,10 +1,10 @@
 
 import { useEffect, useRef, useState } from 'react';
-import { clearToastById, ToastId } from '../ToastStore';
+import { toastStore } from '../ToastManager';
 import styles from './Toast.module.css';
 
 export interface ToastProps {
-  id: ToastId;
+  id: string;
   text: string;
   duration: number; // in ms.
 }
@@ -17,7 +17,7 @@ export default function Toast(props: ToastProps) {
   const transitionDuration = 100; // in ms. Ensure this corresponds to counterpart in css.
 
   useEffect(() => {
-    const timeout = setTimeout(() => clearToastById(props.id), props.duration);
+    const timeout = setTimeout(() => toastStore.clearToastById(props.id), props.duration);
     return () => clearTimeout(timeout);
   }, [props.id, props.duration]);
 

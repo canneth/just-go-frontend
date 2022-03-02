@@ -1,22 +1,41 @@
 
-import { observable, action } from 'mobx';
-import { v4 as uuidv4 } from 'uuid';
+import { makeAutoObservable } from 'mobx';
+import arrayFilterInPlace from '@/utils/arrayFilterInPlace';
 
-export type ToastId = string;
+type ToastId = string;
 
 interface ToastData {
+  id: ToastId;
   text: string;
   duration?: number; // in ms.
 }
 
 // Store
-export const toastList = observable<ToastId, ToastData>(new Map<ToastId, ToastData>());
+export default class ToastStore {
+  toastList: Array<ToastData> = [];
 
-// Actions
-export const addNewToast = action((toastData: ToastData) => {
-  const newToastId = uuidv4();
-  toastList.set(newToastId, toastData);
-  return newToastId;
-});
-export const clearToastById = action((id: ToastId) => toastList.delete(id));
-export const clearOldestToast = action(() => toastList.delete(Array.from(toastList.keys())[0]));
+  constructor() {
+    makeAutoObservable(this);
+  }
+
+  getToastList() {
+    return this.toastList;
+  }
+  getToastById(toastId: ToastId) {
+    return this.toastList.find(({ id, ..._ }) => toastId === id);
+  }
+  hasToastId(toastId: ToastId) {
+    return this.toastList.findIndex(({ id, ..._ }) => toastId === id) !== -1;
+  }
+  addNewToast(toastData: ToastData) {
+    if (this.hasToastId(toastData.id)) this.clearToastById(toastData.id);
+    this.toastList.push(toastData);
+  }
+  clearToastById(toastId: ToastId) {
+    if (!this.hasToastId(toastId)) return;
+    arrayFilterInPlace(this.toastList, (toastData) => toastData.id !== toastId);
+  }
+  clearOldestToast() {
+    return this.toastList.shift();
+  }
+}
