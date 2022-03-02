@@ -38,4 +38,7 @@ export default class ToastStore {
   clearOldestToast() {
     return this.toastList.shift();
   }
+  reset() {
+    this.toastList = [];
+  }
 }

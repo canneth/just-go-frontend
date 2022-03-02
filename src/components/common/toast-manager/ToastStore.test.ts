@@ -105,4 +105,16 @@ describe('ToastStore', () => {
       expect(toastStore.getToastList()).toHaveLength(toastList.length - 1);
     });
   });
+  describe('reset()', () => {
+    it('resets to original state (empty toasts collection)', () => {
+      const toastStore = new ToastStore; const toastList = [
+        { id: '1', text: 'Hello', duration: 10 },
+        { id: '2', text: 'Stuff', duration: 12 },
+        { id: '3', text: 'More stuff', duration: 15 }
+      ];
+      toastList.forEach(x => toastStore.addNewToast(x));
+      toastStore.reset();
+      expect(toastStore.getToastList()).toStrictEqual([]);
+    });
+  });
 });
