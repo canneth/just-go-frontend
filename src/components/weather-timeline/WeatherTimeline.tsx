@@ -4,6 +4,7 @@ import { Forecast } from '@/models/WeatherForecast';
 import WeatherBadge from './weather-badge/WeatherBadge';
 import styles from './WeatherTimeline.module.css';
 
+// TODO: Replace this type with WeatherTimeSeries in models!
 export type TimeSeriesLocalWeather = Array<{ date: Date, weather: Forecast | undefined, current: boolean }>;
 
 interface WeatherTimelineProps {
