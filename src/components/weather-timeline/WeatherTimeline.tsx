@@ -20,15 +20,15 @@ function compareWeatherTimelineProps(prevProps: WeatherTimelineProps, nextProps:
 
 const WeatherTimeline = memo((props: WeatherTimelineProps) => {
   return (
-    <div className={`${styles.overallContainer} ${props.className}`}>
+    <ol className={`${styles.overallContainer} ${props.className}`}>
       {
         props.weatherList.map(x => (
-          <div key={x.date.toISOString()} className={styles.weatherBadgeContainer}>
+          <li key={x.date.toISOString()} className={styles.weatherBadgeContainer}>
             <WeatherBadge date={x.date} weather={x.weather} current={x.current} />
-          </div>
+          </li>
         ))
       }
-    </div>
+    </ol>
   );
 }, compareWeatherTimelineProps);
 WeatherTimeline.displayName = 'WeatherTimeline';
