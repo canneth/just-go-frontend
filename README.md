@@ -174,10 +174,6 @@
       <td>Not started</td>
     </tr>
     <tr>
-      <td>Figure out a good way to generate and manage distinct toasts from the same action on the same target</td>
-      <td>KIV</td>
-    </tr>
-    <tr>
       <td>The <a href='https://justgo.dev/recommendations' rel='noreferrer'>recommendations page</a> that recommends places based on a user's favourites (unsure if this is feasible at the moment)</td>
       <td>KIV</td>
     </tr>
