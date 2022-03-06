@@ -1,7 +1,7 @@
 
 import arrayFilterInPlace from './arrayFilterInPlace';
 
-describe('arrayFilterInPlace', () => {
+describe('arrayFilterInPlace<T>(arr: Array<T>, predicate: Predicate<T>)', () => {
   it('returns the same array (by referential identity) provided', () => {
     const testArr = ['hi'];
     const returnedArr = arrayFilterInPlace(testArr, () => true);
