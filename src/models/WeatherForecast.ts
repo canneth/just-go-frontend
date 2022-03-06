@@ -8,31 +8,18 @@ export default interface ForecastAPIResponse {
   area_metadata: Array<
     {
       name: Town;
-      label_location: {
-        latitude: number;
-        longitude: number
-      };
+      label_location: { latitude: number; longitude: number; };
     }
   >;
   items: [
     {
       update_timestamp: string;
       timestamp: string;
-      valid_period: {
-        start: string;
-        end: string;
-      };
-      forecasts: Array<
-        {
-          area: Town;
-          forecast: Forecast;
-        }
-      >;
+      valid_period: { start: string; end: string; };
+      forecasts: Array<{ area: Town; forecast: Forecast; }>;
     }
   ];
-  api_info: {
-    status: string;
-  };
+  api_info: { status: string; };
 }
 
 export type Forecast = (
