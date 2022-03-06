@@ -1,7 +1,7 @@
 
 import axios from 'axios';
 import { useState, useEffect, useRef, MouseEvent, KeyboardEvent } from 'react';
-import ScrollableList, { ScrollableListImperativeRef } from '@/components/scrollable-list/ScrollableList';
+import ScrollableList from '@/components/scrollable-list/ScrollableList';
 import usePageFadeInOut from '@/hooks/usePageFadeInOut';
 import usePageChangeClickHandler from '@/hooks/usePageChangeClickHandler';
 import PlaceData from '@/models/PlaceData';
@@ -13,7 +13,7 @@ export default function SearchPage() {
   const clickHandlerBack = usePageChangeClickHandler('/select');
 
   const searchInputRef = useRef<HTMLInputElement>(null);
-  const scrollableListRef = useRef<ScrollableListImperativeRef>(null);
+  const scrollableListRef = useRef<HTMLOListElement>(null);
   const [lastSearchInput, setLastSearchInput] = useState<string>('');
   const [placeList, setPlaceList] = useState<PlaceData[]>([]);
   const [pastWeather, setPastWeather] = useState<ForecastAPIResponse | undefined>(undefined);
@@ -60,11 +60,11 @@ export default function SearchPage() {
     // Register new intersection observer with the updated intersection handler.
     intersectionObserverRef.current = new IntersectionObserver(
       handleIntersection,
-      { root: scrollableListRef.current!.viewportElement }
+      { root: scrollableListRef.current }
     );
     // Set intersection observer to observe the new last element.
     const intersectionObserver = intersectionObserverRef.current!;
-    const newListOfElements = scrollableListRef.current!.listElement.children;
+    const newListOfElements = scrollableListRef.current!.children;
     if (newListOfElements.length <= 0) return;
     const newLastElement = newListOfElements[newListOfElements.length - 1];
     intersectionObserver.observe(newLastElement);
