@@ -94,7 +94,7 @@
       <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
     </tr>
     <tr>
-      <td>Write unit tests for all components so far</td>
+      <td>Revamp the way weather data is grabbed, used and managed as a global state</td>
       <td>In progress</td>
     </tr>
     <tr>
@@ -163,10 +163,6 @@
     </tr>
     <tr>
       <td>The <a href='https://justgo.dev/profile/favourites' rel='noreferrer'>favourites management page</a> functionality</td>
-      <td>Not started</td>
-    </tr>
-    <tr>
-      <td>PlaceCard tag list actual functionality (with tags drawn from user data)</td>
       <td>Not started</td>
     </tr>
     <tr>
