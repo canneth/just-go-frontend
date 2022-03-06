@@ -27,7 +27,7 @@ describe('ToastManager', () => {
       toastList.forEach(x => toastStore.addNewToast(x));
       expect(toastManagerEl.childNodes).toHaveLength(toastList.length);
     });
-    it('uses defaultToastDuration for toasts whose durations are undefined', () => {
+    it('uses defaultToastDuration prop for toasts whose durations are undefined', () => {
       jest.useFakeTimers();
       const setTimeoutSpy = jest.spyOn(global, 'setTimeout');
       const defaultDuration = 10;
@@ -44,6 +44,20 @@ describe('ToastManager', () => {
       expect(setTimeoutSpy).toHaveBeenCalledTimes(toastList.length * 2);
       expect(setTimeoutSpy).toHaveBeenCalledWith(expect.any(Function), defaultDuration);
     });
+  });
+  it('removes oldest toast whenever toastList exceeds maxConcurrentToastCount prop', () => {
+    render(<ToastManager defaultToastDuration={10} maxConcurrentToastCount={3} />);
+    const toastManagerEl = screen.getByRole('list');
+    expect(toastManagerEl.childNodes).toHaveLength(0);
+    const toastList = [
+      { id: '1', text: 'browned baguette', duration: 10 },
+      { id: '2', text: 'crisp ciabatta', duration: 12 },
+      { id: '3', text: 'fluffy focaccia', duration: 15 },
+      { id: '4', text: 'puffy pretzel', duration: 15 }
+    ];
+    toastList.forEach(x => toastStore.addNewToast(x));
+    const expectedResultantToastList = toastList.slice(1);
+    expect(toastStore.getToastList()).toStrictEqual(expectedResultantToastList);
   });
 });
 
