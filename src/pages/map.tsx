@@ -12,7 +12,7 @@ import PlaceData from '@/models/PlaceData';
 import ForecastAPIResponse from '@/models/WeatherForecast';
 import usePageFadeInOut from '@/hooks/usePageFadeInOut';
 import usePageChangeClickHandler from '@/hooks/usePageChangeClickHandler';
-import { haversineDistance, LatLonCoords } from '@/utils/harversineDistance';
+import haversineDistance, { LatLonCoords } from '@/utils/haversineDistance';
 import styles from './map.module.css';
 
 const Map = dynamic(() => import('@/components/map/Map'), { ssr: false });

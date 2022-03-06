@@ -4,7 +4,7 @@ import PlaceCard from './place-card/PlaceCard';
 import { TimeSeriesLocalWeather } from '@/components/weather-timeline/WeatherTimeline';
 import PlaceData from '@/models/PlaceData';
 import ForecastAPIResponse from '@/models/WeatherForecast';
-import { haversineDistance, LatLonCoords } from '@/utils/harversineDistance';
+import haversineDistance, { LatLonCoords } from '@/utils/haversineDistance';
 import styles from './ScrollableList.module.css';
 import { observer } from 'mobx-react';
 
