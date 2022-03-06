@@ -15,7 +15,7 @@ export default interface PlaceData {
   display_name: string;
   class: string;
   type: string;
-  importance: 0;
+  importance: number;
   icon?: string;
   address?: {
     shop?: string;
