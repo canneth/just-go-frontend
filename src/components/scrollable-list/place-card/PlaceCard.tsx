@@ -8,6 +8,7 @@ import TagLabel from '@/models/TagLabel';
 import usePageChangeClickHandler from '@/hooks/usePageChangeClickHandler';
 import styles from './PlaceCard.module.css';
 import { observer } from 'mobx-react';
+import getPrefixedOsmId from '@/utils/getPrefixedOsmId';
 
 interface PlaceCardProps {
   placeData: PlaceData;
@@ -31,19 +32,7 @@ const PlaceCard = observer((props: PlaceCardProps) => {
     ${props.placeData.address?.county ? props.placeData.address?.county : ''}
   `;
 
-  let placeOsmId = null;
-  switch (props.placeData.osm_type) {
-    case 'node':
-      placeOsmId = `N${props.placeData.osm_id}`;
-      break;
-    case 'way':
-      placeOsmId = `W${props.placeData.osm_id}`;
-      break;
-    case 'relation':
-      placeOsmId = `R${props.placeData.osm_id}`;
-      break;
-  }
-  const handleClickCard = usePageChangeClickHandler(`/map?osmIdWithType=${placeOsmId}`);
+  const handleClickCard = usePageChangeClickHandler(`/map?osmIdWithType=${getPrefixedOsmId(props.placeData.osm_id, props.placeData.osm_type)}`);
 
   return (
     <div className={styles.overallContainer} onClick={handleClickCard}>
