@@ -56,7 +56,7 @@ export default function MapPage() {
           :00
         `.replaceAll(/\s/g, ''));
       }
-      const now = new Date();
+      const now = new Date;
       const nowDateQueryString = dateToQueryString(now);
       now.setHours(now.getHours() - 2);
       const pastDateQueryString = dateToQueryString(now);
@@ -94,9 +94,9 @@ export default function MapPage() {
       const pastWeatherHere = pastWeather?.items[0].forecasts.find(x => x.area === nearestWeatherStation?.name)?.forecast;
       const currWeatherHere = currWeather?.items[0].forecasts.find(x => x.area === nearestWeatherStation?.name)?.forecast;
       const nextWeatherHere = nextWeather?.items[0].forecasts.find(x => x.area === nearestWeatherStation?.name)?.forecast;
-      const nowDate = new Date();
-      const pastDate = new Date();
-      const nextDate = new Date();
+      const nowDate = new Date;
+      const pastDate = new Date;
+      const nextDate = new Date;
       pastDate.setHours(nowDate.getHours() - 2);
       nextDate.setHours(nowDate.getHours() + 2);
       const weatherList: TimeSeriesLocalWeather = [
