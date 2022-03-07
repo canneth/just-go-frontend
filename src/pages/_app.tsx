@@ -3,10 +3,12 @@ import Head from 'next/head';
 import Script from 'next/script';
 import type { AppProps } from 'next/app';
 import Layout from '@/components/layout/Layout';
-import '@/styles/global.css';
 import RootStore from '@/stores/RootStore';
+import WeatherStore from '@/stores/domain-stores/WeatherStore';
+import '@/styles/global.css';
 
 export const rootStore = new RootStore;
+export const weatherStore = new WeatherStore;
 
 export default function MyApp({ Component, pageProps }: AppProps) {
 
