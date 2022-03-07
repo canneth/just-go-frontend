@@ -1,5 +1,64 @@
 
 .overallContainer {
   position: relative;
-  top: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100%;
+  width: 100%;
+  padding: 0px max(40px, 8vw);
+  gap: 60px;
+}
+
+.section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.sectionTitle {
+  font-size: var(--font-size-large);
+  font-weight: bold;
+  margin-bottom: 40px;
+  align-self: center;
+}
+.sectionContent {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.subSection {
+  position: relative;
+}
+.subSectionTitle {
+  font-size: var(--font-size-regular);
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.subSectionContent {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .overallContainer {
+    gap: 30px;
+  }
+  .sectionTitle {
+    margin-bottom: 20px;
+  }
+  .sectionContent {
+    gap: 20px;
+  }
+  .subSectionTitle {
+    margin-bottom: 10px;
+  }
+  .subSectionContent {
+    gap: 10px;
+  }
 }
