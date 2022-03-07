@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { observer } from 'mobx-react';
 import MapPlaceCard from '@/components/map/place-card/MapPlaceCard';
 import MapWeatherCard from '@/components/map/weather-card/MapWeatherCard';
 import Button from '@/components/common/button/Button';
@@ -12,7 +13,6 @@ import usePageFadeInOut from '@/hooks/usePageFadeInOut';
 import usePageChangeClickHandler from '@/hooks/usePageChangeClickHandler';
 import { weatherStore } from './_app';
 import styles from './map.module.css';
-import { observer } from 'mobx-react';
 
 const Map = dynamic(() => import('@/components/map/Map'), { ssr: false });
 
