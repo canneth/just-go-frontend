@@ -5,7 +5,7 @@ import ScrollableList from '@/components/scrollable-list/ScrollableList';
 import usePageFadeInOut from '@/hooks/usePageFadeInOut';
 import usePageChangeClickHandler from '@/hooks/usePageChangeClickHandler';
 import PlaceData from '@/models/PlaceData';
-import ForecastAPIResponse from '@/models/WeatherForecast';
+import { weatherStore } from '@/pages/_app';
 import styles from './search.module.css';
 
 export default function SearchPage() {
@@ -16,9 +16,6 @@ export default function SearchPage() {
   const scrollableListRef = useRef<HTMLOListElement>(null);
   const [lastSearchInput, setLastSearchInput] = useState<string>('');
   const [placeList, setPlaceList] = useState<PlaceData[]>([]);
-  const [pastWeather, setPastWeather] = useState<ForecastAPIResponse | undefined>(undefined);
-  const [currWeather, setCurrWeather] = useState<ForecastAPIResponse | undefined>(undefined);
-  const [nextWeather, setNextWeather] = useState<ForecastAPIResponse | undefined>(undefined);
 
   const intersectionObserverRef = useRef<IntersectionObserver>();
 
@@ -73,49 +70,8 @@ export default function SearchPage() {
   }, [lastSearchInput, placeList]);
 
   useEffect(() => {
-    if (pastWeather && currWeather && nextWeather) return;
-    (async function () {
-      // Grab and format current date-times for querying weather API.
-      function dateToQueryString(date: Date) {
-        return encodeURIComponent(`
-            ${date.getFullYear()}
-            -${`${date.getMonth() + 1}`.padStart(2, '0')}
-            -${`${date.getDate()}`.padStart(2, '0')}
-            T${`${date.getHours()}`.padStart(2, '0')}
-            :${`${date.getMinutes()}`.padStart(2, '0')}
-            :00
-          `.replaceAll(/\s/g, ''));
-      }
-      const now = new Date();
-      const nowDateQueryString = dateToQueryString(now);
-      now.setHours(now.getHours() - 2);
-      const pastDateQueryString = dateToQueryString(now);
-      now.setHours(now.getHours() - 2);
-      const furtherPastDateQueryString = dateToQueryString(now);
-      // Make the API call to fetch weather forecast for 2 hours from now.
-      const forecastedWeather = (await axios.get<ForecastAPIResponse>(
-        `https://api.data.gov.sg/v1/environment/2-hour-weather-forecast?
-            date_time=${nowDateQueryString}
-          `.replaceAll(/\s/g, '')
-      )).data;
-      // Make the API call to fetch current weather.
-      const currWeather = (await axios.get<ForecastAPIResponse>(
-        `https://api.data.gov.sg/v1/environment/2-hour-weather-forecast?
-            date_time=${pastDateQueryString}
-          `.replaceAll(/\s/g, '')
-      )).data;
-      // Make the API call to fetch weather for 2 hours ago.
-      const pastWeather = (await axios.get<ForecastAPIResponse>(
-        `https://api.data.gov.sg/v1/environment/2-hour-weather-forecast?
-            date_time=${furtherPastDateQueryString}
-          `.replaceAll(/\s/g, '')
-      )).data;
-      // Update weather forecast and current weather.
-      setNextWeather(forecastedWeather);
-      setCurrWeather(currWeather);
-      setPastWeather(pastWeather);
-    })();
-  }, [pastWeather, currWeather, nextWeather]);
+    weatherStore.updateWeatherData();
+  }, []);
 
   function formattedSearch(rawSearchString: string) {
     if (rawSearchString === lastSearchInput) return; // Prevent repeated idempotent API calls.
@@ -178,9 +134,7 @@ export default function SearchPage() {
       <ScrollableList
         ref={scrollableListRef}
         placeList={placeList}
-        pastWeather={pastWeather}
-        currWeather={currWeather}
-        nextWeather={nextWeather}
+        withWeather={true}
       />
     </div>
   );
