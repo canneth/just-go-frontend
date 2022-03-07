@@ -11,7 +11,7 @@ interface FavoriteToggleProps {
   className?: string;
 }
 
-const FavoriteToggle = observer((props: FavoriteToggleProps) => {
+export default observer(function FavoriteToggle(props: FavoriteToggleProps) {
 
   function clickHandler(e: MouseEvent) {
     e.stopPropagation();
@@ -35,5 +35,3 @@ const FavoriteToggle = observer((props: FavoriteToggleProps) => {
     </>
   );
 });
-
-export default FavoriteToggle;

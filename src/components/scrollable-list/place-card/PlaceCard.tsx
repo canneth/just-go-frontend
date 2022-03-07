@@ -17,7 +17,7 @@ interface PlaceCardProps {
   withWeather?: boolean;
 }
 
-const PlaceCard = observer((props: PlaceCardProps) => {
+export default observer(function PlaceCard(props: PlaceCardProps) {
 
   // Format place data for display.
   const placeName = props.placeData.display_name.split(', ')[0];
@@ -66,5 +66,3 @@ const PlaceCard = observer((props: PlaceCardProps) => {
     </div>
   );
 });
-
-export default PlaceCard;

@@ -17,7 +17,7 @@ interface ToastManagerProps {
   maxConcurrentToastCount?: number;
 }
 
-const ToastManager = observer((props: ToastManagerProps) => {
+export default observer(function ToastManager(props: ToastManagerProps) {
 
   autorun(() => {
     if (!props.maxConcurrentToastCount) return;
@@ -43,5 +43,3 @@ const ToastManager = observer((props: ToastManagerProps) => {
     </ol>
   );
 });
-
-export default ToastManager;
