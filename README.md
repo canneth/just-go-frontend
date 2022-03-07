@@ -94,8 +94,12 @@
       <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
     </tr>
     <tr>
-      <td>Write unit tests for WeatherStore</td>
+      <td>The <a href='https://justgo.dev/about' rel='noreferrer'>/about page</a> content and formatting</td>
       <td>Up next!</td>
+    </tr>
+    <tr>
+      <td>Write unit tests for WeatherStore</td>
+      <td>Not started</td>
     </tr>
     <tr>
       <td>Loading state placeholders for <a href='https://justgo.dev/search' rel='noreferrer'>/search page</a> when search is launched</td>
@@ -124,10 +128,6 @@
     <tr>
       <td>Controls to re-focus map on marker in <a href='https://justgo.dev/map' rel='noreferrer'>/map page</a></td>
       <td>Not started</td>
-    </tr>
-    <tr>
-      <td>The <a href='https://justgo.dev/about' rel='noreferrer'>/about page</a> content and formatting</td>
-      <td>Incomplete</td>
     </tr>
     <tr>
       <td>The <a href='https://justgo.dev/login' rel='noreferrer'>/login and sign-up page</a> UI</td>
