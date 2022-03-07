@@ -94,11 +94,15 @@
       <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
     </tr>
     <tr>
-      <td>Revamp the way weather data is grabbed, used and managed as a global state</td>
-      <td>In progress</td>
+      <td>Write unit tests for WeatherStore</td>
+      <td>Up next!</td>
     </tr>
     <tr>
-      <td>Write integration tests for pages</td>
+      <td>Loading state placeholders for <a href='https://justgo.dev/search' rel='noreferrer'>/search page</a> when search is launched</td>
+      <td>Not started</td>
+    </tr>
+    <tr>
+      <td>NavBar behaviour and design for when a user is signed in</td>
       <td>Not started</td>
     </tr>
     <tr>
@@ -142,10 +146,6 @@
       <td>Not started</td>
     </tr>
     <tr>
-      <td>Place search loading state visual indicators</td>
-      <td>Not started</td>
-    </tr>
-    <tr>
       <td>Backend development concurrent with the functionality tasks below</td>
       <td>Not started</td>
     </tr>
@@ -163,10 +163,6 @@
     </tr>
     <tr>
       <td>The <a href='https://justgo.dev/profile/favourites' rel='noreferrer'>favourites management page</a> functionality</td>
-      <td>Not started</td>
-    </tr>
-    <tr>
-      <td>Figure out why ScrollableList is rendering so many times on first render of <a href='https://justgo.dev/revisit' rel='noreferrer'>/search page</a></td>
       <td>Not started</td>
     </tr>
     <tr>
