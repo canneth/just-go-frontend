@@ -1,14 +1,12 @@
 
 import { memo } from 'react';
-import { Forecast } from '@/models/WeatherForecast';
 import WeatherBadge from './weather-badge/WeatherBadge';
 import styles from './WeatherTimeline.module.css';
-
-// TODO: Replace this type with WeatherTimeSeries in models!
-export type TimeSeriesLocalWeather = Array<{ date: Date, weather: Forecast | undefined, current: boolean }>;
+import WeatherTimeSeries from '@/models/WeatherTimeSeries';
+import sameDateWithinTolerance from '@/utils/sameDateWithinTolerance';
 
 interface WeatherTimelineProps {
-  weatherList: TimeSeriesLocalWeather;
+  weatherList: WeatherTimeSeries;
   className?: string;
 }
 
@@ -20,12 +18,17 @@ function compareWeatherTimelineProps(prevProps: WeatherTimelineProps, nextProps:
 }
 
 const WeatherTimeline = memo((props: WeatherTimelineProps) => {
+
   return (
     <ol className={`${styles.overallContainer} ${props.className}`}>
       {
-        props.weatherList.map(x => (
-          <li key={x.date.toISOString()} className={styles.weatherBadgeContainer}>
-            <WeatherBadge date={x.date} weather={x.weather} current={x.current} />
+        props.weatherList.map(weatherEntry => (
+          <li key={weatherEntry.date.toISOString()} className={styles.weatherBadgeContainer}>
+            <WeatherBadge
+              date={weatherEntry.date}
+              weather={weatherEntry.weather}
+              current={sameDateWithinTolerance(weatherEntry.date, new Date, { minutes: 30 })}
+            />
           </li>
         ))
       }
