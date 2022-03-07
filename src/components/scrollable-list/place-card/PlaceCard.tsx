@@ -1,19 +1,20 @@
 
 import Image from 'next/image';
-import WeatherTimeline, { TimeSeriesLocalWeather } from '@/components/weather-timeline/WeatherTimeline';
+import { observer } from 'mobx-react';
+import WeatherTimeline from '@/components/weather-timeline/WeatherTimeline';
 import FavoriteToggle from '@/components/common/favorite-toggle/FavoriteToggle';
 import TagList from '@/components/common/tag-list/TagList';
 import PlaceData from '@/models/PlaceData';
 import TagLabel from '@/models/TagLabel';
 import usePageChangeClickHandler from '@/hooks/usePageChangeClickHandler';
-import styles from './PlaceCard.module.css';
-import { observer } from 'mobx-react';
 import getPrefixedOsmId from '@/utils/getPrefixedOsmId';
+import { weatherStore } from '@/pages/_app';
+import styles from './PlaceCard.module.css';
 
 interface PlaceCardProps {
   placeData: PlaceData;
-  weatherList: TimeSeriesLocalWeather;
   tagList: Array<TagLabel>;
+  withWeather?: boolean;
 }
 
 const PlaceCard = observer((props: PlaceCardProps) => {
@@ -32,6 +33,8 @@ const PlaceCard = observer((props: PlaceCardProps) => {
     ${props.placeData.address?.county ? props.placeData.address?.county : ''}
   `;
 
+  const placeLatLon = [parseFloat(props.placeData.lat), parseFloat(props.placeData.lon)] as const;
+
   const handleClickCard = usePageChangeClickHandler(`/map?osmIdWithType=${getPrefixedOsmId(props.placeData.osm_id, props.placeData.osm_type)}`);
 
   return (
@@ -46,9 +49,12 @@ const PlaceCard = observer((props: PlaceCardProps) => {
           <p>{placeAddress}</p>
           <p>{placeRegion}</p>
         </div>
-        <div className={styles.weatherContainer}>
-          <WeatherTimeline className={styles.weatherTimeline} weatherList={props.weatherList} />
-        </div>
+        {
+          props.withWeather &&
+          <div className={styles.weatherContainer}>
+            <WeatherTimeline className={styles.weatherTimeline} weatherList={weatherStore.getWeatherTimeSeriesNearLatLon(placeLatLon[0], placeLatLon[1])} />
+          </div>
+        }
         <div className={styles.tagListContainer}>
           <TagList tagList={props.tagList} />
         </div>
