@@ -5,37 +5,55 @@ import WeatherTimeSeries from '@/models/WeatherTimeSeries';
 import ForecastAPIResponse, { Town } from '@/models/WeatherForecast';
 import haversineDistance from '@/utils/haversineDistance';
 
-type LatLon = [number, number];
+export type LatLon = [number, number];
 
-function parseApiResponse(pastWeather: ForecastAPIResponse, currWeather: ForecastAPIResponse, nextWeather: ForecastAPIResponse) {
+function parseApiResponse(
+  pastWeather: ForecastAPIResponse | undefined,
+  currWeather: ForecastAPIResponse | undefined,
+  nextWeather: ForecastAPIResponse | undefined
+) {
+
+  if (!pastWeather && !currWeather && !nextWeather) return undefined;
+
   const weatherData: Map<LatLon, WeatherTimeSeries> = new Map;
 
+  const nowDate = new Date;
+  const pastDate = (new Date(nowDate));
+  pastDate.setHours(nowDate.getHours() - 2);
+  const nextDate = (new Date(nowDate));
+  nextDate.setHours(nowDate.getHours() + 2);
+
+  let areaNameLatLonPopulated = false;
   const areaNameLatLon: Map<Town, LatLon> = new Map;
-  pastWeather.area_metadata.forEach(areaData => {
+  !areaNameLatLonPopulated && pastWeather?.area_metadata.forEach(areaData => {
+    const latLon = [areaData.label_location.latitude, areaData.label_location.longitude] as LatLon;
+    const town = areaData.name;
+    areaNameLatLon.set(town, latLon);
+  });
+  !areaNameLatLonPopulated && currWeather?.area_metadata.forEach(areaData => {
+    const latLon = [areaData.label_location.latitude, areaData.label_location.longitude] as LatLon;
+    const town = areaData.name;
+    areaNameLatLon.set(town, latLon);
+  });
+  !areaNameLatLonPopulated && nextWeather?.area_metadata.forEach(areaData => {
     const latLon = [areaData.label_location.latitude, areaData.label_location.longitude] as LatLon;
     const town = areaData.name;
     areaNameLatLon.set(town, latLon);
   });
 
   areaNameLatLon.forEach((latLon, town) => {
-    const nowDate = new Date;
-    const pastDate = (new Date(nowDate));
-    pastDate.setHours(nowDate.getHours() - 2);
-    const nextDate = (new Date(nowDate));
-    nextDate.setHours(nowDate.getHours() + 2);
-
     const weatherTimeSeries: WeatherTimeSeries = [];
     weatherTimeSeries.push({
       date: pastDate,
-      weather: pastWeather.items[0].forecasts.find(x => x.area === town)?.forecast
+      weather: pastWeather?.items[0].forecasts.find(x => x.area === town)?.forecast
     });
     weatherTimeSeries.push({
       date: nowDate,
-      weather: currWeather.items[0].forecasts.find(x => x.area === town)?.forecast
+      weather: currWeather?.items[0].forecasts.find(x => x.area === town)?.forecast
     });
     weatherTimeSeries.push({
       date: nextDate,
-      weather: nextWeather.items[0].forecasts.find(x => x.area === town)?.forecast
+      weather: nextWeather?.items[0].forecasts.find(x => x.area === town)?.forecast
     });
     weatherData.set(latLon, weatherTimeSeries);
   });
@@ -45,14 +63,21 @@ function parseApiResponse(pastWeather: ForecastAPIResponse, currWeather: Forecas
 
 export default class WeatherStore {
 
-  weatherData: Map<LatLon, WeatherTimeSeries> = new Map;
+  weatherData: Map<LatLon, WeatherTimeSeries> | undefined = undefined;
 
   constructor() {
     makeAutoObservable(this);
     this.updateWeatherData();
   }
 
+  hasLatLon(lat: number, lon: number) {
+    return this.weatherData?.has([lat, lon]);
+  }
+  addWeatherData(key: LatLon, data: WeatherTimeSeries) {
+    this.weatherData?.set(key, data);
+  }
   getNearestStationLatLon(lat: number, lon: number) {
+    if (!this.weatherData) return undefined;
     const { latLon: nearestLatLon, ..._ } = Array.from(this.weatherData.keys()).reduce(({ latLon, distance }, currLatLon) => {
       const currDistance = haversineDistance(currLatLon, [lat, lon]);
       if (currDistance < distance) {
@@ -61,12 +86,12 @@ export default class WeatherStore {
         return { latLon, distance };
       }
     }, { latLon: [Infinity, Infinity] as LatLon, distance: Infinity as number });
-
     return nearestLatLon;
   }
   getWeatherTimeSeriesNearLatLon(lat: number, lon: number) {
+    if (!this.weatherData) return undefined;
     if (this.weatherData.has([lat, lon])) return this.weatherData.get([lat, lon])!;
-    return this.weatherData.get(this.getNearestStationLatLon(lat, lon))!;
+    return this.weatherData.get(this.getNearestStationLatLon(lat, lon)!);
   }
   async updateWeatherData() {
     // Grab and format current date-times for querying weather API.
