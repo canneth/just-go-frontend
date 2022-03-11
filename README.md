@@ -94,12 +94,12 @@
       <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
     </tr>
     <tr>
-      <td>The <a href='https://justgo.dev/about' rel='noreferrer'>/about page</a> content and formatting</td>
-      <td>Up next!</td>
+      <td>Refine handling of API responses</td>
+      <td>In progress</td>
     </tr>
     <tr>
       <td>Write unit tests for WeatherStore</td>
-      <td>Not started</td>
+      <td>In progress</td>
     </tr>
     <tr>
       <td>Loading state placeholders for <a href='https://justgo.dev/search' rel='noreferrer'>/search page</a> when search is launched</td>
