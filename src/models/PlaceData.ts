@@ -22,6 +22,7 @@ export default interface PlaceData {
     amenity?: string;
     house_number?: string;
     road?: string;
+    neighbourhood?: string;
     suburb?: string;
     city?: string;
     county?: string;
