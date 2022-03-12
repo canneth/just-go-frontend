@@ -4,13 +4,8 @@
 // Used for __tests__/testing-library.js
 // Learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom/extend-expect';
+import mockApiServer from './src/api-mocks/mockApiServer';
 
-/* TODO: Uncomment this block after implementing mock server for API calls.
-
-import { server } from './src/api-mocks/server';
-
-beforeAll(() => server.listen());
-afterEach(() => server.resetHandlers());
-afterAll(() => server.close());
-
-*/
+beforeAll(() => mockApiServer.listen());
+afterEach(() => mockApiServer.resetHandlers());
+afterAll(() => mockApiServer.close());
