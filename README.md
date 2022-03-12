@@ -94,12 +94,12 @@
       <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
     </tr>
     <tr>
-      <td>Mock APIs with MSW for development and testing</td>
+      <td>Mock weather API for testing and development</td>
       <td>In progress</td>
     </tr>
     <tr>
-      <td>Refine handling of API responses</td>
-      <td>In progress</td>
+      <td>Refine handling of API responses (catch errors and handle them gracefully)</td>
+      <td>Up next!</td>
     </tr>
     <tr>
       <td>Write unit tests for WeatherStore</td>
