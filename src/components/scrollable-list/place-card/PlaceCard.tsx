@@ -34,6 +34,7 @@ export default observer(function PlaceCard(props: PlaceCardProps) {
   `;
 
   const placeLatLon = [parseFloat(props.placeData.lat), parseFloat(props.placeData.lon)] as const;
+  const localWeatherTimeSeries = weatherStore.getWeatherTimeSeriesNearLatLon(placeLatLon[0], placeLatLon[1]);
 
   const handleClickCard = usePageChangeClickHandler(`/map?osmIdWithType=${getPrefixedOsmId(props.placeData.osm_id, props.placeData.osm_type)}`);
 
@@ -50,9 +51,9 @@ export default observer(function PlaceCard(props: PlaceCardProps) {
           <p>{placeRegion}</p>
         </div>
         {
-          props.withWeather &&
+          props.withWeather && localWeatherTimeSeries &&
           <div className={styles.weatherContainer}>
-            <WeatherTimeline className={styles.weatherTimeline} weatherList={weatherStore.getWeatherTimeSeriesNearLatLon(placeLatLon[0], placeLatLon[1])} />
+            <WeatherTimeline className={styles.weatherTimeline} weatherList={localWeatherTimeSeries} />
           </div>
         }
         <div className={styles.tagListContainer}>

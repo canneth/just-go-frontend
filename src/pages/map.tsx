@@ -26,6 +26,7 @@ export default observer(function MapPage() {
 
   const placePostalCode = placeData?.address?.postcode;
   const placeLatLon = placeData ? [parseFloat(placeData.lat), parseFloat(placeData.lon)] : undefined;
+  const localWeatherTimeSeries = placeLatLon ? weatherStore.getWeatherTimeSeriesNearLatLon(placeLatLon[0], placeLatLon[1]) : undefined;
 
   const clickHandlerBack = usePageChangeClickHandler('/search');
   const clickHandlerGoogleMaps = usePageChangeClickHandler(`https://www.google.com/maps/place/Singapore+${placePostalCode}`, { toExternal: true });
@@ -68,10 +69,10 @@ export default observer(function MapPage() {
           <div className={styles.sidePanelsContainer}>
             {placeData && <MapPlaceCard className={styles.placeCard} placeData={placeData} tagList={['work', 'dine']} />}
             {
-              placeData && placeLatLon &&
+              placeData && placeLatLon && localWeatherTimeSeries &&
               <MapWeatherCard
                 className={styles.weatherCard}
-                weatherList={weatherStore.getWeatherTimeSeriesNearLatLon(placeLatLon[0], placeLatLon[1])}
+                weatherList={localWeatherTimeSeries}
               />
             }
           </div>
