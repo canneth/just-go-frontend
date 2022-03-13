@@ -94,16 +94,12 @@
       <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
     </tr>
     <tr>
-      <td>Mock weather API for testing and development</td>
+      <td>Write unit tests for WeatherStore</td>
       <td>In progress</td>
     </tr>
     <tr>
       <td>Refine handling of API responses (catch errors and handle them gracefully)</td>
       <td>Up next!</td>
-    </tr>
-    <tr>
-      <td>Write unit tests for WeatherStore</td>
-      <td>Incomplete</td>
     </tr>
     <tr>
       <td>Loading state placeholders for <a href='https://justgo.dev/search' rel='noreferrer'>/search page</a> when search is launched</td>
