@@ -1,7 +1,7 @@
 
 import { setupServer } from 'msw/node';
-import placeAPIHandlers from './handlers/placeAPIHandlersX';
-import weatherAPIHandlers from './handlers/weatherAPIHandlersX';
+import placeAPIHandlers from './handlers/placeAPIHandlers';
+import weatherAPIHandlers from './handlers/weatherAPIHandlers';
 
 const mockAPIServer = setupServer(...placeAPIHandlers, ...weatherAPIHandlers);
 
