@@ -70,6 +70,16 @@ export default class WeatherStore {
     this.updateWeatherData();
   }
 
+  static dateToQueryString(date: Date) {
+    return encodeURIComponent(`
+      ${date.getFullYear()}
+      -${`${date.getMonth() + 1}`.padStart(2, '0')}
+      -${`${date.getDate()}`.padStart(2, '0')}
+      T${`${date.getHours()}`.padStart(2, '0')}
+      :${`${date.getMinutes()}`.padStart(2, '0')}
+      :00
+    `.replaceAll(/\s/g, ''));
+  }
   hasLatLon(lat: number, lon: number) {
     return this.weatherData?.has([lat, lon]);
   }
@@ -95,22 +105,12 @@ export default class WeatherStore {
   }
   async updateWeatherData() {
     // Grab and format current date-times for querying weather API.
-    function dateToQueryString(date: Date) {
-      return encodeURIComponent(`
-        ${date.getFullYear()}
-        -${`${date.getMonth() + 1}`.padStart(2, '0')}
-        -${`${date.getDate()}`.padStart(2, '0')}
-        T${`${date.getHours()}`.padStart(2, '0')}
-        :${`${date.getMinutes()}`.padStart(2, '0')}
-        :00
-      `.replaceAll(/\s/g, ''));
-    }
     const now = new Date;
-    const nowDateQueryString = dateToQueryString(now);
+    const nowDateQueryString = WeatherStore.dateToQueryString(now);
     now.setHours(now.getHours() - 2);
-    const pastDateQueryString = dateToQueryString(now);
+    const pastDateQueryString = WeatherStore.dateToQueryString(now);
     now.setHours(now.getHours() - 2);
-    const furtherPastDateQueryString = dateToQueryString(now);
+    const furtherPastDateQueryString = WeatherStore.dateToQueryString(now);
     // Make the API call to fetch weather forecast for 2 hours from now.
     const nextWeather = (await axios.get<ForecastAPIResponse>(
       `https://api.data.gov.sg/v1/environment/2-hour-weather-forecast?
