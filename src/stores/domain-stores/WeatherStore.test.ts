@@ -2,8 +2,6 @@
 import WeatherTimeSeries from '@/models/WeatherTimeSeries';
 import WeatherStore, { LatLon } from './WeatherStore';
 
-// TODO: Use MSW to mock API calls!
-
 // NOTE: This is incomplete!
 
 describe('WeatherStore', () => {
@@ -12,6 +10,11 @@ describe('WeatherStore', () => {
 
     });
     it('calls updateWeatherData() exactly once on instantiation', () => {
+
+    });
+  });
+  describe('static function dateToQueryString(date: Date)', () => {
+    it('formats a Date object into a the required API query param format correctly', () => {
 
     });
   });
