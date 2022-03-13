@@ -2,9 +2,9 @@
 import axios from 'axios';
 import ForecastAPIResponse from '@/models/WeatherForecast';
 import WeatherStore from '@/stores/domain-stores/WeatherStore';
-import { placeholderCurrWeather, placeholderNextWeather, placeholderPrevWeather } from './weatherApiHandlers';
+import { placeholderCurrWeather, placeholderNextWeather, placeholderPrevWeather } from './weatherAPIHandlers';
 
-describe('weatherApiHandlers', () => {
+describe('weatherAPIHandlers', () => {
   describe('https://api.data.gov.sg/v1/environment/2-hour-weather-forecast', () => {
     describe('query param date_time', () => {
       it('if current date-time is stringified to the same string as date_time, return placeholderCurrWeather', async () => {

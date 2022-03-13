@@ -1,8 +1,8 @@
 
 import { setupServer } from 'msw/node';
-import placeApiHandlers from './handlers/placeApiHandlers';
-import weatherApiHandlers from './handlers/weatherApiHandlers';
+import placeAPIHandlers from './handlers/placeAPIHandlers';
+import weatherAPIHandlers from './handlers/weatherAPIHandlers';
 
-const mockApiServer = setupServer(...placeApiHandlers, ...weatherApiHandlers);
+const mockAPIServer = setupServer(...placeAPIHandlers, ...weatherAPIHandlers);
 
-export default mockApiServer;
+export default mockAPIServer;

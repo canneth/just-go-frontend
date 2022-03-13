@@ -1,8 +1,8 @@
 
 import { setupWorker } from 'msw';
-import placeApiHandlers from './handlers/placeApiHandlers';
-import weatherApiHandlers from './handlers/weatherApiHandlers';
+import placeAPIHandlers from './handlers/placeAPIHandlers';
+import weatherAPIHandlers from './handlers/weatherAPIHandlers';
 
-const mockApiWorker = setupWorker(...placeApiHandlers, ...weatherApiHandlers);
+const mockAPIWorker = setupWorker(...placeAPIHandlers, ...weatherAPIHandlers);
 
-export default mockApiWorker;
+export default mockAPIWorker;

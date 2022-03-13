@@ -1,43 +1,4 @@
 
-/*
-
-function dateToQueryString(date: Date) {
-  return encodeURIComponent(`
-    ${date.getFullYear()}
-    -${`${date.getMonth() + 1}`.padStart(2, '0')}
-    -${`${date.getDate()}`.padStart(2, '0')}
-    T${`${date.getHours()}`.padStart(2, '0')}
-    :${`${date.getMinutes()}`.padStart(2, '0')}
-    :00
-  `.replaceAll(/\s/g, ''));
-}
-const now = new Date;
-const nowDateQueryString = dateToQueryString(now);
-now.setHours(now.getHours() - 2);
-const pastDateQueryString = dateToQueryString(now);
-now.setHours(now.getHours() - 2);
-const furtherPastDateQueryString = dateToQueryString(now);
-// Make the API call to fetch weather forecast for 2 hours from now.
-const nextWeather = (await axios.get<ForecastAPIResponse>(
-  `https://api.data.gov.sg/v1/environment/2-hour-weather-forecast?
-    date_time=${nowDateQueryString}
-  `.replaceAll(/\s/g, '')
-)).data;
-// Make the API call to fetch current weather.
-const currWeather = (await axios.get<ForecastAPIResponse>(
-  `https://api.data.gov.sg/v1/environment/2-hour-weather-forecast?
-    date_time=${pastDateQueryString}
-  `.replaceAll(/\s/g, '')
-)).data;
-// Make the API call to fetch weather for 2 hours ago.
-const pastWeather = (await axios.get<ForecastAPIResponse>(
-  `https://api.data.gov.sg/v1/environment/2-hour-weather-forecast?
-    date_time=${furtherPastDateQueryString}
-  `.replaceAll(/\s/g, '')
-)).data;
-
-*/
-
 import ForecastAPIResponse from '@/models/WeatherForecast';
 import WeatherStore from '@/stores/domain-stores/WeatherStore';
 import { DefaultRequestBody, PathParams, rest } from 'msw';
@@ -1651,7 +1612,7 @@ export const placeholderPrevWeather: ForecastAPIResponse = {
   }
 };
 
-const weatherApiHandlers = [
+const weatherAPIHandlers = [
   rest.get<DefaultRequestBody, PathParams, ForecastAPIResponse>('https://api.data.gov.sg/v1/environment/2-hour-weather-forecast', (req, res, ctx) => {
 
     const dateTimeParam = req.url.searchParams.get('date_time');
@@ -1677,4 +1638,4 @@ const weatherApiHandlers = [
   })
 ];
 
-export default weatherApiHandlers;
+export default weatherAPIHandlers;

@@ -1,9 +1,9 @@
 
 import axios from 'axios';
-import { placeholderResults } from './placeApiHandlers';
+import { placeholderResults } from './placeAPIHandlers';
 import PlaceData from '@/models/PlaceData';
 
-describe('placeApiHandlers', () => {
+describe('placeAPIHandlers', () => {
   describe('https://nominatim.openstreetmap.org/search?', () => {
     describe('query param q', () => {
       it(`if q='Starbucks', responds with status 200 and an array of PlaceData`, async () => {

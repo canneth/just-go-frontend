@@ -363,7 +363,7 @@ export const placeholderResults: Array<PlaceData> = [
   }
 ];
 
-const placeApiHandlers = [
+const placeAPIHandlers = [
   rest.get<DefaultRequestBody, PathParams, PlaceData[]>(`https://nominatim.openstreetmap.org/search`, (req, res, ctx) => {
     const searchString = req.url.searchParams.get('q');
     const limit = req.url.searchParams.get('limit');
@@ -380,4 +380,4 @@ const placeApiHandlers = [
   }),
 ];
 
-export default placeApiHandlers;
+export default placeAPIHandlers;
