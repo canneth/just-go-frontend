@@ -1,6 +1,6 @@
 
 import axios from 'axios';
-import { placeholderResults } from './placeAPIHandlers';
+import { placeholderResults } from './placeAPIHandlersX';
 import PlaceData from '@/models/PlaceData';
 
 describe('placeAPIHandlers', () => {

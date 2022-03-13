@@ -1,7 +1,7 @@
 
 import { setupWorker } from 'msw';
-import placeAPIHandlers from './handlers/placeAPIHandlers';
-import weatherAPIHandlers from './handlers/weatherAPIHandlers';
+import placeAPIHandlers from './handlers/placeAPIHandlersX';
+import weatherAPIHandlers from './handlers/weatherAPIHandlersX';
 
 const mockAPIWorker = setupWorker(...placeAPIHandlers, ...weatherAPIHandlers);
 

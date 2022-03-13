@@ -2,7 +2,7 @@
 import axios from 'axios';
 import ForecastAPIResponse from '@/models/WeatherForecast';
 import WeatherStore from '@/stores/domain-stores/WeatherStore';
-import { placeholderCurrWeather, placeholderNextWeather, placeholderPrevWeather } from './weatherAPIHandlers';
+import { placeholderCurrWeather, placeholderNextWeather, placeholderPrevWeather } from './weatherAPIHandlersX';
 
 describe('weatherAPIHandlers', () => {
   describe('https://api.data.gov.sg/v1/environment/2-hour-weather-forecast', () => {
