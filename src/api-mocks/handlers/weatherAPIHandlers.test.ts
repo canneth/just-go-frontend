@@ -7,7 +7,7 @@ import { placeholderCurrWeather, placeholderNextWeather, placeholderPrevWeather 
 describe('weatherAPIHandlers', () => {
   describe('https://api.data.gov.sg/v1/environment/2-hour-weather-forecast', () => {
     describe('query param date_time', () => {
-      it('if current date-time is stringified to the same string as date_time, return placeholderCurrWeather', async () => {
+      it('if current date-time is stringified to the same string as date_time, return placeholderNextWeather', async () => {
         const dateQueryString = WeatherStore.dateToQueryString(new Date);
         const apiResponse = await axios.get<ForecastAPIResponse>(
           `https://api.data.gov.sg/v1/environment/2-hour-weather-forecast?
@@ -15,9 +15,9 @@ describe('weatherAPIHandlers', () => {
           `.replaceAll(/\s/g, '')
         );
         expect(apiResponse.status).toBe(200);
-        expect(apiResponse.data).toStrictEqual(placeholderCurrWeather);
+        expect(apiResponse.data).toStrictEqual(placeholderNextWeather);
       });
-      it('if (current date-time - 2-hours) is stringified to the same string as date_time, return placeholderPrevWeather', async () => {
+      it('if (current date-time - 2 hours) is stringified to the same string as date_time, return placeholderCurrWeather', async () => {
         const nowDate = new Date;
         const prevDate = new Date(nowDate);
         prevDate.setHours(nowDate.getHours() - 2);
@@ -28,20 +28,20 @@ describe('weatherAPIHandlers', () => {
           `.replaceAll(/\s/g, '')
         );
         expect(apiResponse.status).toBe(200);
-        expect(apiResponse.data).toStrictEqual(placeholderPrevWeather);
+        expect(apiResponse.data).toStrictEqual(placeholderCurrWeather);
       });
-      it('if (current date-time + 2-hours) is stringified to the same string as date_time, return placeholderNextWeather', async () => {
+      it('if (current date-time - 4 hours) is stringified to the same string as date_time, return placeholderPrevWeather', async () => {
         const nowDate = new Date;
-        const nextDate = new Date(nowDate);
-        nextDate.setHours(nowDate.getHours() + 2);
-        const dateQueryString = WeatherStore.dateToQueryString(nextDate);
+        const prevDate = new Date(nowDate);
+        prevDate.setHours(nowDate.getHours() - 4);
+        const dateQueryString = WeatherStore.dateToQueryString(prevDate);
         const apiResponse = await axios.get<ForecastAPIResponse>(
           `https://api.data.gov.sg/v1/environment/2-hour-weather-forecast?
             date_time=${dateQueryString}
           `.replaceAll(/\s/g, '')
         );
         expect(apiResponse.status).toBe(200);
-        expect(apiResponse.data).toStrictEqual(placeholderNextWeather);
+        expect(apiResponse.data).toStrictEqual(placeholderPrevWeather);
       });
       it('else, returns with status 400', async () => {
         const nowDate = new Date;

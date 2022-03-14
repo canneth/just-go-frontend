@@ -1619,19 +1619,19 @@ const weatherAPIHandlers = [
     const nowDate = new Date;
     const prevDate = new Date(nowDate);
     prevDate.setHours(nowDate.getHours() - 2);
-    const nextDate = new Date(nowDate);
-    nextDate.setHours(nowDate.getHours() + 2);
+    const prevPrevDate = new Date(nowDate);
+    prevPrevDate.setHours(nowDate.getHours() - 4);
     const nowDateStringified = decodeURIComponent(WeatherStore.dateToQueryString(nowDate));
     const prevDateStringified = decodeURIComponent(WeatherStore.dateToQueryString(prevDate));
-    const nextDateStringified = decodeURIComponent(WeatherStore.dateToQueryString(nextDate));
+    const prevPrevDateStringified = decodeURIComponent(WeatherStore.dateToQueryString(prevPrevDate));
 
     switch (dateTimeParam) {
       case nowDateStringified:
-        return res(ctx.status(200), ctx.json(placeholderCurrWeather));
-      case prevDateStringified:
-        return res(ctx.status(200), ctx.json(placeholderPrevWeather));
-      case nextDateStringified:
         return res(ctx.status(200), ctx.json(placeholderNextWeather));
+      case prevDateStringified:
+        return res(ctx.status(200), ctx.json(placeholderCurrWeather));
+      case prevPrevDateStringified:
+        return res(ctx.status(200), ctx.json(placeholderPrevWeather));
       default:
         return res(ctx.status(400));
     }
