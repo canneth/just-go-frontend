@@ -23,7 +23,7 @@
       "@/globals/*": ["src/globals/*"],
       "@/utils/*": ["src/utils/*"],
       "@/models/*": ["src/models/*"],
-      "@/mocks/*": ["src/mocks/*"],
+      "@/api-mocks/*": ["src/api-mocks/*"],
       "@/stores/*": ["src/stores/*"]
 		}
 	},
