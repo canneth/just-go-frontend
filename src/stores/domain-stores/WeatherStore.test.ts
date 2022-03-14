@@ -2,39 +2,47 @@
 import WeatherTimeSeries from '@/models/WeatherTimeSeries';
 import WeatherStore, { LatLon } from './WeatherStore';
 
-// NOTE: This is incomplete!
-
 describe('WeatherStore', () => {
+  beforeEach(() => {
+    // Cleanups
+    jest.restoreAllMocks();
+  });
   describe('each instance', () => {
     it('has weatherData initialised as undefined', () => {
-
-    });
-    it('calls updateWeatherData() exactly once on instantiation', () => {
-
+      jest.spyOn(WeatherStore.prototype, 'updateWeatherData').mockImplementation();
+      const weatherStore = new WeatherStore;
+      expect(weatherStore.weatherData).toBeUndefined();
     });
   });
-  describe('static function dateToQueryString(date: Date)', () => {
-    it('formats a Date object into a the required API query param format correctly', () => {
-
+  describe('static dateToQueryString(date: Date)', () => {
+    it('formats a Date object into the required API param format correctly', () => {
+      const year = 2022;
+      const month = 0;
+      const date = 1;
+      const hour = 12;
+      const minute = 30;
+      const dateTime = new Date(year, month, date, hour, minute);
+      const expectedResult = encodeURIComponent('2022-01-01T12:30:00');
+      expect(WeatherStore.dateToQueryString(dateTime)).toBe(expectedResult);
     });
   });
   describe('hasLatLon(lat: number, lon: number)', () => {
     describe('if weatherData is undefined', () => {
       it('returns undefined', () => {
-
+        jest.spyOn(WeatherStore.prototype, 'updateWeatherData').mockImplementation();
+        const weatherStore = new WeatherStore;
+        expect(weatherStore.weatherData).toBeUndefined();
+        expect(weatherStore.hasLatLon(12, 23)).toBeUndefined();
       });
     });
     describe('if weatherData is defined', () => {
-      it('returns false if [lat, lon] does not exist as a key in weatherData', () => {
-
+      it('returns false if [lat, lon] does not exist in weatherData', async () => {
+        const weatherStore = new WeatherStore;
       });
-      it('returns true if plat, lon] exists as a key in weatherData', () => {
+      it('returns true if plat, lon] exists in weatherData', () => {
 
       });
     });
-  });
-  describe('addWeatherData(key: LatLon, data: WeatherTimeSeries)', () => {
-
   });
   describe('getNearestStationLatLon(lat: number, lon: number)', () => {
     describe('if weatherData is undefined', () => {
@@ -46,20 +54,37 @@ describe('WeatherStore', () => {
       it('if [lat, lon] exists in weatherData, returns exactly that', () => {
 
       });
-      it('if [lat, lon] does not exist in weatherData, calculates and returns the closest from weatherData', () => {
+      it('if [lat, lon] does not exist in weatherData, calculates and returns the closest', () => {
 
       });
     });
   });
   describe('getWeatherTimeSeriesNearLatLon(lat: number, lon: number)', () => {
+    describe('if weatherData is undefined', () => {
+      it('returns undefined', () => {
 
+      });
+    });
+    describe('if weatherData is defined', () => {
+      it('if [lat, lon] exists in weatherData, returns the WeatherTimeSeries there', () => {
+
+      });
+      it('if [lat, lon] does not exist in weatherData, returns the WeatherTimeSeries closest to it', () => {
+
+      });
+    });
   });
   describe('async updateWeatherData()', () => {
-    it('makes a GET request to the weather API', () => {
+    it('makes GET request(s) to the weather API', () => {
 
     });
-    describe('if the GET request is rejected with an error', () => {
-      // TODO: Think of how the app should respond in this scenario, and how this should be designed accordingly!
+    describe('if all GET requests are rejected with an error', () => {
+      it('throws no errors', () => {
+
+      });
+      it('sets weatherData to undefined', () => {
+
+      });
     });
     describe('if the GET request resolves successfully with data', () => {
       it('parses response and populates weatherData', () => {
