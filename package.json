@@ -5,8 +5,7 @@
     "lint": "next lint",
     "build": "next build",
     "start": "next start",
-    "test": "jest --watch",
-    "test-all": "jest --watchAll"
+    "test": "jest"
   },
   "dependencies": {
     "axios": "^0.24.0",
