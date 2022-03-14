@@ -67,7 +67,6 @@ export default class WeatherStore {
 
   constructor() {
     makeAutoObservable(this);
-    this.updateWeatherData();
   }
 
   static dateToQueryString(date: Date) {
@@ -82,9 +81,6 @@ export default class WeatherStore {
   }
   hasLatLon(lat: number, lon: number) {
     return this.weatherData?.has([lat, lon]);
-  }
-  addWeatherData(key: LatLon, data: WeatherTimeSeries) {
-    this.weatherData?.set(key, data);
   }
   getNearestStationLatLon(lat: number, lon: number) {
     if (!this.weatherData) return undefined;
@@ -111,24 +107,39 @@ export default class WeatherStore {
     const pastDateQueryString = WeatherStore.dateToQueryString(now);
     now.setHours(now.getHours() - 2);
     const furtherPastDateQueryString = WeatherStore.dateToQueryString(now);
+    let nextWeather = undefined;
+    let currWeather = undefined;
+    let pastWeather = undefined;
     // Make the API call to fetch weather forecast for 2 hours from now.
-    const nextWeather = (await axios.get<ForecastAPIResponse>(
-      `https://api.data.gov.sg/v1/environment/2-hour-weather-forecast?
-        date_time=${nowDateQueryString}
-      `.replaceAll(/\s/g, '')
-    )).data;
+    try {
+      nextWeather = (await axios.get<ForecastAPIResponse>(
+        `https://api.data.gov.sg/v1/environment/2-hour-weather-forecast?
+          date_time=${nowDateQueryString}
+        `.replaceAll(/\s/g, '')
+      )).data;
+    } catch (error) {
+      if (!axios.isAxiosError(error)) throw error;
+    }
     // Make the API call to fetch current weather.
-    const currWeather = (await axios.get<ForecastAPIResponse>(
-      `https://api.data.gov.sg/v1/environment/2-hour-weather-forecast?
+    try {
+      currWeather = (await axios.get<ForecastAPIResponse>(
+        `https://api.data.gov.sg/v1/environment/2-hour-weather-forecast?
         date_time=${pastDateQueryString}
       `.replaceAll(/\s/g, '')
-    )).data;
+      )).data;
+    } catch (error) {
+      if (!axios.isAxiosError(error)) throw error;
+    }
     // Make the API call to fetch weather for 2 hours ago.
-    const pastWeather = (await axios.get<ForecastAPIResponse>(
-      `https://api.data.gov.sg/v1/environment/2-hour-weather-forecast?
+    try {
+      pastWeather = (await axios.get<ForecastAPIResponse>(
+        `https://api.data.gov.sg/v1/environment/2-hour-weather-forecast?
         date_time=${furtherPastDateQueryString}
       `.replaceAll(/\s/g, '')
-    )).data;
+      )).data;
+    } catch (error) {
+      if (!axios.isAxiosError(error)) throw error;
+    }
     // Parse responses and update weatherData.
     this.weatherData = parseApiResponse(pastWeather, currWeather, nextWeather);
   }
