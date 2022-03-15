@@ -7,7 +7,7 @@ import haversineDistance from '@/utils/haversineDistance';
 
 export type LatLon = [number, number];
 
-function parseApiResponse(
+export function parseAPIResponse(
   pastWeather: ForecastAPIResponse | undefined,
   currWeather: ForecastAPIResponse | undefined,
   nextWeather: ForecastAPIResponse | undefined
@@ -79,9 +79,6 @@ export default class WeatherStore {
       :00
     `.replaceAll(/\s/g, ''));
   }
-  hasLatLon(lat: number, lon: number) {
-    return this.weatherData?.has([lat, lon]);
-  }
   getNearestStationLatLon(lat: number, lon: number) {
     if (!this.weatherData) return undefined;
     const { latLon: nearestLatLon, ..._ } = Array.from(this.weatherData.keys()).reduce(({ latLon, distance }, currLatLon) => {
@@ -141,6 +138,6 @@ export default class WeatherStore {
       if (!axios.isAxiosError(error)) throw error;
     }
     // Parse responses and update weatherData.
-    this.weatherData = parseApiResponse(pastWeather, currWeather, nextWeather);
+    this.weatherData = parseAPIResponse(pastWeather, currWeather, nextWeather);
   }
 }
