@@ -17,7 +17,7 @@ const customJestConfig = {
     '^@/globals/(.*)$': '<rootDir>/src/globals/$1',
     '^@/utils/(.*)$': '<rootDir>/src/utils/$1',
     '^@/models/(.*)$': '<rootDir>/src/models/$1',
-    '^@/mocks/(.*)$': '<rootDir>/src/mocks/$1',
+    '^@/api-mocks/(.*)$': '<rootDir>/src/api-mocks/$1',
     '^@/stores/(.*)$': '<rootDir>/src/stores/$1'
   },
   testEnvironment: 'jest-environment-jsdom',
