@@ -94,16 +94,12 @@
       <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
     </tr>
     <tr>
-      <td>Write unit tests for WeatherStore</td>
-      <td>In progress</td>
-    </tr>
-    <tr>
-      <td>Refine handling of API responses (catch errors and handle them gracefully)</td>
+      <td>Loading state placeholders for <a href='https://justgo.dev/search' rel='noreferrer'>/search page</a> when search is launched</td>
       <td>Up next!</td>
     </tr>
     <tr>
-      <td>Loading state placeholders for <a href='https://justgo.dev/search' rel='noreferrer'>/search page</a> when search is launched</td>
-      <td>Not started</td>
+      <td>Mock backend API endpoints for user-specific features</td>
+      <td>Up next!</td>
     </tr>
     <tr>
       <td>NavBar behaviour and design for when a user is signed in</td>
