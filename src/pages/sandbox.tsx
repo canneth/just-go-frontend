@@ -2,23 +2,32 @@
 import { MouseEvent } from 'react';
 import Button from '@/components/common/button/Button';
 import usePageFadeInOut from '@/hooks/usePageFadeInOut';
-import WeatherStore from '@/stores/domain-stores/WeatherStore';
 import styles from './sandbox.module.css';
-
-const weatherStore = new WeatherStore;
+import usePromise from '@/hooks/usePromise';
 
 export default function Sandbox() {
 
   const selfRef = usePageFadeInOut();
 
+  const { isLoading, data, error, run } = usePromise(() => {
+    return new Promise((res, rej) => {
+      setTimeout(() => {
+        res('This is the data!');
+      }, 3000);
+    });
+  });
+
   function clickHandler(e: MouseEvent) {
-    weatherStore.updateWeatherData();
+
   }
 
   return (
     <>
       <div ref={selfRef} className={styles.overallContainer}>
-        <Button text={`Do stuff`} clickHandler={clickHandler} />
+        <Button text={`Run async callback!`} clickHandler={run} />
+        <p>Loading state: {`${isLoading}`}</p>
+        <p>Error: {error ? 'ERROR OCCURRED!!' : 'no error'}</p>
+        <p>Data: {data ? JSON.stringify(data) : 'no data'}</p>
       </div>
     </>
   );
