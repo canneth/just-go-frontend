@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, MouseEvent, KeyboardEvent } from 'react';
 import ScrollableList from '@/components/scrollable-list/ScrollableList';
 import usePageFadeInOut from '@/hooks/usePageFadeInOut';
 import usePageChangeClickHandler from '@/hooks/usePageChangeClickHandler';
+import usePromise from '@/hooks/usePromise';
 import PlaceData from '@/models/PlaceData';
 import { weatherStore } from '@/pages/_app';
 import styles from './search.module.css';
@@ -16,8 +17,28 @@ export default function SearchPage() {
   const scrollableListRef = useRef<HTMLOListElement>(null);
   const [lastSearchInput, setLastSearchInput] = useState<string>('');
   const [placeList, setPlaceList] = useState<PlaceData[]>([]);
+  const searchPromise = usePromise((formattedParamsString: string) => {
+    return axios.get<PlaceData[]>(
+      `https://nominatim.openstreetmap.org/search?
+      format=json
+      &countrycodes=sg
+      &addressdetails=1
+      &extratags=1
+      &limit=10
+      &q=${formattedParamsString}
+    `.replaceAll(/\s/g, '')
+    );
+  });
 
   const intersectionObserverRef = useRef<IntersectionObserver>();
+
+  useEffect(() => {
+    weatherStore.updateWeatherData();
+  }, []);
+
+  useEffect(() => {
+    setPlaceList(searchPromise.resolvedValue ? searchPromise.resolvedValue.data : []);
+  }, [searchPromise.resolvedValue]);
 
   useEffect(() => {
     if (searchInputRef.current!.value !== lastSearchInput) return;
@@ -61,7 +82,8 @@ export default function SearchPage() {
     );
     // Set intersection observer to observe the new last element.
     const intersectionObserver = intersectionObserverRef.current!;
-    const newListOfElements = scrollableListRef.current!.children;
+    if (!scrollableListRef.current) return;
+    const newListOfElements = scrollableListRef.current.children;
     if (newListOfElements.length <= 0) return;
     const newLastElement = newListOfElements[newListOfElements.length - 1];
     intersectionObserver.observe(newLastElement);
@@ -69,32 +91,13 @@ export default function SearchPage() {
     return () => intersectionObserverRef.current?.disconnect(); // Cleanup the old intersection observer.
   }, [lastSearchInput, placeList]);
 
-  useEffect(() => {
-    weatherStore.updateWeatherData();
-  }, []);
 
   function formattedSearch(rawSearchString: string) {
     if (rawSearchString === lastSearchInput) return; // Prevent repeated idempotent API calls.
     if (!rawSearchString) setPlaceList([]); // Prevent pointless API calls.
     setLastSearchInput(rawSearchString);
     const formattedParamsString = encodeURIComponent(rawSearchString);
-    (async function () {
-      // Make the API call to fetch search results.
-      const searchResults = (await axios.get<PlaceData[]>(
-        `https://nominatim.openstreetmap.org/search?
-          format=json
-          &countrycodes=sg
-          &addressdetails=1
-          &extratags=1
-          &limit=10
-          &q=${formattedParamsString}
-        `.replaceAll(/\s/g, '')
-      )).data;
-      // If there are no additional search results to display, no-op and return.
-      if (searchResults.length <= 0 && rawSearchString === lastSearchInput) return;
-      // Update search results to be displayed.
-      setPlaceList(searchResults);
-    })();
+    searchPromise.run(formattedParamsString);
   }
 
   function clickHandlerSearchButton(_: MouseEvent) {
@@ -131,11 +134,20 @@ export default function SearchPage() {
           </button>
         </div>
       </header>
-      <ScrollableList
-        ref={scrollableListRef}
-        placeList={placeList}
-        withWeather={true}
-      />
+      {
+        searchPromise.isLoading || searchPromise.error
+          ?
+          <div className={styles.statusTextContainer}>
+            <p className={styles.statusText}>{searchPromise.isLoading ? 'Loading...' : 'Sorry, the API may be unavailable at the moment!'}</p>
+          </div>
+          :
+          <ScrollableList
+            ref={scrollableListRef}
+            placeList={placeList}
+            withWeather={true}
+          />
+      }
+
     </div>
   );
 }
