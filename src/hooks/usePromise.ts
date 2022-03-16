@@ -1,24 +1,24 @@
 import { useState } from 'react';
 
-export default function usePromise<T>(promiseCreator: (...args: any[]) => Promise<T>) {
+export default function usePromise<T, U extends unknown[]>(promiseCreator: (...args: U) => Promise<T>) {
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<any>(undefined);
-  const [data, setData] = useState<T>();
+  const [resolvedValue, setResolvedValue] = useState<T>();
 
-  async function run() {
+  async function run(...args: Parameters<typeof promiseCreator>) {
     setIsLoading(true);
     setError(undefined);
-    setData(undefined);
+    setResolvedValue(undefined);
     try {
-      const promise = promiseCreator();
+      const promise = promiseCreator(...args);
       const resolvedValue = await promise;
-      setData(resolvedValue);
+      setResolvedValue(resolvedValue);
     } catch (error) {
       setError(error);
     }
     setIsLoading(false);
   }
 
-  return { isLoading, error, data, run };
+  return { isLoading, error, resolvedValue, run };
 }
