@@ -6,6 +6,7 @@ export default function usePromise<T, U extends unknown[]>(promiseCreator: (...a
   const [error, setError] = useState<any>(undefined);
   const [resolvedValue, setResolvedValue] = useState<T>();
   const [pendingCount, setPendingCount] = useState<number>(0);
+  const [isMounted, setIsMounted] = useState<boolean>();
 
   async function run(...args: Parameters<typeof promiseCreator>) {
     setPendingCount(x => x + 1);
@@ -14,16 +15,21 @@ export default function usePromise<T, U extends unknown[]>(promiseCreator: (...a
     try {
       const promise = promiseCreator(...args);
       const resolvedValue = await promise;
-      setResolvedValue(resolvedValue);
+      if (isMounted) setResolvedValue(resolvedValue);
     } catch (error) {
-      setError(error);
+      if (isMounted) setError(error);
     }
-    setPendingCount(x => x - 1);
+    if (isMounted) setPendingCount(x => x - 1);
   }
 
   useEffect(() => {
     setIsLoading(pendingCount > 0);
   }, [pendingCount]);
+
+  useEffect(() => {
+    setIsMounted(true);
+    return () => setIsMounted(false);
+  }, []);
 
   return { isLoading, error, resolvedValue, run };
 }
