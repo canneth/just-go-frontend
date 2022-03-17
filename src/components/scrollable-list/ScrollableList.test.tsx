@@ -12,7 +12,7 @@ jest.mock('./place-card/PlaceCard', () => (
 describe('ScrollableList', () => {
   describe('on render', () => {
     it('renders a single (ordered) list element', () => {
-      render(<ScrollableList placeList={[]} pastWeather={undefined} currWeather={undefined} nextWeather={undefined} />);
+      render(<ScrollableList placeList={[]} />);
       screen.getByRole('list');
     });
     it('renders as many children as there are entries in the placeList prop', () => {
@@ -57,7 +57,7 @@ describe('ScrollableList', () => {
       const numOfPlaces = 10;
       const placeDataList = Array<PlaceData>();
       for (let i = 0; i < numOfPlaces; i++) placeDataList.push(placeDataFactory(i));
-      render(<ScrollableList placeList={placeDataList} pastWeather={undefined} currWeather={undefined} nextWeather={undefined} />);
+      render(<ScrollableList placeList={placeDataList} />);
       const listEl = screen.getByRole('list');
       expect(listEl.childNodes).toHaveLength(placeDataList.length);
     });
