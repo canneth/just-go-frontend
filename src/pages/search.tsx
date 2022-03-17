@@ -138,7 +138,13 @@ export default function SearchPage() {
         searchPromise.isLoading || searchPromise.error
           ?
           <div className={styles.statusTextContainer}>
-            <p className={styles.statusText}>{searchPromise.isLoading ? 'Loading...' : 'Sorry, the API may be unavailable at the moment!'}</p>
+            <p className={styles.statusText}>
+              {
+                searchPromise.isLoading
+                  ? 'Loading...'
+                  : 'Sorry, the API may be unavailable at the moment!'
+              }
+            </p>
           </div>
           :
           <ScrollableList
@@ -147,7 +153,6 @@ export default function SearchPage() {
             withWeather={true}
           />
       }
-
     </div>
   );
 }
