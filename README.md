@@ -94,10 +94,6 @@
       <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
     </tr>
     <tr>
-      <td>Write unit test for usePromise() hook</td>
-      <td>In progress</td>
-    </tr>
-    <tr>
       <td>Wrap all component interactions in tests in act()</td>
       <td>Up next!</td>
     </tr>
