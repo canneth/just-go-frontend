@@ -94,7 +94,7 @@
       <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
     </tr>
     <tr>
-      <td>Loading state placeholders for <a href='https://justgo.dev/search' rel='noreferrer'>/search page</a> when search is launched</td>
+      <td>Write unit test for usePromise() hook</td>
       <td>In progress</td>
     </tr>
     <tr>
@@ -111,6 +111,10 @@
     </tr>
     <tr>
       <td>Make NavBar media-responsive</td>
+      <td>Not started</td>
+    </tr>
+    <tr>
+      <td>Loading state skeleton for ScrollableList</td>
       <td>Not started</td>
     </tr>
     <tr>
