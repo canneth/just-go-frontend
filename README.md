@@ -94,10 +94,6 @@
       <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
     </tr>
     <tr>
-      <td>Wrap all component interactions in tests in act()</td>
-      <td>Up next!</td>
-    </tr>
-    <tr>
       <td>Mock backend API endpoints for user-specific features</td>
       <td>Not started</td>
     </tr>
