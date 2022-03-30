@@ -29,7 +29,7 @@ export default observer(function MapPage() {
   const localWeatherTimeSeries = placeLatLon ? weatherStore.getWeatherTimeSeriesNearLatLon(placeLatLon[0], placeLatLon[1]) : undefined;
 
   const clickHandlerBack = usePageChangeClickHandler('/search');
-  const clickHandlerGoogleMaps = usePageChangeClickHandler(`https://www.google.com/maps/place/Singapore+${placePostalCode}`, { toExternal: true });
+  const clickHandlerGoogleMaps = () => window.open(`https://www.google.com/maps/place/Singapore+${placePostalCode}`, '_newbtab');
 
   useEffect(() => {
     (async function () {
