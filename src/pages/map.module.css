@@ -53,10 +53,10 @@
   .sidePanelsContainer {
     flex-direction: column-reverse;
   }
-  .placeCard {
+  .sidePanelsContainer > .placeCard {
     width: 100%;
   }
-  .weatherCard {
+  .sidePanelsContainer > .weatherCard {
     width: 100%;
   }
 }
