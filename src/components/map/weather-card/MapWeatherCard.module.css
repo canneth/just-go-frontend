@@ -1,6 +1,8 @@
 
 .overallContainer {
   position: relative;
+  display: flex;
+  justify-content: center;
   width: 400px;
   padding: 16px 50px;
   border-radius: 6px;
@@ -8,6 +10,8 @@
   box-shadow: var(--box-shadow-standard);
 }
 
-.weatherTimeline {
-  width: 100%;
+@media only screen and (max-width: 600px) {
+  .weatherTimeline {
+    width: 160px;
+  }
 }
