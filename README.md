@@ -94,11 +94,27 @@
       <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
     </tr>
     <tr>
-      <td>Mock backend API endpoints for user-specific features</td>
+      <td>Mobile view for the <a href='https://justgo.dev/map' rel='noreferrer'>/map page</a></td>
+      <td>Not started</td>
+    </tr>
+    <tr>
+      <td>Make panels in the <a href='https://justgo.dev/map' rel='noreferrer'>/map page</a> retractable</td>
+      <td>Not started</td>
+    </tr>
+    <tr>
+      <td>Design sign-in/login page</td>
+      <td>Not started</td>
+    </tr>
+    <tr>
+      <td>The <a href='https://justgo.dev/login' rel='noreferrer'>/login and sign-up page</a> UI</td>
       <td>Not started</td>
     </tr>
     <tr>
       <td>NavBar behaviour and design for when a user is signed in</td>
+      <td>Not started</td>
+    </tr>
+    <tr>
+      <td>Mock backend API endpoints for user-specific features</td>
       <td>Not started</td>
     </tr>
     <tr>
@@ -110,23 +126,11 @@
       <td>Not started</td>
     </tr>
     <tr>
-      <td>Mobile view for the <a href='https://justgo.dev/map' rel='noreferrer'>/map page</a></td>
-      <td>Not started</td>
-    </tr>
-    <tr>
-      <td>Make panels in the <a href='https://justgo.dev/map' rel='noreferrer'>/map page</a> retractable</td>
-      <td>Not started</td>
-    </tr>
-    <tr>
       <td>The rain radar map overlay in the <a href='https://justgo.dev/map' rel='noreferrer'>/map page</a></td>
       <td>Not started</td>
     </tr>
     <tr>
       <td>Controls to re-focus map on marker in <a href='https://justgo.dev/map' rel='noreferrer'>/map page</a></td>
-      <td>Not started</td>
-    </tr>
-    <tr>
-      <td>The <a href='https://justgo.dev/login' rel='noreferrer'>/login and sign-up page</a> UI</td>
       <td>Not started</td>
     </tr>
     <tr>
