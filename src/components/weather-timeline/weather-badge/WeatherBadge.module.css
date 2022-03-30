@@ -29,7 +29,7 @@
   color: var(--color-grey-black);
   font-size: var(--font-size-smaller);
   font-weight: bold;
-  top: 20px;
+  top: 50%;
   left: 50%;
   transform: translateX(-50%);
   white-space: nowrap;
@@ -42,7 +42,7 @@
   opacity: 0.1;
 }
 .mouseoverContainer:hover > .tooltip {
-  top: 16px;
+  top: 22%;
   opacity: 1;
 }
 
