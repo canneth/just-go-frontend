@@ -44,3 +44,19 @@
   justify-content: space-between;
   pointer-events: auto;
 }
+
+@media only screen and (max-width: 600px) {
+  .foregroundContainer {
+    justify-content: flex-end;
+    gap: 16px;
+  }
+  .sidePanelsContainer {
+    flex-direction: column-reverse;
+  }
+  .placeCard {
+    width: 100%;
+  }
+  .weatherCard {
+    width: 100%;
+  }
+}
