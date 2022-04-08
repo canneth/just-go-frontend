@@ -79,20 +79,20 @@
 <section>
   <h2>Technologies used</h2>
   <h3>Design</h3>
-  <ol>
+  <ul>
     <li>Figma</li>
-  </ol>
+  </ul>
   <h3>Implementation</h3>
-  <ol>
+  <ul>
     <li>TypeScript</li>
     <li>NextJS</li>
     <li>MobX</li>
-  </ol>
+  </ul>
   <h3>Testing</h3>
-  <ol>
+  <ul>
     <li>Jest</li>
     <li>React Testing Library</li>
-  </ol>
+  </ul>
 </section>
 
 <section>
