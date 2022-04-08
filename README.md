@@ -77,6 +77,14 @@
 </section>
 
 <section>
+  <h2>Technologies used</h2>
+  <p><b>Design:</b> Figma</p>
+  <p><b>Framework:</b> NextJS</p>
+  <p><b>State management:</b> MobX</p>
+  <p><b>Testing:</b> Jest | React Testing Library</p>
+</section>
+
+<section>
   <h2>Development status</h2>
   <p>
     The web app is <strong>very incomplete</strong>, and is undergoing <strong>active development</strong>,
