@@ -99,7 +99,7 @@
   <h2>Development status</h2>
   <p>
     The web app is <strong>very incomplete</strong>, and is undergoing <strong>active development</strong>,
-    meaning that what works today may break tomorrow, and vice versa.
+    meaning that what works today may break tomorrow.
   </p>
 
   <h3>Outstanding todos (non-exhaustive):</h3>
