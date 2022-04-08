@@ -78,10 +78,21 @@
 
 <section>
   <h2>Technologies used</h2>
-  <p><b>Design:</b> Figma</p>
-  <p><b>Framework:</b> NextJS</p>
-  <p><b>State management:</b> MobX</p>
-  <p><b>Testing:</b> Jest | React Testing Library</p>
+  <h3>Design</h3>
+  <ol>
+    <li>Figma</li>
+  </ol>
+  <h3>Implementation</h3>
+  <ol>
+    <li>TypeScript</li>
+    <li>NextJS</li>
+    <li>MobX</li>
+  </ol>
+  <h3>Testing</h3>
+  <ol>
+    <li>Jest</li>
+    <li>React Testing Library</li>
+  </ol>
 </section>
 
 <section>
