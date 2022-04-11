@@ -41,8 +41,8 @@ export default function MinimisableCard(props: MinimisableCardProps) {
     <div ref={selfRef} className={`${styles.overallContainer} ${props.className} ${minimised === undefined ? null : (minimised ? styles.minimised : styles.expanded)}`}>
       <div className={`${styles.expandedContentContainer} ${hideContent ? styles.hide : null}`}>
         {props.children}
+        <button className={styles.minimiseButton} onClick={clickHandlerMinimiseButton} />
       </div>
-      <button className={styles.minimiseButton} onClick={clickHandlerMinimiseButton} />
     </div>
   );
 }
