@@ -12,7 +12,11 @@ interface WeatherBadgeProps {
 export default function WeatherBadge(props: WeatherBadgeProps) {
 
   const hour24Format = props.date.getHours();
-  const displayTime = hour24Format > 12 ? `${hour24Format - 12} pm` : `${hour24Format} am`
+  const displayTime = (
+    hour24Format > 12
+      ? `${hour24Format - 12} pm`
+      : `${hour24Format} ${hour24Format === 12 ? 'pm' : 'am'}`
+  );
   const displayText = props.weather?.replaceAll(/ \(Day\)| \(Night\)/g, '');
 
   return (
