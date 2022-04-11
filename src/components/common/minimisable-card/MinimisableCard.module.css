@@ -1,0 +1,73 @@
+
+.overallContainer {
+  --expanded-max-width: 0px;
+  --expanded-max-height: 0px;
+  --minimised-max-width: 0px;
+  --minimised-max-height: 0px;
+  --animation-duration: 0ms;
+  --content-fade-duration: 0ms;
+
+  position: relative;
+  border-radius: 6px;
+  width: 400px;
+  padding: 24px;
+  background: var(--color-grey-white);
+  box-shadow: var(--box-shadow-standard);
+  max-width: revert;
+  max-height: revert;
+}
+
+.expandedContentContainer {
+  position: relative;
+  opacity: 1;
+  transition: opacity var(--content-fade-duration) linear;
+}
+.minimiseButton {
+  --arrow-depth: 8px;
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  width: var(--arrow-depth);
+  height: 16px;
+  border-style: solid;
+  border-color: transparent var(--color-grey-base) transparent transparent;
+  border-width: var(--arrow-depth);
+  transition: border-color 100ms ease-out;
+}
+.minimiseButton:hover {
+  cursor: pointer;
+  border-color: transparent var(--color-primary-light) transparent transparent;
+}
+
+/* Minimised styles */
+
+.overallContainer.minimised {
+  animation: minimise var(--animation-duration) var(--content-fade-duration) ease-out forwards;
+}
+.overallContainer.expanded {
+  animation: expand var(--animation-duration) ease-out;
+}
+.expandedContentContainer.hide {
+  opacity: 0;
+}
+
+@keyframes minimise {
+  0% {
+    max-width: var(--expanded-max-width);
+    max-height: var(--expanded-max-height);
+  }
+  100% {
+    max-width: var(--minimised-max-width);
+    max-height: var(--minimised-max-height);
+  }
+}
+@keyframes expand {
+  0% {
+    max-width: var(--minimised-max-width);
+    max-height: var(--minimised-max-height);
+  }
+  100% {
+    max-width: var(--expanded-max-width);
+    max-height: var(--expanded-max-height);
+  }
+}
