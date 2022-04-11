@@ -12,7 +12,7 @@ interface MapWeatherCardProps {
 export default function MapWeatherCard(props: MapWeatherCardProps) {
 
   const minimizedContent = (
-    <span className='iconify' data-icon='majesticons:checkbox-list-detail' data-width='100%' data-height='100%' />
+    <span className='iconify' data-icon='fluent:weather-sunny-16-filled' data-width='100%' data-height='100%' />
   );
 
   return (
