@@ -1,27 +1,27 @@
 
 import { MouseEvent, ReactNode, useEffect, useRef, useState } from 'react';
-import styles from './MinimisableCard.module.css';
+import styles from './MinimizableCard.module.css';
 
-interface MinimisableCardProps {
-  minimisedDiameter: number; // in px
-  minimisedContentJsx: ReactNode;
+interface MinimizableCardProps {
+  minimizedDiameter: number; // in px
+  minimizedContentJsx: ReactNode;
   children?: ReactNode;
   className?: string;
 }
 
-export default function MinimisableCard(props: MinimisableCardProps) {
+export default function MinimizableCard(props: MinimizableCardProps) {
 
-  const [minimized, setMinimised] = useState<boolean>();
+  const [minimized, setMinimized] = useState<boolean>();
   const [minimizing, setMinimizing] = useState<boolean>();
   const [expanding, setExpanding] = useState<boolean>();
   const selfRef = useRef<HTMLDivElement>(null);
   const animationDuration = 200; // in ms
 
-  function clickHandlerMinimiseButton(_: MouseEvent) {
+  function clickHandlerMinimizeButton(_: MouseEvent) {
     if (minimized) {
       setExpanding(true);
       setTimeout(() => {
-        setMinimised(false);
+        setMinimized(false);
         setExpanding(false);
       }, animationDuration);
     } else {
@@ -29,17 +29,17 @@ export default function MinimisableCard(props: MinimisableCardProps) {
       selfRef.current?.style.setProperty('--expanded-max-width', `${selfRef.current!.offsetWidth}px`);
       setMinimizing(true);
       setTimeout(() => {
-        setMinimised(true);
+        setMinimized(true);
         setMinimizing(false);
       }, animationDuration);
     }
   }
 
   useEffect(() => {
-    selfRef.current!.style.setProperty('--minimized-max-height', `${props.minimisedDiameter}px`);
-    selfRef.current!.style.setProperty('--minimized-max-width', `${props.minimisedDiameter}px`);
+    selfRef.current!.style.setProperty('--minimized-max-height', `${props.minimizedDiameter}px`);
+    selfRef.current!.style.setProperty('--minimized-max-width', `${props.minimizedDiameter}px`);
     selfRef.current!.style.setProperty('--animation-duration', `${animationDuration}ms`);
-  }, [props.minimisedDiameter]);
+  }, [props.minimizedDiameter]);
 
   return (
     <div
@@ -52,12 +52,12 @@ export default function MinimisableCard(props: MinimisableCardProps) {
         ${expanding ? styles.expanding : null}
       `}
     >
-      <div className={styles.minimisedContentContainer}>
-        {props.minimisedContentJsx}
+      <div className={styles.minimizedContentContainer}>
+        {props.minimizedContentJsx}
       </div>
       <div className={styles.expandedContentContainer}>
         {props.children}
-        <button className={styles.minimiseButton} onClick={clickHandlerMinimiseButton} />
+        <button className={styles.minimizeButton} onClick={clickHandlerMinimizeButton} />
       </div>
     </div>
   );

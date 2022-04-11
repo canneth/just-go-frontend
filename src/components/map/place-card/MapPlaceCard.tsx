@@ -1,11 +1,10 @@
 
 import Image from 'next/image';
-import { useState } from 'react';
 import FavoriteToggle from '@/components/common/favorite-toggle/FavoriteToggle';
 import PlaceData from '@/models/PlaceData';
 import TagLabel from '@/models/TagLabel';
 import styles from './MapPlaceCard.module.css';
-import MinimisableCard from '@/components/common/minimisable-card/MinimisableCard';
+import MinimizableCard from '@/components/common/minimizable-card/MinimizableCard';
 
 interface MapPlaceCardProps {
   placeData: PlaceData;
@@ -29,12 +28,12 @@ export default function MapPlaceCard(props: MapPlaceCardProps) {
     ${props.placeData.address?.county ? props.placeData.address?.county : ''}
   `;
 
-  const minimisedContent = (
+  const minimizedContent = (
     <span className='iconify' data-icon='majesticons:checkbox-list-detail' data-width='100%' data-height='100%' />
   );
 
   return (
-    <MinimisableCard className={props.className} minimisedDiameter={50} minimisedContentJsx={minimisedContent}>
+    <MinimizableCard className={props.className} minimizedDiameter={50} minimizedContentJsx={minimizedContent}>
       <div className={styles.contentContainer}>
         <div className={styles.descriptionColumn}>
           <p className={styles.placeName}>{placeName}</p>
@@ -59,6 +58,6 @@ export default function MapPlaceCard(props: MapPlaceCardProps) {
           placeId={props.placeData.osm_id}
         />
       </div>
-    </MinimisableCard>
+    </MinimizableCard>
   );
 }
