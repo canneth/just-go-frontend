@@ -13,7 +13,7 @@ export default function MinimisableCard(props: MinimisableCardProps) {
   const [minimised, setMinimised] = useState<boolean>();
   const [hideContent, setHideContent] = useState<boolean>(false);
   const selfRef = useRef<HTMLDivElement>(null);
-  const animationDuration = 100; // in ms
+  const animationDuration = 200; // in ms
   const contentFadeDuration = 100; // in ms
 
   function clickHandlerMinimiseButton(_: MouseEvent) {
@@ -26,9 +26,7 @@ export default function MinimisableCard(props: MinimisableCardProps) {
       selfRef.current?.style.setProperty('--expanded-max-height', `${selfRef.current!.offsetHeight}px`);
       selfRef.current?.style.setProperty('--expanded-max-width', `${selfRef.current!.offsetWidth}px`);
       setHideContent(true);
-      setTimeout(() => {
-        setMinimised(true);
-      }, contentFadeDuration);
+      setMinimised(true);
     }
   }
 
