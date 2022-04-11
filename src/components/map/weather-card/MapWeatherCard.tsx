@@ -1,7 +1,10 @@
 
+import { ReactNode, useEffect, useState } from 'react';
 import MinimizableCard from '@/components/common/minimizable-card/MinimizableCard';
 import WeatherTimeline from '@/components/weather-timeline/WeatherTimeline';
 import WeatherTimeSeries from '@/models/WeatherTimeSeries';
+import sameDateWithinTolerance from '@/utils/sameDateWithinTolerance';
+import renderWeatherIconFor from '@/utils/renderWeatherIconFor';
 import styles from './MapWeatherCard.module.css';
 
 interface MapWeatherCardProps {
@@ -11,9 +14,16 @@ interface MapWeatherCardProps {
 
 export default function MapWeatherCard(props: MapWeatherCardProps) {
 
-  const minimizedContent = (
-    <span className='iconify' data-icon='fluent:weather-sunny-16-filled' data-width='100%' data-height='100%' />
-  );
+  const [minimizedContent, setMinimizedContent] = useState<ReactNode>();
+
+  useEffect(() => {
+    for (const entry of props.weatherList) {
+      if (sameDateWithinTolerance(entry.date, new Date, { minutes: 30 })) {
+        setMinimizedContent(renderWeatherIconFor(entry.weather));
+        return;
+      }
+    }
+  }, [props.weatherList]);
 
   return (
     <MinimizableCard className={`${styles.overallContainer} ${props.className}`} minimizedDiameter={50} minimizedContentJsx={minimizedContent} tooltip='Weather timeline'>
