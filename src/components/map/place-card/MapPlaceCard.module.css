@@ -1,4 +1,7 @@
 
+.overallContainer {
+  width: 400px;
+}
 .contentContainer {
   position: relative;
   display: flex;
