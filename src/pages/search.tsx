@@ -14,7 +14,7 @@ export default function SearchPage() {
   const clickHandlerBack = usePageChangeClickHandler('/select');
 
   const searchInputRef = useRef<HTMLInputElement>(null);
-  const scrollableListRef = useRef<HTMLOListElement>(null);
+  const scrollableListRef = useRef<HTMLOListElement | null>(null);
   const [lastSearchInput, setLastSearchInput] = useState<string>('');
   const [placeList, setPlaceList] = useState<PlaceData[]>([]);
   const searchPromise = usePromise((formattedParamsString: string) => {
@@ -41,8 +41,10 @@ export default function SearchPage() {
   }, [searchPromise.resolvedValue]);
 
   useEffect(() => {
+    const scrollableListEl = scrollableListRef.current;
+    if (!scrollableListEl) return;
+    if (placeList.length <= 0) return;
     if (searchInputRef.current!.value !== lastSearchInput) return;
-
     function handleIntersection(entries: IntersectionObserverEntry[]) {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -74,22 +76,20 @@ export default function SearchPage() {
         }
       });
     }
-
     // Register new intersection observer with the updated intersection handler.
     intersectionObserverRef.current = new IntersectionObserver(
       handleIntersection,
-      { root: scrollableListRef.current }
+      { root: scrollableListEl }
     );
     // Set intersection observer to observe the new last element.
     const intersectionObserver = intersectionObserverRef.current!;
-    if (!scrollableListRef.current) return;
-    const newListOfElements = scrollableListRef.current.children;
+    const newListOfElements = scrollableListEl.children;
     if (newListOfElements.length <= 0) return;
     const newLastElement = newListOfElements[newListOfElements.length - 1];
     intersectionObserver.observe(newLastElement);
 
     return () => intersectionObserverRef.current?.disconnect(); // Cleanup the old intersection observer.
-  }, [lastSearchInput, placeList]);
+  }, [lastSearchInput, placeList, searchPromise]);
 
 
   function formattedSearch(rawSearchString: string) {
