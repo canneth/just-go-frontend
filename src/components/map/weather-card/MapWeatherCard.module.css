@@ -1,15 +1,15 @@
 
 .overallContainer {
+  width: 400px;
+}
+.contentContainer {
   position: relative;
   display: flex;
   justify-content: center;
-  width: 400px;
-  padding: 16px 50px;
-  border-radius: 6px;
-  background: var(--color-grey-white);
-  box-shadow: var(--box-shadow-standard);
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
-
 @media only screen and (max-width: 600px) {
   .weatherTimeline {
     width: 160px;
