@@ -33,7 +33,7 @@
 .minimiseButton {
   --arrow-depth: 8px;
   position: absolute;
-  right: 0px;
+  right: 16px;
   top: 50%;
   width: var(--arrow-depth);
   height: 16px;
