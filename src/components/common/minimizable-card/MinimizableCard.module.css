@@ -8,7 +8,6 @@
 
   position: relative;
   border-radius: 6px;
-  width: 400px;
   background: var(--color-grey-white);
   box-shadow: var(--box-shadow-standard);
   max-width: revert;
