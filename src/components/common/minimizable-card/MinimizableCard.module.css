@@ -19,7 +19,7 @@
   position: relative;
   padding: 24px;
   opacity: 1;
-  transition: opacity var(--content-fade-duration) linear;
+  transition: opacity 200ms linear;
 }
 .minimizedContentContainer {
   position: absolute;
@@ -28,7 +28,7 @@
   padding: 16%;
   visibility: hidden;
   opacity: 0;
-  transition: opacity 500ms ease-out;
+  transition: opacity 200ms ease-out;
 }
 .minimizeButton {
   --arrow-depth: 8px;
@@ -50,29 +50,32 @@
 /* Transition styles */
 
 .overallContainer.minimizing {
-  animation: minimize var(--animation-duration) ease-out;
+  animation: minimize var(--animation-duration) ease-out forwards;
 }
+.overallContainer.minimizing > .expandedContentContainer {
+  opacity: 0;
+}
+
 .overallContainer.minimized {
+  cursor: pointer;
   max-width: var(--minimized-max-width);
   max-height: var(--minimized-max-height);
   border-radius: calc(var(--minimized-max-width) / 2);
-}
-
-.overallContainer.minimizing > .expandedContentContainer {
-  opacity: 0;
 }
 .overallContainer.minimized > .expandedContentContainer {
   visibility: hidden;
   opacity: 0;
 }
-
 .overallContainer.minimized > .minimizedContentContainer {
   visibility: visible;
   opacity: 1;
 }
 
 .overallContainer.expanding {
-  animation: expand var(--animation-duration) ease-out;
+  animation: expand var(--animation-duration) ease-out forwards;
+}
+.overallContainer.expanding > .minimizedContentContainer {
+  opacity: 0;
 }
 .overallContainer.expanding > .expandedContentContainer {
   visibility: visible;

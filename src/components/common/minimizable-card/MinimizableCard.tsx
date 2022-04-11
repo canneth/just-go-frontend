@@ -14,25 +14,29 @@ export default function MinimizableCard(props: MinimizableCardProps) {
   const [minimized, setMinimized] = useState<boolean>();
   const [minimizing, setMinimizing] = useState<boolean>();
   const [expanding, setExpanding] = useState<boolean>();
+  const [expanded, setExpanded] = useState<boolean>();
   const selfRef = useRef<HTMLDivElement>(null);
   const animationDuration = 200; // in ms
 
   function clickHandlerMinimizeButton(_: MouseEvent) {
-    if (minimized) {
-      setExpanding(true);
-      setTimeout(() => {
-        setMinimized(false);
-        setExpanding(false);
-      }, animationDuration);
-    } else {
-      selfRef.current?.style.setProperty('--expanded-max-height', `${selfRef.current!.offsetHeight}px`);
-      selfRef.current?.style.setProperty('--expanded-max-width', `${selfRef.current!.offsetWidth}px`);
-      setMinimizing(true);
-      setTimeout(() => {
-        setMinimized(true);
-        setMinimizing(false);
-      }, animationDuration);
-    }
+    if (minimized) return;
+    selfRef.current?.style.setProperty('--expanded-max-height', `${selfRef.current!.offsetHeight}px`);
+    selfRef.current?.style.setProperty('--expanded-max-width', `${selfRef.current!.offsetWidth}px`);
+    setMinimizing(true);
+    setExpanded(false);
+    setTimeout(() => {
+      setMinimized(true);
+      setMinimizing(false);
+    }, animationDuration);
+  }
+
+  function clickHandlerExpand(_: MouseEvent) {
+    setExpanding(true);
+    setMinimized(false);
+    setTimeout(() => {
+      setExpanded(true);
+      setExpanding(false);
+    }, animationDuration);
   }
 
   useEffect(() => {
@@ -47,10 +51,12 @@ export default function MinimizableCard(props: MinimizableCardProps) {
       className={`
         ${styles.overallContainer}
         ${props.className}
-        ${minimized ? styles.minimized : styles.expanded}
         ${minimizing ? styles.minimizing : null}
+        ${minimized ? styles.minimized : null}
         ${expanding ? styles.expanding : null}
+        ${expanded ? styles.expanded : null}
       `}
+      onClick={minimized ? clickHandlerExpand : undefined}
     >
       <div className={styles.minimizedContentContainer}>
         {props.minimizedContentJsx}
