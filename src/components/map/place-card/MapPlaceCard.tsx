@@ -29,8 +29,12 @@ export default function MapPlaceCard(props: MapPlaceCardProps) {
     ${props.placeData.address?.county ? props.placeData.address?.county : ''}
   `;
 
+  const minimisedContent = (
+    <span className='iconify' data-icon='majesticons:checkbox-list-detail' data-width='100%' data-height='100%' />
+  );
+
   return (
-    <MinimisableCard className={props.className} minimisedDiameter={40}>
+    <MinimisableCard className={props.className} minimisedDiameter={50} minimisedContentJsx={minimisedContent}>
       <div className={styles.contentContainer}>
         <div className={styles.descriptionColumn}>
           <p className={styles.placeName}>{placeName}</p>
