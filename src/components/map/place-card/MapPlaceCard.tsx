@@ -33,7 +33,7 @@ export default function MapPlaceCard(props: MapPlaceCardProps) {
   );
 
   return (
-    <MinimizableCard className={props.className} minimizedDiameter={50} minimizedContentJsx={minimizedContent} tooltip='Place details'>
+    <MinimizableCard className={`${styles.overallContainer} ${props.className}`} minimizedDiameter={50} minimizedContentJsx={minimizedContent} tooltip='Place details'>
       <div className={styles.contentContainer}>
         <div className={styles.descriptionColumn}>
           <p className={styles.placeName}>{placeName}</p>
