@@ -5,6 +5,7 @@ import styles from './MinimizableCard.module.css';
 interface MinimizableCardProps {
   minimizedDiameter: number; // in px
   minimizedContentJsx: ReactNode;
+  tooltip?: string;
   children?: ReactNode;
   className?: string;
 }
@@ -58,6 +59,7 @@ export default function MinimizableCard(props: MinimizableCardProps) {
       `}
       onClick={minimized ? clickHandlerExpand : undefined}
     >
+      {minimized && props.tooltip ? <aside className={styles.tooltip}>{props.tooltip}</aside> : null}
       <div className={styles.minimizedContentContainer}>
         {props.minimizedContentJsx}
       </div>

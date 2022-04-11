@@ -13,12 +13,39 @@
   box-shadow: var(--box-shadow-standard);
   max-width: revert;
   max-height: revert;
-  overflow: hidden;
+}
+.tooltip {
+  pointer-events: none;
+  position: absolute;
+  left: calc(100% + 20px);
+  top: 50%;
+  transform: translateY(-50%) translateX(-5px);
+  white-space: nowrap;
+  padding: 5px 16px;
+  color: var(--color-grey-white);
+  background: var(--color-primary-base);
+  box-shadow: var(--box-shadow-standard);
+  border-radius: 3px;
+  opacity: 0;
+  transition:
+    opacity 100ms ease-out,
+    transform 100ms ease-out;
+}
+.tooltip::before {
+  position: absolute;
+  content: '';
+  right: 99%;
+  top: 50%;
+  transform: translateY(-50%);
+  border-style: solid;
+  border-width: 8px;
+  border-color: transparent var(--color-primary-base) transparent transparent;
 }
 .expandedContentContainer {
   position: relative;
   padding: 24px;
   opacity: 1;
+  overflow: hidden;
   transition: opacity 200ms linear;
 }
 .minimizedContentContainer {
@@ -57,10 +84,19 @@
 }
 
 .overallContainer.minimized {
-  cursor: pointer;
   max-width: var(--minimized-max-width);
   max-height: var(--minimized-max-height);
   border-radius: calc(var(--minimized-max-width) / 2);
+}
+.overallContainer.minimized:hover {
+  cursor: pointer;
+}
+.overallContainer.minimized:hover > .minimizedContentContainer {
+  color: var(--color-primary-base);
+}
+.overallContainer.minimized:hover > .tooltip {
+  transform: translateY(-50%);
+  opacity: 1;
 }
 .overallContainer.minimized > .expandedContentContainer {
   visibility: hidden;
@@ -69,6 +105,7 @@
 .overallContainer.minimized > .minimizedContentContainer {
   visibility: visible;
   opacity: 1;
+  transition: color 100ms ease-out;
 }
 
 .overallContainer.expanding {
