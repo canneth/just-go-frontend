@@ -64,8 +64,8 @@ export default function MinimizableCard(props: MinimizableCardProps) {
         {props.minimizedContentJsx}
       </div>
       <div className={styles.expandedContentContainer}>
-        <button className={styles.minimizeButton} onClick={clickHandlerMinimizeButton} />
         {props.children}
+        <button className={styles.minimizeButton} onClick={clickHandlerMinimizeButton} />
       </div>
     </div>
   );
