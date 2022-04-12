@@ -1,7 +1,7 @@
 
 import { MouseEvent } from 'react';
 import Button from '@/components/common/button/Button';
-import Marker from '@/components/svgs/Marker';
+import AnimatedMarker from '@/components/svgs/AnimatedMarker';
 import { toast } from '@/components/common/toast-manager/ToastManager';
 import usePageFadeInOut from '@/hooks/usePageFadeInOut';
 import usePageChangeClickHandler from '@/hooks/usePageChangeClickHandler';
@@ -22,7 +22,7 @@ export default function SignupPage() {
     <div ref={selfRef} className={styles.overallContainer}>
       <div className={styles.dialogueContainer}>
         <div className={styles.headerContainer}>
-          <Marker className={styles.badge} />
+          <AnimatedMarker className={styles.badge} />
           <h1 className={styles.headerText}>Welcome!</h1>
         </div>
         <form className={styles.form}>
