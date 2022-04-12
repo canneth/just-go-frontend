@@ -4,6 +4,7 @@ import Logo from '@/components/svgs/Logo';
 import Button from '@/components/common/button/Button';
 import usePageChangeClickHandler from '@/hooks/usePageChangeClickHandler';
 import { toast } from '@/components/common/toast-manager/ToastManager';
+import { FEATURE_UNAVAILABLE_TEXT } from '@/globals/constants';
 import styles from './NavBar.module.css';
 
 interface NavBarProps {
@@ -17,7 +18,7 @@ const NavBar = memo((props: NavBarProps) => {
   const clickHandlerHome = usePageChangeClickHandler('/');
 
   function clickHandlerWithNotImplementedToast(_: MouseEvent) {
-    toast('Sorry, this feature has yet to be implemented! ):');
+    toast(FEATURE_UNAVAILABLE_TEXT);
   }
 
   return (
