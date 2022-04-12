@@ -119,4 +119,7 @@
   .dialogueContainer {
     width: 76%;
   }
+  .badge {
+    height: 60px;
+  }
 }
