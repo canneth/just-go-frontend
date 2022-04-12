@@ -113,12 +113,8 @@
       <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
     </tr>
     <tr>
-      <td>Make panels in the <a href='https://justgo.dev/map' rel='noreferrer'>/map page</a> minimisable</td>
-      <td>In progress</td>
-    </tr>
-    <tr>
       <td>Design sign-in/login page</td>
-      <td>Not started</td>
+      <td>In progress</td>
     </tr>
     <tr>
       <td>The <a href='https://justgo.dev/login' rel='noreferrer'>/login and sign-up page</a> UI</td>
