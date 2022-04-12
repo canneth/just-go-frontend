@@ -18,15 +18,21 @@
   --font-size-web-small: 16px;
   --font-size-web-regular: 18px;
   --font-size-web-large: 22px;
+  --font-size-web-larger: 26px;
+  --font-size-web-largest: 32px;
   --font-size-mobile-smaller: 11px;
   --font-size-mobile-small: 12px;
   --font-size-mobile-regular: 14px;
   --font-size-mobile-large: 16px;
+  --font-size-mobile-larger: 20px;
+  --font-size-mobile-largest: 26px;
 
   --font-size-smaller: var(--font-size-web-smaller);
   --font-size-small: var(--font-size-web-small);
   --font-size-regular: var(--font-size-web-regular);
   --font-size-large: var(--font-size-web-large);
+  --font-size-larger: var(--font-size-web-larger);
+  --font-size-largest: var(--font-size-web-largest);
 
   /* Color palette */
   --color-primary-base: #FF5656;
@@ -102,5 +108,7 @@ p {
     --font-size-small: var(--font-size-mobile-small);
     --font-size-regular: var(--font-size-mobile-regular);
     --font-size-large: var(--font-size-mobile-large);
+    --font-size-larger: var(--font-size-mobile-larger);
+    --font-size-largest: var(--font-size-mobile-largest);
   }
 }
