@@ -27,7 +27,7 @@ const NavBar = memo((props: NavBarProps) => {
           <Logo className={styles.logoSvg} clickHandler={clickHandlerHome} />
           <ol className={styles.buttonList}>
             <li><Button text='Log in' clickHandler={clickHandlerWithNotImplementedToast} noBackground /></li>
-            <li><Button text='Sign up' clickHandler={clickHandlerWithNotImplementedToast} /></li>
+            <li><Button text='Sign up' clickHandler={clickHandlerSignup} /></li>
           </ol>
         </div>
       </nav>
