@@ -17,17 +17,15 @@ export default function SelectPage() {
   }
 
   return (
-    <>
-      <div ref={selfRef} className={styles.overallContainer}>
-        <h1 className={styles.prompt}>What would you like to do?</h1>
-        <ol className={styles.optionsList}>
-          <li className={styles.option} onClick={clickHandlerWithNotImplementedToast}><a>I want to revisit a favourite spot...</a></li>
-          <p className={styles.divider}>or</p>
-          <li className={styles.option} onClick={clickHandlerWithNotImplementedToast}><a>I&apos;m looking for a good place...</a></li>
-          <p className={styles.divider}>or</p>
-          <li className={styles.option} onClick={clickHandlerSearch}><a>I have a place in mind!</a></li>
-        </ol>
-      </div>
-    </>
+    <div ref={selfRef} className={styles.overallContainer}>
+      <h1 className={styles.prompt}>What would you like to do?</h1>
+      <ol className={styles.optionsList}>
+        <li className={styles.option} onClick={clickHandlerWithNotImplementedToast}><a>I want to revisit a favourite spot...</a></li>
+        <p className={styles.divider}>or</p>
+        <li className={styles.option} onClick={clickHandlerWithNotImplementedToast}><a>I&apos;m looking for a good place...</a></li>
+        <p className={styles.divider}>or</p>
+        <li className={styles.option} onClick={clickHandlerSearch}><a>I have a place in mind!</a></li>
+      </ol>
+    </div>
   );
 }
