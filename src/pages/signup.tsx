@@ -44,7 +44,7 @@ export default function SignupPage() {
         </form>
         <div className={styles.alreadyHaveAccountContainer}>
           <p>Already have an account?</p>
-          <a href='' onClick={(e) => { e.preventDefault(); toast(FEATURE_UNAVAILABLE_TEXT); }}>Just log in!</a>
+          <a onClick={clickHandlerLogInRedirect}>Just log in!</a>
         </div>
         <div className={styles.dividerContainer}>
           <div className={styles.line} />
