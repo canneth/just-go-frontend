@@ -113,8 +113,8 @@
       <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
     </tr>
     <tr>
-      <td>The <a href='https://justgo.dev/login' rel='noreferrer'>/login and sign-up page</a> UI</td>
-      <td>In progress</td>
+      <td>Validation for log-in and sign-up input fields</td>
+      <td>Up next!</td>
     </tr>
     <tr>
       <td>NavBar behaviour and design for when a user is signed in</td>
