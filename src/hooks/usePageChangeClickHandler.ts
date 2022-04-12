@@ -16,7 +16,8 @@ export default function usePageChangeClickHandler(destinationURL: string, option
     router.prefetch(destinationURL)
   }, [router, destinationURL, options?.toExternal]);
 
-  const handleClick = useCallback((_: MouseEvent) => {
+  const handleClick = useCallback((e: MouseEvent) => {
+    e.preventDefault();
     if (router.pathname === destinationURL) return;
     currPageEl?.classList.add('pageFadeOut');
     setTimeout(() => {
