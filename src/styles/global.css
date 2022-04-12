@@ -85,11 +85,13 @@ p {
 }
 a {
   font-size: var(--font-size-regular);
-  color: var(--color-grey-base);
+  color: var(--color-primary-base);
+  transition: color 100ms ease-out;
+  text-decoration: none;
 }
 a:hover {
   cursor: pointer;
-  color: var(--color-primary-base);
+  color: var(--color-primary-light);
 }
 
 /* Page transition stuff */
