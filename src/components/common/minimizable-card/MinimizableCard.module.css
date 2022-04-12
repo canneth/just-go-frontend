@@ -42,7 +42,6 @@
 }
 .expandedContentContainer {
   position: relative;
-  padding: 24px;
   opacity: 1;
   overflow: hidden;
   transition: opacity 200ms linear;
@@ -61,6 +60,7 @@
   position: absolute;
   right: 16px;
   top: 50%;
+  transform: translateY(-50%);
   width: var(--arrow-depth);
   height: 16px;
   border-style: solid;
