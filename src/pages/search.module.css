@@ -22,15 +22,6 @@
 }
 .returnText {
   font-size: var(--font-size-small);
-  color: var(--color-grey-base);
-  transition:
-    transform 100ms ease-out,
-    color 100ms ease-out;
-}
-.returnText:hover {
-  cursor: pointer;
-  transform: scale(1.01);
-  color: var(--color-primary-base);
 }
 .prefix {
   position: relative;
