@@ -40,7 +40,7 @@ export default function SignupPage() {
               </div>
             </li>
           </ol>
-          <Button className={styles.signUpButton} clickHandler={clickHandlerSignUpButton} text={'Sign up!'} />
+          <Button className={styles.signUpButton} clickHandler={clickHandlerSignUpButton} text={'Sign up'} />
         </form>
         <div className={styles.alreadyHaveAccountContainer}>
           <p>Already have an account?</p>
