@@ -98,8 +98,8 @@
 <section>
   <h2>Development status</h2>
   <p>
-    The web app is <strong>very incomplete</strong>, and is undergoing <strong>active development</strong>,
-    meaning that what works today may break tomorrow.
+    The web app is <strong>very incomplete</strong>, and is <strong>currently backlogged.</strong>
+    Work on this project may resume when my commitments thin out, but don't get your hopes up...
   </p>
 
   <h3>Outstanding todos (non-exhaustive):</h3>
